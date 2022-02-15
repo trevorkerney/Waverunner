@@ -1,13 +1,19 @@
 import { useState } from 'react'
 
+import Sidebar from "./Sidebar"
+import LibraryGrid from './LibraryGrid';
+
+import '../scss/css/Library.css'
+
 const Library = () => {
 
   const [library, setLibrary] = useState([]);
 
   return (
-    <div id="library">
-        
-    </div>
+    <main>
+        <Sidebar />
+        <LibraryGrid />
+    </main>
   )
 
 }

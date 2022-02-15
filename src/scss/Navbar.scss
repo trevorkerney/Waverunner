@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+header {
+  display: flex;
+  width: 100vw;
+  height: 40px;
+  background-color: #1b1b1b;
+
+
+  nav#navbar {
+    flex: 1;
+
+
+    ul#navbarList { 
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+
+      li.navbarListItem {
+        display: flex;
+      
+        width: 12%;
+        height: 100%;
+
+
+        button.navbarListButton {
+          border: none;
+          border-radius: 1000px;
+          color: #ebebeb;
+          background-color: #3a3a3a;
+          font-weight: bold;
+          width: 75%;
+          height: 75%;
+          margin: auto;
+          transition: background-color 100ms ease;
+
+
+          span.linkText {
+            font-family: 'Open Sans', cursive, Helvetica, Arial, sans-serif;
+          }
+        }
+        
+        button.navbarListButton:hover {
+          background-color: #2e2e2e;
+          color: #bbbbbb;
+        }
+        
+        button.navbarListButton:active {
+          background-color: #222222;
+          color: #959595;
+        }
+      }
+    }
+  }
+}

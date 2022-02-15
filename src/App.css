@@ -1,32 +1,8 @@
 body {
+  width: 100vw;
   height: 100vh;
   margin: 0;
   background-color: #0f0f0f;
   color: #f0f0f0;
   font-family: Helvetica, Arial, sans-serif;
 }
-
-/*
-
-h1 {
-  margin: 0;
-}
-
-p {
-  margin: 0;
-}
-
-ul {
-  margin: 0;
-}
-
-#libraryMenu {
-  display: flex;
-  width: 100%;
-}
-
-.libraryMenuLinks {
-  text-decoration: none;
-}
-
-*/

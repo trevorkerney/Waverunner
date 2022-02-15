@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-import '../css/LibraryMenu.css'
+import '../scss/css/Navbar.css'
 
-const LibraryMenu = () => {
+const Navbar = () => {
 
   const [libraries, setLibraries] = useState([
     {
@@ -21,14 +21,11 @@ const LibraryMenu = () => {
 
   return (
     <header>
-      <div id="logoBox">
-        <h1 id="logo">W</h1>
-      </div>
-      <nav id="libraryMenu">
-        <ul id="libraryMenuList">
+      <nav id="navbar">
+        <ul id="navbarList">
           {libraries.map(paragraph => 
-            <li className="libraryMenuListItem">
-              <button className="libraryMenuListButton">
+            <li className="navbarListItem">
+              <button className="navbarListButton">
                 <span className="linkText">
                   {paragraph.name}
                 </span>
@@ -41,4 +38,4 @@ const LibraryMenu = () => {
   )
 }
 
-export default LibraryMenu;
+export default Navbar;

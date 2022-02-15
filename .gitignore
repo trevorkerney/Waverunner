@@ -3,6 +3,7 @@
 # environment
 /.vscode
 *.code-workspace
+!/.vscode/settings.json
 
 # dependencies
 /node_modules

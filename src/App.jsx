@@ -1,7 +1,6 @@
 import React from 'react'
 
-import LibraryMenu from "./components/LibraryMenu"
-import Sidebar from "./components/Sidebar"
+import Navbar from "./components/Navbar"
 import Library from "./components/Library"
 
 import './App.css';
@@ -10,8 +9,7 @@ const App = () => {
 
   return (
     <div id="app">
-      <LibraryMenu />
-      <Sidebar />
+      <Navbar />
       <Library />
     </div>
   )
