@@ -41,20 +41,20 @@ header {
           margin: auto;
           transition: background-color 100ms ease;
 
+          &:hover {
+            background-color: #2e2e2e;
+            color: #bbbbbb;
+          }
+          
+          &:active {
+            background-color: #222222;
+            color: #959595;
+          }
+
 
           span.linkText {
             font-family: 'Open Sans', cursive, Helvetica, Arial, sans-serif;
           }
-        }
-        
-        button.navbarListButton:hover {
-          background-color: #2e2e2e;
-          color: #bbbbbb;
-        }
-        
-        button.navbarListButton:active {
-          background-color: #222222;
-          color: #959595;
         }
       }
     }

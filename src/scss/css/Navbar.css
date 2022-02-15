@@ -52,10 +52,6 @@ header nav#navbar ul#navbarList li.navbarListItem button.navbarListButton {
   transition: background-color 100ms ease;
 }
 
-header nav#navbar ul#navbarList li.navbarListItem button.navbarListButton span.linkText {
-  font-family: 'Open Sans', cursive, Helvetica, Arial, sans-serif;
-}
-
 header nav#navbar ul#navbarList li.navbarListItem button.navbarListButton:hover {
   background-color: #2e2e2e;
   color: #bbbbbb;
@@ -64,5 +60,9 @@ header nav#navbar ul#navbarList li.navbarListItem button.navbarListButton:hover 
 header nav#navbar ul#navbarList li.navbarListItem button.navbarListButton:active {
   background-color: #222222;
   color: #959595;
+}
+
+header nav#navbar ul#navbarList li.navbarListItem button.navbarListButton span.linkText {
+  font-family: 'Open Sans', cursive, Helvetica, Arial, sans-serif;
 }
 /*# sourceMappingURL=Navbar.css.map */

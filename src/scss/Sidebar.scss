@@ -1,22 +1,38 @@
 nav#sidebar {
-  width: 20vw;
-  min-width: 150px;
-  max-width: 250px;
+  width: 1vw;
   height: 100%;
   background-color: #080808;
 
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   /* transition: width 100ms ease; */
 
 
   div#sidebarViews {
+    display: none;
     width: 100%;
     height: 100%;
   }
   
   div#sidebarHandleBox {
-    margin-left: auto;
+    
+    button#sidebarHandleButton {
+      border: none;
+      background-color: #080808;
+      padding: 0;
+      color: #f0f0f0;
+      cursor: pointer;
+
+      &:hover {
+        color: #bbbbbb;
+      }
+      
+      &:active {
+        color: #959595;
+      }
+    }
   }
 
 }

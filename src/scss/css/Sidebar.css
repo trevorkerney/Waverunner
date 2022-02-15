@@ -1,21 +1,38 @@
 nav#sidebar {
-  width: 20vw;
-  min-width: 150px;
-  max-width: 250px;
+  width: 1vw;
   height: 100%;
   background-color: #080808;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   /* transition: width 100ms ease; */
 }
 
 nav#sidebar div#sidebarViews {
+  display: none;
   width: 100%;
   height: 100%;
 }
 
-nav#sidebar div#sidebarHandleBox {
-  margin-left: auto;
+nav#sidebar div#sidebarHandleBox button#sidebarHandleButton {
+  border: none;
+  background-color: #080808;
+  padding: 0;
+  color: #f0f0f0;
+  cursor: pointer;
+}
+
+nav#sidebar div#sidebarHandleBox button#sidebarHandleButton:hover {
+  color: #bbbbbb;
+}
+
+nav#sidebar div#sidebarHandleBox button#sidebarHandleButton:active {
+  color: #959595;
 }
 /*# sourceMappingURL=Sidebar.css.map */

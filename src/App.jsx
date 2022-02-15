@@ -3,7 +3,7 @@ import React from 'react'
 import Navbar from "./components/Navbar"
 import Library from "./components/Library"
 
-import './App.css';
+import './scss/css/App.css';
 
 const App = () => {
 
@@ -13,7 +13,6 @@ const App = () => {
       <Library />
     </div>
   )
-
 }
 
 export default App;
