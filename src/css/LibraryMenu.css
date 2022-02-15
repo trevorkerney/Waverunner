@@ -4,12 +4,12 @@
 header {
   display: flex;
   width: 100vw;
-  height: 5vh;
+  height: 40px;
   background-color: #1b1b1b;
 }
 
 div#logoBox {
-  margin: auto 3vw auto 3vw;
+  margin: auto 3vw auto 1vw;
 }
 
 h1#logo {
@@ -49,6 +49,8 @@ button.libraryMenuListButton {
   width: 75%;
   height: 75%;
   margin: auto;
+  transition: background-color 100ms ease;
+  z-index: 2;
 }
 
 button.libraryMenuListButton:hover {
@@ -56,6 +58,12 @@ button.libraryMenuListButton:hover {
   color: #bbbbbb;
 }
 
+button.libraryMenuListButton:active {
+  background-color: #222222;
+  color: #949494;
+}
+
 span.linkText {
   font-family: 'Open Sans', cursive, Helvetica, Arial, sans-serif;
+  z-index: 1;
 }

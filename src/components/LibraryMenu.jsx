@@ -22,7 +22,7 @@ const LibraryMenu = () => {
   return (
     <header>
       <div id="logoBox">
-        <h1 id="logo">Wave</h1>
+        <h1 id="logo">W</h1>
       </div>
       <nav id="libraryMenu">
         <ul id="libraryMenuList">
