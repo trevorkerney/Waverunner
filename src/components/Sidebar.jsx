@@ -4,30 +4,34 @@ import '../scss/css/Sidebar.css'
 
 const Sidebar = () => {
 
-  const [sidebarWidth, setSidebarWidth] = useState();
-  const [sidebarViewDisplay, setSidebarViewDisplay] = useState();
-  const [views, setViews] = useState([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [filters, setFilters] = useState([]);
 
-  /*
-
-  const changeSidebar = () => {
-    if (sidebarWidth) {
-      isSidebarOpen = false;
-    }
-    else{
-      isSidebarOpen = true;
-    }
+  const sidebarHandler = () => {
+    setIsSidebarOpen( (prevVal) => {return(!prevVal)});
   }
 
-  */
-
   return (
-    <nav id="sidebar" className={sidebarWidth}>
-      <div id="sidebarViews" className={sidebarViewDisplay}>
+    <nav 
+      id="sidebar" 
+      style={isSidebarOpen ? {
+        width: "25vw"
+      } : {
+        width: "1vw"
+      }}
+    >
+      <div 
+        id="sidebarViews" 
+        style={isSidebarOpen ? {
+          display: "block"
+        } : {
+          display: "none"
+        }}
+      >
 
       </div>
       <div id="sidebarHandleBox">
-        <button id="sidebarHandleButton" /* onClick={changeSidebar} */ >
+        <button id="sidebarHandleButton" onClick={sidebarHandler}  >
           <svg 
             id="sidebarHandle"
             xmlns="http://www.w3.org/2000/svg" 

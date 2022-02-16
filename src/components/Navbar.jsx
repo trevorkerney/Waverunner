@@ -14,6 +14,10 @@ const Navbar = () => {
       "target": "#"
     },
     {
+      "name": "Documentaries",
+      "target": "#"
+    },
+    {
       "name": "Music",
       "target": "#"
     }
@@ -23,11 +27,11 @@ const Navbar = () => {
     <header>
       <nav id="navbar">
         <ul id="navbarList">
-          {libraries.map(paragraph => 
+          {libraries.map(index => 
             <li className="navbarListItem">
               <button className="navbarListButton">
                 <span className="linkText">
-                  {paragraph.name}
+                  {index.name}
                 </span>
               </button>
             </li>

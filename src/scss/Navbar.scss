@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
-
 header {
   display: flex;
   width: 100vw;
@@ -26,8 +23,8 @@ header {
       li.navbarListItem {
         display: flex;
       
-        width: 12%;
         height: 100%;
+        flex: 1;
 
 
         button.navbarListButton {
@@ -35,7 +32,6 @@ header {
           border-radius: 1000px;
           color: #ebebeb;
           background-color: #3a3a3a;
-          font-weight: bold;
           width: 75%;
           height: 75%;
           margin: auto;
@@ -53,7 +49,7 @@ header {
 
 
           span.linkText {
-            font-family: 'Open Sans', cursive, Helvetica, Arial, sans-serif;
+            font-family: 'Roboto', cursive, Helvetica, Arial, sans-serif;
           }
         }
       }
