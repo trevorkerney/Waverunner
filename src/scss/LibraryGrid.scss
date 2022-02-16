@@ -24,10 +24,13 @@ div#library {
     padding: 0;
     list-style: none;
 
+    li.libraryListItem {
+      width: 25%;
 
-    li#libraryListItem {
-      width: 12.5%;
-      height: 12.5%;
+
+      p.ItemTitle {
+        margin: 0;
+      }
     }
   }
 }

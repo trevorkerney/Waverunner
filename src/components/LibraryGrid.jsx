@@ -8,8 +8,17 @@ const LibraryGrid = () => {
     name: "Movies",
     full_path: "E:/~ the sanctum ~/Media/Movies/",
     movie_filename: "movie",
+    movie_filename_exts: [
+      "mkv",
+      "mp4",
+    ],
     cover_path: "/~covers",
-    cover_filenames: [
+    cover_path_exts: [
+      "jpg",
+      "jpeg",
+      "png"
+    ],
+    cover_tags: [
       {
         name: "fullres",
         tag: "fullres"
@@ -55,6 +64,10 @@ const LibraryGrid = () => {
       {
         name: "WALL-E",
         path: "0008"
+      },
+      {
+        name: "First Blood",
+        path: "0009"
       }
     ]
   });
@@ -63,8 +76,8 @@ const LibraryGrid = () => {
     <div id="library">
       <ul id="libraryList">
         {library.list.map(index => 
-          <li id="libraryListItem">
-            <p>
+          <li class="libraryListItem">
+            <p class="itemTitle">
               {index.name}
             </p>
           </li>

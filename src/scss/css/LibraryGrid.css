@@ -34,8 +34,11 @@ div#library ul#libraryList {
   list-style: none;
 }
 
-div#library ul#libraryList li#libraryListItem {
-  width: 12.5%;
-  height: 12.5%;
+div#library ul#libraryList li.libraryListItem {
+  width: 25%;
+}
+
+div#library ul#libraryList li.libraryListItem p.ItemTitle {
+  margin: 0;
 }
 /*# sourceMappingURL=LibraryGrid.css.map */
