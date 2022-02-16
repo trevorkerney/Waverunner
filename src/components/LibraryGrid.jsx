@@ -76,8 +76,8 @@ const LibraryGrid = () => {
     <div id="library">
       <ul id="libraryList">
         {library.list.map(index => 
-          <li class="libraryListItem">
-            <p class="itemTitle">
+          <li className="libraryListItem">
+            <p className="itemTitle">
               {index.name}
             </p>
           </li>
