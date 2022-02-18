@@ -62,6 +62,7 @@ header nav#navbar ul#navbarList li.navbarListItem button.navbarListButton:active
 }
 
 header nav#navbar ul#navbarList li.navbarListItem button.navbarListButton span.linkText {
-  font-family: 'Roboto', cursive, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto';
+  font-weight: 300;
 }
 /*# sourceMappingURL=Navbar.css.map */

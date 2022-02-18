@@ -20,25 +20,47 @@ div#library ul#libraryList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 100%;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0;
+  margin: 0.5%;
   padding: 0;
   list-style: none;
+  --itemWidth: 5%;
 }
 
 div#library ul#libraryList li.libraryListItem {
-  width: 25%;
+  width: var(--itemWidth);
+  min-width: 125px;
+  max-width: 550px;
+  margin: 0.5%;
 }
 
-div#library ul#libraryList li.libraryListItem p.ItemTitle {
-  margin: 0;
+div#library ul#libraryList li.libraryListItem ul.itemContents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+}
+
+div#library ul#libraryList li.libraryListItem ul.itemContents img.itemCover {
+  width: 100%;
+}
+
+div#library ul#libraryList li.libraryListItem ul.itemContents p.itemTitle {
+  font-weight: 300;
+  text-align: center;
 }
 /*# sourceMappingURL=LibraryGrid.css.map */
