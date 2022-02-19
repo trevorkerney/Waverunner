@@ -1,11 +1,36 @@
 import { useState } from 'react'
 
+import {filter} from './Types'
+
 import '../scss/css/Sidebar.css'
 
 const Sidebar = () => {
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [filters, setFilters] = useState([]);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [filters, setFilters] = useState<filter[]>([
+    {
+      name: "Action",
+      title: "",
+      year: "",
+      artist: "",
+      album: "",
+      director: "",
+      composer: "",
+      genre: "Action",
+      tags: []
+    },
+    {
+      name: "Scorsese",
+      title: "",
+      year: "",
+      artist: "Martin Scorsese",
+      album: "",
+      director: "",
+      composer: "",
+      genre: "",
+      tags: []
+    }
+  ]);
 
   const sidebarHandler = () => {
     setIsSidebarOpen( (prevVal) => {return(!prevVal)});

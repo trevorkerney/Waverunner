@@ -1,25 +1,27 @@
 import { useState } from 'react'
 
+import {category} from './Types'
+
 import '../scss/css/Navbar.css'
 
 const Navbar = () => {
 
-  const [libraries, setLibraries] = useState([
+  const [categories, setCategories] = useState<category[]>([
     {
-      "name": "Movies",
-      "target": "#"
+      name: "Movies",
+      path: "#"
     },
     {
-      "name": "TV",
-      "target": "#"
+      name: "TV",
+      path: "#"
     },
     {
-      "name": "Documentaries",
-      "target": "#"
+      name: "Documentaries",
+      path: "#"
     },
     {
-      "name": "Music",
-      "target": "#"
+      name: "Music",
+      path: "#"
     }
   ]);
 
@@ -27,7 +29,7 @@ const Navbar = () => {
     <header>
       <nav id="navbar">
         <ul id="navbarList">
-          {libraries.map(index => 
+          {categories.map(index => 
             <li className="navbarListItem">
               <button className="navbarListButton">
                 <span className="linkText">

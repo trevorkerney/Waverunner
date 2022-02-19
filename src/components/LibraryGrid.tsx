@@ -1,187 +1,169 @@
 import { useState } from 'react'
 
+import {filter, media, group, library} from './Types'
+import Viewbar from './Viewbar'
+
 import '../scss/css/LibraryGrid.css'
 
-import {
-  pulp,
-  wolf,
-  knight,
-  fellas,
-  lampoon,
-  sponge,
-  shank,
-  walle,
-  blood,
-  potter,
-  stone,
-  secrets,
-  prisoner,
-  goblet,
-  phoenix,
-  prince,
-  deathly,
-  hallows
-} from '../img'
+import COVERS from '../img'
 
 const LibraryGrid = () => {
 
-  const [library, setLibrary] = useState({
+  const [currentLibrary, setCurrentLibrary] = useState<library>({
     name: "Movies",
     full_path: "E:/~ the sanctum ~/Media/Movies/",
-    movie_filename: "movie",
-    movie_filename_exts: [
+    media_filename: "movie",
+    media_filename_exts: [
       "mkv",
       "mp4",
     ],
     cover_path: "/~covers",
+    cover_tags: [
+      {
+        name: "Fullres",
+        tag: "fullres"
+      },
+      {
+        name: "Textless",
+        tag: "textless"
+      },
+      {
+        name: "Alternate",
+        tag: "alt[1-9]"
+      }
+    ],
     cover_path_exts: [
       "jpg",
       "jpeg",
       "png"
     ],
-    cover_tags: [
-      {
-        name: "fullres",
-        tag: "fullres"
-      },
-      {
-        name: "textless",
-        tag: "textless"
-      },
-      {
-        name: "alternate",
-        tag: "alt[1-9]"
-      }
-    ],
-    list: [
+    library: [
       {
         name: "Pulp Fiction",
-        type: "media",
         path: "0001",
-        temp_img_path: pulp
+        temp_img_path: COVERS.pulp
       },
       {
         name: "The Wolf of Wall Street",
-        type: "media",
         path: "0002",
-        temp_img_path: wolf
+        temp_img_path: COVERS.wolf
       },
       {
         name: "The Dark Knight",
-        type: "media",
         path: "0003",
-        temp_img_path: knight
+        temp_img_path: COVERS.knight
       },
       {
         name: "Goodfellas",
-        type: "media",
         path: "0004",
-        temp_img_path: fellas
+        temp_img_path: COVERS.fellas
       },
       {
         name: "Nation Lampoon's Christmas Vacation",
-        type: "media",
         path: "0005",
-        temp_img_path: lampoon
+        temp_img_path: COVERS.lampoon
       },
       {
         name: "The Spongebob Squarepants Movie",
-        type: "media",
         path: "0006",
-        temp_img_path: sponge
+        temp_img_path: COVERS.sponge
       },
       {
         name: "The Shawshank Redemption",
-        type: "media",
         path: "0007",
-        temp_img_path: shank
+        temp_img_path: COVERS.shank
       },
       {
         name: "WALL-E",
-        type: "media",
         path: "0008",
-        temp_img_path: walle
+        temp_img_path: COVERS.walle
       },
       {
         name: "First Blood",
-        type: "media",
         path: "0009",
-        temp_img_path: blood
+        temp_img_path: COVERS.blood
       },
       {
         name: "Harry Potter",
-        type: "group",
         path: "0010",
-        temp_img_path: potter,
+        temp_img_path: COVERS.potter,
         media: [
           {
             name: "Harry Potter and the Sorcerer's Stone",
-            type: "media",
             path: "0001",
-            temp_img_path: stone
+            temp_img_path: COVERS.stone
           },
           {
             name: "Harry Potter and the Chamber of Secrets",
-            type: "media",
             path: "0002",
-            temp_img_path: secrets
+            temp_img_path: COVERS.secrets
           },
           {
             name: "Harry Potter and the Prisoner of Azkaban",
-            type: "media",
             path: "0003",
-            temp_img_path: prisoner
+            temp_img_path: COVERS.prisoner
           },
           {
             name: "Harry Potter and the Goblet of Fire",
-            type: "media",
             path: "0004",
-            temp_img_path: goblet
+            temp_img_path: COVERS.goblet
           },
           {
             name: "Harry Potter and the Order of the Phoenix",
-            type: "media",
             path: "0005",
-            temp_img_path: phoenix
+            temp_img_path: COVERS.phoenix
           },
           {
             name: "Harry Potter and the Half-Blood Prince",
-            type: "media",
             path: "0006",
-            temp_img_path: prince
+            temp_img_path: COVERS.prince
           },
           {
             name: "Harry Potter and the Deathly Hallows Part 1",
-            type: "media",
             path: "0007",
-            temp_img_path: deathly
+            temp_img_path: COVERS.deathly
           },
           {
             name: "Harry Potter and the Deathly Hallows Part 2",
-            type: "media",
             path: "0008",
-            temp_img_path: hallows
+            temp_img_path: COVERS.hallows
           }
         ]
       }
     ]
   });
+  const [currentFilter, setCurrentFilter] = useState<filter>({
+    name: "Scorsese",
+    title: "",
+    year: "",
+    artist: "",
+    album: "",
+    director: "",
+    composer: "",
+    genre: "Action",
+    tags: []
+  });
 
-
+  const sortByName = (a: media | group, b: media | group) => {
+    console.log(a);
+    if (a.name.toLowerCase() > b.name.toLowerCase()) {
+      return 1;
+    } else {
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
+  }
 
   return (
     <div id="library">
+      <Viewbar />
       <ul id="libraryList">
-        {library.list
-          .concat(library.list[9].media)
-          .sort( (a,b) => (
-            (a.name > b.name) 
-              ? 1
-              : ((a.name < b.name)
-                ? -1
-                : 0
-            )
-          ))
+        {currentLibrary.library
+          .concat((currentLibrary.library[9] as group).media) // hard code to include harry potter series
+          .sort(sortByName)
           .map(index =>
           <li className="libraryListItem">
             <ul className="itemContents">

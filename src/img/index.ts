@@ -1,0 +1,22 @@
+const COVERS = {
+  pulp: require("./0001.jpeg"),
+  wolf: require("./0002.jpeg"),
+  knight: require("./0003.png"),
+  fellas: require("./0004.jpeg"),
+  lampoon: require("./0005.png"),
+  sponge: require("./0006.png"),
+  shank: require("./0007.png"),
+  walle: require("./0008.png"),
+  blood: require("./0009.jpeg"),
+  potter: require("./0010.png"),
+  stone: require("./0010-0001.png"),
+  secrets: require("./0010-0002.png"),
+  prisoner: require("./0010-0003.png"),
+  goblet: require("./0010-0004.png"),
+  phoenix: require("./0010-0005.png"),
+  prince: require("./0010-0006.png"),
+  deathly: require("./0010-0007.png"),
+  hallows: require("./0010-0008.png"),
+}
+
+export default COVERS;

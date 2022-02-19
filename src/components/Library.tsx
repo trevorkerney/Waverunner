@@ -6,8 +6,6 @@ import LibraryGrid from './LibraryGrid';
 import '../scss/css/Library.css'
 
 const Library = () => {
-
-  const [library, setLibrary] = useState([]);
   
   return (
     <main>
