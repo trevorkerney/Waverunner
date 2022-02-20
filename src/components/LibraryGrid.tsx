@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-import {filter, media, group, library} from './Types'
+import {tag, filter, media, group, library} from './Types'
 import Viewbar from './Viewbar'
 
 import '../scss/css/LibraryGrid.css'
 
-import COVERS from '../img'
+import {COVERS} from '../img'
 
 const LibraryGrid = () => {
 
@@ -20,16 +20,16 @@ const LibraryGrid = () => {
     cover_path: "/~covers",
     cover_tags: [
       {
-        name: "Fullres",
-        tag: "fullres"
+        key: "Fullres",
+        value: "fullres"
       },
       {
-        name: "Textless",
-        tag: "textless"
+        key: "Textless",
+        value: "textless"
       },
       {
-        name: "Alternate",
-        tag: "alt[1-9]"
+        key: "Alternate",
+        value: "alt[1-9]"
       }
     ],
     cover_path_exts: [
@@ -39,117 +39,251 @@ const LibraryGrid = () => {
     ],
     library: [
       {
-        name: "Pulp Fiction",
+        type: "media",
         path: "0001",
-        temp_img_path: COVERS.pulp
+        temp_img_path: COVERS.pulp,
+        tags: [
+          {
+            key: "Title",
+            value: "Pulp Fiction",
+          }
+        ],
       },
       {
-        name: "The Wolf of Wall Street",
+        type: "media",
         path: "0002",
-        temp_img_path: COVERS.wolf
+        temp_img_path: COVERS.wolf,
+        tags: [
+          {
+            key: "Title",
+            value: "The Wolf of Wall Street",
+          }
+        ],
       },
       {
-        name: "The Dark Knight",
+        type: "media",
         path: "0003",
-        temp_img_path: COVERS.knight
+        temp_img_path: COVERS.knight,
+        tags: [
+          {
+            key: "Title",
+            value: "The Dark Knight",
+          }
+        ],
       },
       {
-        name: "Goodfellas",
+        type: "media",
         path: "0004",
-        temp_img_path: COVERS.fellas
+        temp_img_path: COVERS.fellas,
+        tags: [
+          {
+            key: "Title",
+            value: "Goodfellas",
+          }
+        ],
       },
       {
-        name: "Nation Lampoon's Christmas Vacation",
+        type: "media",
         path: "0005",
-        temp_img_path: COVERS.lampoon
+        temp_img_path: COVERS.lampoon,
+        tags: [
+          {
+            key: "Title",
+            value: "Nation Lampoon's Christmas Vacation",
+          }
+        ],
       },
       {
-        name: "The Spongebob Squarepants Movie",
+        type: "media",
         path: "0006",
-        temp_img_path: COVERS.sponge
+        temp_img_path: COVERS.sponge,
+        tags: [
+          {
+            key: "Title",
+            value: "The Spongebob Squarepants Movie",
+          }
+        ],
       },
       {
-        name: "The Shawshank Redemption",
+        type: "media",
         path: "0007",
-        temp_img_path: COVERS.shank
+        temp_img_path: COVERS.shank,
+        tags: [
+          {
+            key: "Title",
+            value: "The Shawshank Redemption",
+          }
+        ],
       },
       {
-        name: "WALL-E",
+        type: "media",
         path: "0008",
-        temp_img_path: COVERS.walle
+        temp_img_path: COVERS.walle,
+        tags: [
+          {
+            key: "Title",
+            value: "WALL-E",
+          }
+        ],
       },
       {
-        name: "First Blood",
+        type: "media",
         path: "0009",
-        temp_img_path: COVERS.blood
+        temp_img_path: COVERS.blood,
+        tags: [
+          {
+            key: "Title",
+            value: "First Blood",
+          }
+        ],
       },
       {
-        name: "Harry Potter",
+        type: "group",
         path: "0010",
         temp_img_path: COVERS.potter,
+        tags: [
+          {
+            key: "Title",
+            value: "Harry Potter",
+          }
+        ],
         media: [
           {
-            name: "Harry Potter and the Sorcerer's Stone",
+            type: "media",
             path: "0001",
-            temp_img_path: COVERS.stone
+            temp_img_path: COVERS.stone,
+            tags: [
+              {
+                key: "Title",
+                value: "Harry Potter and the Sorcerer's Stone",
+              }
+            ],
           },
           {
-            name: "Harry Potter and the Chamber of Secrets",
+            type: "media",
             path: "0002",
-            temp_img_path: COVERS.secrets
+            temp_img_path: COVERS.secrets,
+            tags: [
+              {
+                key: "Title",
+                value: "Harry Potter and the Chamber of Secrets",
+              }
+            ],
           },
           {
-            name: "Harry Potter and the Prisoner of Azkaban",
+            type: "media",
             path: "0003",
-            temp_img_path: COVERS.prisoner
+            temp_img_path: COVERS.prisoner,
+            tags: [
+              {
+                key: "Title",
+                value: "Harry Potter and the Prisoner of Azkaban",
+              }
+            ],
           },
           {
-            name: "Harry Potter and the Goblet of Fire",
+            type: "media",
             path: "0004",
-            temp_img_path: COVERS.goblet
+            temp_img_path: COVERS.goblet,
+            tags: [
+              {
+                key: "Title",
+                value: "Harry Potter and the Goblet of Fire",
+              }
+            ],
           },
           {
-            name: "Harry Potter and the Order of the Phoenix",
+            type: "media",
             path: "0005",
-            temp_img_path: COVERS.phoenix
+            temp_img_path: COVERS.phoenix,
+            tags: [
+              {
+                key: "Title",
+                value: "Harry Potter and the Order of the Phoenix",
+              }
+            ],
           },
           {
-            name: "Harry Potter and the Half-Blood Prince",
+            type: "media",
             path: "0006",
-            temp_img_path: COVERS.prince
+            temp_img_path: COVERS.prince,
+            tags: [
+              {
+                key: "Title",
+                value: "Harry Potter and the Half-Blood Prince",
+              }
+            ],
           },
           {
-            name: "Harry Potter and the Deathly Hallows Part 1",
+            type: "media",
             path: "0007",
-            temp_img_path: COVERS.deathly
+            temp_img_path: COVERS.deathly,
+            tags: [
+              {
+                key: "Title",
+                value: "Harry Potter and the Deathly Hallows Part 1",
+              }
+            ],
           },
           {
-            name: "Harry Potter and the Deathly Hallows Part 2",
+            type: "media",
             path: "0008",
-            temp_img_path: COVERS.hallows
+            temp_img_path: COVERS.hallows,
+            tags: [
+              {
+                key: "Title",
+                value: "Harry Potter and the Deathly Hallows Part 2",
+              }
+            ],
           }
         ]
       }
     ]
   });
-  const [currentFilter, setCurrentFilter] = useState<filter>({
-    name: "Scorsese",
-    title: "",
-    year: "",
-    artist: "",
-    album: "",
-    director: "",
-    composer: "",
-    genre: "Action",
-    tags: []
-  });
+  const [sortBy, setSortBy] = useState<string>("Title");
+  const [currentFilters, setCurrentFilter] = useState<filter[]>([/*
+    {
+      name: "Harry Potter Movies",
+      tags: [
+        {
+          key: "Title",
+          value: "Harry"
+        },
+        {
+          key: "Title",
+          value: "Deathly"
+        }
+      ]
+    }
+  */]);
 
-  const sortByName = (a: media | group, b: media | group) => {
-    console.log(a);
-    if (a.name.toLowerCase() > b.name.toLowerCase()) {
+  const sortAlphabetically = (a: media | group, b: media | group) => {
+    let aSorter: string;
+    let bSorter: string;
+
+    let aTag: tag | undefined = a.tags.find((pair: tag) => (
+      pair.key === sortBy
+    ));
+    let bTag: tag | undefined = b.tags.find((pair: tag) => (
+      pair.key === sortBy
+    ));
+
+    if (aTag === undefined) {
+      aSorter = "~~~~~~~~";
+    } else {
+      aSorter = (aTag as tag).value.toLowerCase();
+    }
+    
+    if (bTag === undefined) {
+      bSorter = "~~~~~~~~";
+    } else {
+      bSorter = (bTag as tag).value.toLowerCase();
+    }
+
+    if (aSorter > bSorter) {
       return 1;
     } else {
-      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+      if (aSorter < bSorter) {
         return -1;
       } else {
         return 0;
@@ -157,26 +291,57 @@ const LibraryGrid = () => {
     }
   }
 
+  const findTag = (tags: tag[], key: string) =>  {
+    for (let _i = 0; _i < tags.length; _i++) {
+      let tag: tag = tags[_i];
+      if (tag.key.toLowerCase() === key.toLowerCase()) {
+        return tag;
+      }
+    }
+    return undefined;
+  }
+  
+  const applyFilters = (item: media | group) => {
+    for (let _i = 0; _i < currentFilters.length; _i++) {
+      let filter: filter = currentFilters[_i];
+      for (let _j = 0; _j < currentFilters[_i].tags.length; _j++) {
+        let tag: tag = filter.tags[_j];
+        let itemTag = findTag(item.tags, tag.key);
+        if (itemTag === undefined) {
+          return false;
+        } else {
+          if (!(itemTag as tag).value.includes(tag.value)) {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
+  
   return (
     <div id="library">
       <Viewbar />
       <ul id="libraryList">
         {currentLibrary.library
-          .concat((currentLibrary.library[9] as group).media) // hard code to include harry potter series
-          .sort(sortByName)
-          .map(index =>
-          <li className="libraryListItem">
-            <ul className="itemContents">
-              <img 
-                className="itemCover" 
-                src={index.temp_img_path} 
-                alt={index.name} />
-              <p className="itemTitle">
-                {index.name}
-              </p>
-            </ul>
-          </li>
-        )}
+          .concat((currentLibrary.library[9] as group).media)                             // hard code to include harry potter series
+          .sort(sortAlphabetically)                                                       // sort alphabetically
+          .filter(applyFilters)                                                           // filter out currentFilters state
+          .filter((index: media | group) => ((index.type === "media") ? true : false))    // filter out groups
+          .map(index => (
+            <li className="libraryListItem">
+              <ul className="itemContents">
+                <img 
+                  className="itemCover" 
+                  src={index.temp_img_path}
+                />
+                <p className="itemTitle">
+                  {(index.tags.find((pair: tag) => pair.key === "Title"))?.value}
+                </p>
+              </ul>
+            </li>
+          ))
+        }
       </ul>
     </div>
   )

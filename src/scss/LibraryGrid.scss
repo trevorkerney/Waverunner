@@ -29,6 +29,10 @@ div#library {
     overflow-y: auto;
     
 
+    &:scroller {
+      scrollbar-width: 5px;
+    }
+
     &::-webkit-scrollbar {
       width: 5px;
     }
@@ -41,7 +45,7 @@ div#library {
 
 
     li.libraryListItem {
-      width: 12%;
+      width: 15%;
       min-width: calc((100% / 12) - 1%);
       max-width: calc((100% / 3) - 1%);
       margin: 0.5%;

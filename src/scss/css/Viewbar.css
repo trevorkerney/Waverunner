@@ -3,4 +3,118 @@ div#viewbar {
   height: 30px;
   background-color: #3a3a3a;
 }
+
+div#viewbar ul#viewOptionList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /*
+
+    li.viewOption {
+      display: flex;
+      height: 100%;
+      align-items: center;
+
+      div#searchContainer {
+        display: flex;
+        align-items: center;
+
+
+        img#searchIcon {
+          width: 20px;
+          margin-right: 4px;
+        }
+
+        input#searchbar {
+          padding: 0;
+          width: 100px;
+          height: 20px;
+
+          transition: width 0.2s ease-in-out;
+
+          &:focus {
+            width: 200px;
+          }
+        }
+      }
+    }
+    */
+}
+
+div#viewbar ul#viewOptionList li.viewbarLeft {
+  height: 100%;
+}
+
+div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList {
+  list-style: none;
+  padding: 0;
+  height: 100%;
+}
+
+div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider {
+  width: 100%;
+}
+
+div#viewbar ul#viewOptionList li.viewbarRight {
+  height: 100%;
+  margin-left: auto;
+}
+
+div#viewbar ul#viewOptionList li.viewbarRight ul#rightList {
+  list-style: none;
+  padding: 0;
+  height: 100%;
+}
+
+div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem {
+  height: 100%;
+}
+
+div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem div#searchContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  margin-right: 25px;
+}
+
+div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem div#searchContainer img#searchIcon {
+  width: 20px;
+  margin-right: 4px;
+}
+
+div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem div#searchContainer input#searchbar {
+  width: 100px;
+  height: 16px;
+  padding: 2px;
+  border-radius: 5px;
+  border-width: 1px;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+}
+
+div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem div#searchContainer input#searchbar:focus {
+  width: 200px;
+}
 /*# sourceMappingURL=Viewbar.css.map */

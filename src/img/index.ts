@@ -1,4 +1,4 @@
-const COVERS = {
+export const COVERS = {
   pulp: require("./0001.jpeg"),
   wolf: require("./0002.jpeg"),
   knight: require("./0003.png"),
@@ -19,4 +19,10 @@ const COVERS = {
   hallows: require("./0010-0008.png"),
 }
 
-export default COVERS;
+export const ICONS = {
+  coverViewIcon: require("./icons/coverViewIcon.png"),
+  detailsViewIcon: require("./icons/detailsViewIcon.png"),
+  sidebarHandleIcon: require("./icons/sidebarHandleIcon.png"),
+  searchIcon: require("./icons/searchIcon.png"),
+}
+

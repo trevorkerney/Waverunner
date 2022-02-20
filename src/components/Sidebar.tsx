@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+import {ICONS} from '../img'
+
 import {filter} from './Types'
 
 import '../scss/css/Sidebar.css'
@@ -10,24 +12,17 @@ const Sidebar = () => {
   const [filters, setFilters] = useState<filter[]>([
     {
       name: "Action",
-      title: "",
-      year: "",
-      artist: "",
-      album: "",
-      director: "",
-      composer: "",
-      genre: "Action",
+      //genre: "Action",
       tags: []
     },
     {
       name: "Scorsese",
-      title: "",
-      year: "",
-      artist: "Martin Scorsese",
-      album: "",
-      director: "",
-      composer: "",
-      genre: "",
+      //artist: "Martin Scorsese",
+      tags: []
+    },
+    {
+      name: "Hairy movies",
+      //title: "Harry",
       tags: []
     }
   ]);
@@ -40,9 +35,9 @@ const Sidebar = () => {
     <nav 
       id="sidebar" 
       style={isSidebarOpen ? {
-        width: "25vw"
+        width: "20%"
       } : {
-        width: "1vw"
+        width: "20px"
       }}
     >
       <div 
@@ -57,15 +52,7 @@ const Sidebar = () => {
       </div>
       <div id="sidebarHandleBox">
         <button id="sidebarHandleButton" onClick={sidebarHandler}  >
-          <svg 
-            id="sidebarHandle"
-            xmlns="http://www.w3.org/2000/svg" 
-            width="16" 
-            height="16" 
-            fill="currentColor" 
-            viewBox="0 0 16 16">
-            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-          </svg>
+          <img id="sidebarHandleIcon" src={ICONS.sidebarHandleIcon} />
         </button>
       </div>
     </nav>

@@ -1,7 +1,6 @@
 nav#sidebar {
-  width: 1vw;
-  min-width: 20px;
-  max-width: 250px;
+  width: 20px;
+  max-width: 200px;
   height: 100%;
   background-color: #080808;
   display: -webkit-box;
@@ -25,6 +24,7 @@ nav#sidebar div#sidebarViews {
 
 nav#sidebar div#sidebarHandleBox button#sidebarHandleButton {
   border: none;
+  height: 100%;
   background-color: #080808;
   padding: 0;
   color: #f0f0f0;
@@ -37,5 +37,10 @@ nav#sidebar div#sidebarHandleBox button#sidebarHandleButton:hover {
 
 nav#sidebar div#sidebarHandleBox button#sidebarHandleButton:active {
   color: #959595;
+}
+
+nav#sidebar div#sidebarHandleBox button#sidebarHandleButton img#sidebarHandleIcon {
+  color: white;
+  width: 20px;
 }
 /*# sourceMappingURL=Sidebar.css.map */

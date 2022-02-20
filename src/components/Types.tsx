@@ -1,31 +1,33 @@
-
 export type tag = {
-  name: string,
-  tag: string,
+  key: string,
+  value: string,
 }
 
 export type filter = {
   name: string,
-  title: string,
+  /*
   artist: string,
   year: string,
   album: string,
   director: string,
   composer: string,
   genre: string,
+  */
   tags: tag[],
 }
 
 export type media = {
-  name: string,
+  type: string,
   path: string,
   temp_img_path: string,
+  tags: tag[],
 }
 
 export type group = {
-  name: string,
+  type: string,
   path: string,
   temp_img_path: string,
+  tags: tag[],
   media: media[],
 }
 
