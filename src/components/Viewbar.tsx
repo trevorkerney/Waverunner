@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { ChangeEvent, SyntheticEvent, useState } from 'react'
 import { ICONS } from '../img';
 
 import '../scss/css/Viewbar.css';
 
-const Viewbar = () => {
+const Viewbar = (props: {onWidthChange: (width: string) => void}) => {
 
-  const [viewSize, setViewSize] = useState<number>(0.5);
+  const handleWidthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    props.onWidthChange(event.target.value);
+  }
 
   return (
     <div id="viewbar">
@@ -16,9 +18,11 @@ const Viewbar = () => {
               <input
                 id='sizeSlider' 
                 type='range' 
-                min='0' 
-                max='1' 
-                step='0.01'
+                min='100' 
+                max='500' 
+                defaultValue='300'
+                step='3' 
+                onChange={handleWidthChange}
               />
             </li>
           </ul>

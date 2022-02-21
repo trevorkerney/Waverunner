@@ -19,37 +19,6 @@ div#viewbar ul#viewOptionList {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  /*
-
-    li.viewOption {
-      display: flex;
-      height: 100%;
-      align-items: center;
-
-      div#searchContainer {
-        display: flex;
-        align-items: center;
-
-
-        img#searchIcon {
-          width: 20px;
-          margin-right: 4px;
-        }
-
-        input#searchbar {
-          padding: 0;
-          width: 100px;
-          height: 20px;
-
-          transition: width 0.2s ease-in-out;
-
-          &:focus {
-            width: 200px;
-          }
-        }
-      }
-    }
-    */
 }
 
 div#viewbar ul#viewOptionList li.viewbarLeft {
@@ -70,7 +39,47 @@ div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem {
 }
 
 div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider {
+  margin-left: 25px;
+  -webkit-appearance: none;
+  background: transparent;
+  opacity: 0.7;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
+}
+
+div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider:hover {
+  opacity: 1;
+}
+
+div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider::-webkit-slider-runnable-track {
+  background: #6b6b6b;
   width: 100%;
+  height: 4px;
+  border-radius: 10px;
+}
+
+div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 8px;
+  border-radius: 2px;
+  background-color: #c5c5c5;
+  margin-top: calc((4px / 2) - (16px / 2));
+}
+
+div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider::-moz-range-track {
+  background-color: #6b6b6b;
+  width: 100%;
+  height: 4px;
+  border-radius: 10px;
+}
+
+div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider::-moz-range-thumb {
+  border: 0;
+  width: 8px;
+  height: 16px;
+  border-radius: 2px;
+  background-color: #c5c5c5;
 }
 
 div#viewbar ul#viewOptionList li.viewbarRight {
@@ -110,11 +119,15 @@ div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem div#
   padding: 2px;
   border-radius: 5px;
   border-width: 1px;
+  opacity: 0.7;
+  -webkit-transition: opacity 200ms ease-in-out;
+  transition: opacity 200ms ease-in-out;
   -webkit-transition: width 0.2s ease-in-out;
   transition: width 0.2s ease-in-out;
 }
 
 div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem div#searchContainer input#searchbar:focus {
   width: 200px;
+  opacity: 1;
 }
 /*# sourceMappingURL=Viewbar.css.map */

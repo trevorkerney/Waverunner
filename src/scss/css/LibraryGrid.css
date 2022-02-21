@@ -23,7 +23,6 @@ div#library ul#libraryList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: calc(100vh - 70px);
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-pack: space-evenly;
@@ -36,10 +35,7 @@ div#library ul#libraryList {
   padding: 0;
   list-style: none;
   overflow-y: auto;
-}
-
-div#library ul#libraryList:scroller {
-  scrollbar-width: 5px;
+  height: calc(100vh - 70px);
 }
 
 div#library ul#libraryList::-webkit-scrollbar {
@@ -53,10 +49,9 @@ div#library ul#libraryList::-webkit-scrollbar-thumb {
 }
 
 div#library ul#libraryList li.libraryListItem {
-  width: 15%;
-  min-width: calc((100% / 12) - 1%);
-  max-width: calc((100% / 3) - 1%);
-  margin: 0.5%;
+  margin: 10px;
+  -webkit-transition: width 50ms ease;
+  transition: width 50ms ease;
 }
 
 div#library ul#libraryList li.libraryListItem ul.itemContents {
@@ -78,6 +73,10 @@ div#library ul#libraryList li.libraryListItem ul.itemContents {
 
 div#library ul#libraryList li.libraryListItem ul.itemContents img.itemCover {
   width: 100%;
+  border-width: 3px;
+  border-radius: 3px;
+  border-style: outset;
+  border-color: #272727;
 }
 
 div#library ul#libraryList li.libraryListItem ul.itemContents p.itemTitle {

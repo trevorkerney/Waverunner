@@ -47,6 +47,7 @@ header nav#navbar ul#navbarList li.navbarListItem button.navbarListButton {
   width: 75%;
   height: 65%;
   margin: auto;
+  overflow: hidden;
   -webkit-transition: background-color 100ms ease;
   transition: background-color 100ms ease;
 }

@@ -19,7 +19,7 @@ div#library {
 
   ul#libraryList {
     display: flex;
-    height: calc(100vh - 70px);
+    
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: flex-start;
@@ -27,11 +27,7 @@ div#library {
     padding: 0;
     list-style: none;
     overflow-y: auto;
-    
-
-    &:scroller {
-      scrollbar-width: 5px;
-    }
+    height: calc(100vh - 70px);
 
     &::-webkit-scrollbar {
       width: 5px;
@@ -45,12 +41,8 @@ div#library {
 
 
     li.libraryListItem {
-      width: 15%;
-      min-width: calc((100% / 12) - 1%);
-      max-width: calc((100% / 3) - 1%);
-      margin: 0.5%;
-      //border-style: solid;
-      //border-width: 1px;
+      margin: 10px;
+      transition: width 50ms ease;
 
 
       ul.itemContents {
@@ -63,6 +55,10 @@ div#library {
 
         img.itemCover {
           width: 100%;
+          border-width: 3px;
+          border-radius: 3px;
+          border-style: outset;
+          border-color: rgb(39, 39, 39);
         }
 
         p.itemTitle {

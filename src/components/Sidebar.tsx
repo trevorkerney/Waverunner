@@ -1,9 +1,6 @@
 import { useState } from 'react'
-
 import {ICONS} from '../img'
-
 import {filter} from './Types'
-
 import '../scss/css/Sidebar.css'
 
 const Sidebar = () => {
@@ -51,8 +48,14 @@ const Sidebar = () => {
 
       </div>
       <div id="sidebarHandleBox">
-        <button id="sidebarHandleButton" onClick={sidebarHandler}  >
-          <img id="sidebarHandleIcon" src={ICONS.sidebarHandleIcon} />
+        <button 
+          id="sidebarHandleButton" 
+          onClick={sidebarHandler} 
+        >
+          <img 
+           id="sidebarHandleIcon" 
+           src={ICONS.sidebarHandleIcon} 
+          />
         </button>
       </div>
     </nav>

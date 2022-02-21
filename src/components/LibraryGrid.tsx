@@ -240,7 +240,6 @@ const LibraryGrid = () => {
       }
     ]
   });
-  const [sortBy, setSortBy] = useState<string>("Title");
   const [currentFilters, setCurrentFilter] = useState<filter[]>([/*
     {
       name: "Harry Potter Movies",
@@ -252,12 +251,20 @@ const LibraryGrid = () => {
         {
           key: "Title",
           value: "Deathly"
+        },
+        {
+          key: "hahahaaa",
+          value: "bwahahahah"
         }
       ]
     }
   */]);
+  const [sortBy, setSortBy] = useState<string>(
+    "Title"
+  );
+  const [coverWidth, setCoverWidth] = useState<string>('300');
 
-  const sortAlphabetically = (a: media | group, b: media | group) => {
+  const lex = (a: media | group, b: media | group) => {
     let aSorter: string;
     let bSorter: string;
 
@@ -291,7 +298,8 @@ const LibraryGrid = () => {
     }
   }
 
-  const findTag = (tags: tag[], key: string) =>  {
+  const findTag = (item: media | group, key: string) =>  {
+    let tags: tag[] = item.tags;
     for (let _i = 0; _i < tags.length; _i++) {
       let tag: tag = tags[_i];
       if (tag.key.toLowerCase() === key.toLowerCase()) {
@@ -303,46 +311,59 @@ const LibraryGrid = () => {
   
   const applyFilters = (item: media | group) => {
     for (let _i = 0; _i < currentFilters.length; _i++) {
+
       let filter: filter = currentFilters[_i];
-      for (let _j = 0; _j < currentFilters[_i].tags.length; _j++) {
+      for (let _j = 0; _j < filter.tags.length; _j++) {
+
         let tag: tag = filter.tags[_j];
-        let itemTag = findTag(item.tags, tag.key);
+        let itemTag : tag | undefined = findTag(item, tag.key);
         if (itemTag === undefined) {
           return false;
         } else {
           if (!(itemTag as tag).value.includes(tag.value)) {
             return false;
+          } else {
+            return true;
           }
         }
       }
     }
     return true;
   }
-  
+
+  const coverWidthHandler = (width: string) => {
+    setCoverWidth(width);
+  }
+
   return (
     <div id="library">
-      <Viewbar />
-      <ul id="libraryList">
-        {currentLibrary.library
-          .concat((currentLibrary.library[9] as group).media)                             // hard code to include harry potter series
-          .sort(sortAlphabetically)                                                       // sort alphabetically
-          .filter(applyFilters)                                                           // filter out currentFilters state
-          .filter((index: media | group) => ((index.type === "media") ? true : false))    // filter out groups
-          .map(index => (
-            <li className="libraryListItem">
-              <ul className="itemContents">
-                <img 
-                  className="itemCover" 
-                  src={index.temp_img_path}
-                />
-                <p className="itemTitle">
-                  {(index.tags.find((pair: tag) => pair.key === "Title"))?.value}
-                </p>
-              </ul>
-            </li>
-          ))
-        }
-      </ul>
+      <Viewbar onWidthChange={coverWidthHandler} />
+        <ul id="libraryList">
+          {currentLibrary.library
+            .concat((currentLibrary.library[9] as group).media)                             // hard code to include harry potter series
+            .sort(lex)                                                       // sort alphabetically
+            .filter(applyFilters)                                                           // filter out currentFilters state
+            .filter((index: media | group) => ((index.type === "media") ? true : false))    // filter out groups
+            .map(index => (
+              <li 
+                className="libraryListItem" 
+                style={{
+                  width: `${coverWidth}px`
+                }}
+              >
+                <ul className="itemContents">
+                  <img 
+                    className="itemCover" 
+                    src={index.temp_img_path}
+                  />
+                  <p className="itemTitle">
+                    {(index.tags.find((pair: tag) => pair.key === "Title"))?.value}
+                  </p>
+                </ul>
+              </li>
+            ))
+          }
+        </ul>
     </div>
   )
 }

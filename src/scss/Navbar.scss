@@ -35,6 +35,7 @@ header {
           width: 75%;
           height: 65%;
           margin: auto;
+          overflow: hidden;
           transition: background-color 100ms ease;
 
           &:hover {
