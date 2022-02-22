@@ -4,7 +4,7 @@ div#viewbar {
   background-color: #3a3a3a;
 }
 
-div#viewbar ul#viewOptionList {
+div#viewbar ul#viewbarList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,25 +21,60 @@ div#viewbar ul#viewOptionList {
           align-items: center;
 }
 
-div#viewbar ul#viewOptionList li.viewbarLeft {
+div#viewbar ul#viewbarList li#viewbarLeft {
   height: 100%;
 }
 
-div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   list-style: none;
   padding: 0;
   height: 100%;
 }
 
-div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider {
+  height: 100%;
+  padding: 0 25px 0 25px;
+  border-right: 1px solid #1b1b1b;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  padding: 0;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sliderSmallEndItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sliderSmallEndItem img#smallerIcon {
+  width: 16px;
+  height: 16px;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem {
+  margin: 0 4px 0 4px;
+  padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   height: 100%;
 }
 
-div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider {
-  margin-left: 25px;
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem input#sizeSlider {
   -webkit-appearance: none;
   background: transparent;
   opacity: 0.7;
@@ -47,18 +82,18 @@ div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input
   transition: opacity 200ms ease-in-out;
 }
 
-div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider:hover {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem input#sizeSlider:hover {
   opacity: 1;
 }
 
-div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider::-webkit-slider-runnable-track {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem input#sizeSlider::-webkit-slider-runnable-track {
   background: #6b6b6b;
   width: 100%;
   height: 4px;
   border-radius: 10px;
 }
 
-div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider::-webkit-slider-thumb {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem input#sizeSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 16px;
   width: 8px;
@@ -67,14 +102,14 @@ div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input
   margin-top: calc((4px / 2) - (16px / 2));
 }
 
-div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider::-moz-range-track {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem input#sizeSlider::-moz-range-track {
   background-color: #6b6b6b;
   width: 100%;
   height: 4px;
   border-radius: 10px;
 }
 
-div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input#sizeSlider::-moz-range-thumb {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem input#sizeSlider::-moz-range-thumb {
   border: 0;
   width: 8px;
   height: 16px;
@@ -82,22 +117,96 @@ div#viewbar ul#viewOptionList li.viewbarLeft ul#leftList li.sizeSliderItem input
   background-color: #c5c5c5;
 }
 
-div#viewbar ul#viewOptionList li.viewbarRight {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sliderBigEndItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sliderBigEndItem img#biggerIcon {
+  width: 16px;
+  height: 16px;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem {
+  padding: 0 25px 0 25px;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#displayTypeList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  list-style: none;
+  padding: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#displayTypeList li button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 30px;
+  height: 25px;
+  background-color: #6b6b6b;
+  border-width: 1px;
+  border-color: #444444;
+  -webkit-transition: opacity 100ms ease-in-out;
+  transition: opacity 100ms ease-in-out;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#displayTypeList li button:hover {
+  opacity: 0.7;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#displayTypeList li button:active {
+  opacity: 0.5;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#displayTypeList li button img {
+  width: 16px;
+  height: 16px;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#displayTypeList li button#coversButton {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 1px;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#displayTypeList li button#detailsButton {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+div#viewbar ul#viewbarList li#viewbarRight {
   height: 100%;
   margin-left: auto;
 }
 
-div#viewbar ul#viewOptionList li.viewbarRight ul#rightList {
+div#viewbar ul#viewbarList li#viewbarRight ul#rightList {
   list-style: none;
   padding: 0;
   height: 100%;
 }
 
-div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem {
+div#viewbar ul#viewbarList li#viewbarRight ul#rightList li#searchbarItem {
   height: 100%;
+  padding: 0 25px 0 25px;
 }
 
-div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem div#searchContainer {
+div#viewbar ul#viewbarList li#viewbarRight ul#rightList li#searchbarItem div#searchContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -105,17 +214,16 @@ div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem div#
       -ms-flex-align: center;
           align-items: center;
   height: 100%;
-  margin-right: 25px;
 }
 
-div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem div#searchContainer img#searchIcon {
+div#viewbar ul#viewbarList li#viewbarRight ul#rightList li#searchbarItem div#searchContainer img#searchIcon {
   width: 20px;
   margin-right: 4px;
 }
 
-div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem div#searchContainer input#searchbar {
-  width: 100px;
-  height: 16px;
+div#viewbar ul#viewbarList li#viewbarRight ul#rightList li#searchbarItem div#searchContainer input#searchbar {
+  width: 125px;
+  height: 20px;
   padding: 2px;
   border-radius: 5px;
   border-width: 1px;
@@ -126,7 +234,7 @@ div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem div#
   transition: width 0.2s ease-in-out;
 }
 
-div#viewbar ul#viewOptionList li.viewbarRight ul#rightList li.searchbarItem div#searchContainer input#searchbar:focus {
+div#viewbar ul#viewbarList li#viewbarRight ul#rightList li#searchbarItem div#searchContainer input#searchbar:focus {
   width: 200px;
   opacity: 1;
 }

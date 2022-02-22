@@ -6,7 +6,7 @@ import '../scss/css/Navbar.css'
 
 const Navbar = () => {
 
-  const [categories, setCategories] = useState<category[]>([
+  const [categories, setCategories] = useState<category[]>([        // completion requires rust backend
     {
       name: "Movies",
       path: "#"

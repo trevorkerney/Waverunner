@@ -39,6 +39,7 @@ export type library = {
   cover_path: string,
   cover_tags: tag[],
   cover_path_exts: string[],
+  default_view: string,
   library: Array<media|group>,
 }
 

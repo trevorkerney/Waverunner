@@ -1,8 +1,11 @@
 main {
-  width: 100vw;
   height: calc(100vh - 40px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+main div#media {
+  height: calc(100% - 70px);
 }
 /*# sourceMappingURL=Library.css.map */

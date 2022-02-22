@@ -1,26 +1,38 @@
 import { useState } from 'react'
-import {ICONS} from '../img'
-import {filter} from './Types'
+import { ICONS } from '../img'
+import { tag, filter } from './Types'
 import '../scss/css/Sidebar.css'
 
 const Sidebar = () => {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-  const [filters, setFilters] = useState<filter[]>([
+  const [filters, setFilters] = useState<filter[]>([        // completion requires rust backend
     {
       name: "Action",
-      //genre: "Action",
-      tags: []
+      tags: [
+        {
+          key: "Genre",
+          value: "Action"
+        }
+      ]
     },
     {
       name: "Scorsese",
-      //artist: "Martin Scorsese",
-      tags: []
+      tags: [
+        {
+          key: "Director",
+          value: "Martin Scorsese"
+        }
+      ]
     },
     {
       name: "Hairy movies",
-      //title: "Harry",
-      tags: []
+      tags: [
+        {
+          key: "Title",
+          value: "Harry"
+        }
+      ]
     }
   ]);
 

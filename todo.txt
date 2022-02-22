@@ -1,0 +1,33 @@
+----- EASY -----
+
+Make default color template and incorporate them into all styles
+
+
+
+----- MEDIUM -----
+
+Make items on bottom row align with above rows
+- possible solution: do math to determine num of items per row and fill the last row up with
+  empty pseudo items
+
+Add filters to sidebar and implement media filters/playlists
+
+Open and save buttons for cover configurations in viewbar
+- Per media button and selection for changing cover
+
+look into accessibility rules
+- https://adrianroselli.com/2019/01/baseline-rules-for-scrollbar-usability.html
+
+look for possible optimization
+
+
+
+----- HARD -----
+
+Display groups as the root image. Expand by creating div below row to contain children
+
+
+
+----- NEEDS BACKEND -----
+
+Learn how images can be imported into React from Rust backend at runtime

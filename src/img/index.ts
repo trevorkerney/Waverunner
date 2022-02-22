@@ -21,6 +21,7 @@ export const COVERS = {
 
 export const ICONS = {
   coverViewIcon: require("./icons/coverViewIcon.png"),
+  bigCoverViewIcon: require("./icons/bigCoverViewIcon.png"),
   detailsViewIcon: require("./icons/detailsViewIcon.png"),
   sidebarHandleIcon: require("./icons/sidebarHandleIcon.png"),
   searchIcon: require("./icons/searchIcon.png"),
