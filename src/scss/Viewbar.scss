@@ -26,7 +26,7 @@ div#viewbar {
         height: 100%;
 
 
-        li#slider {
+        li#sliderItem {
           height: 100%;
           padding: 0 25px 0 25px;
           border-right: 1px solid #1b1b1b;
@@ -113,7 +113,9 @@ div#viewbar {
         }
 
         li#displayTypeItem {
+          height: 100%;
           padding: 0 25px 0 25px;
+          border-right: 1px solid #1b1b1b;
 
 
           ul#displayTypeList {
@@ -161,6 +163,62 @@ div#viewbar {
               }
 
               button#detailsButton {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+              }
+            }
+          }
+        }
+
+        li#coverConfigItem {
+          padding: 0 25px 0 25px;
+
+
+          ul#coverConfigList {
+            display: flex;
+            height: 100%;
+            list-style: none;
+            padding: 0;
+            align-items: center;
+
+
+            li {
+
+              
+              button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 30px;
+                height: 25px;
+                background-color: #6b6b6b;
+                border-width: 1px;
+                border-color: #444444;
+
+                transition: opacity 100ms ease-in-out;
+
+                &:hover {
+                  opacity: 0.7;
+                }
+
+                &:active {
+                  opacity: 0.5;
+                }
+
+
+                img {
+                  width: 16px;
+                  height: 16px;
+                }
+              }
+
+              button#openConfigButton {
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                border-right: 1px;
+              }
+
+              button#saveConfigButton {
                 border-top-right-radius: 5px;
                 border-bottom-right-radius: 5px;
               }

@@ -25,5 +25,7 @@ export const ICONS = {
   detailsViewIcon: require("./icons/detailsViewIcon.png"),
   sidebarHandleIcon: require("./icons/sidebarHandleIcon.png"),
   searchIcon: require("./icons/searchIcon.png"),
+  openIcon: require("./icons/openIcon.png"),
+  saveIcon: require("./icons/saveIcon.png")
 }
 

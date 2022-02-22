@@ -44,7 +44,7 @@ const Sidebar = () => {
     <nav 
       id="sidebar" 
       style={isSidebarOpen ? {
-        width: "20%"
+        width: "200px"
       } : {
         width: "20px"
       }}

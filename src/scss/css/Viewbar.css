@@ -37,13 +37,13 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList {
   height: 100%;
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem {
   height: 100%;
   padding: 0 25px 0 25px;
   border-right: 1px solid #1b1b1b;
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,7 +51,7 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList {
   padding: 0;
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sliderSmallEndItem {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList li#sliderSmallEndItem {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -60,12 +60,12 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li
           align-items: center;
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sliderSmallEndItem img#smallerIcon {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList li#sliderSmallEndItem img#smallerIcon {
   width: 16px;
   height: 16px;
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList li#sizeSliderItem {
   margin: 0 4px 0 4px;
   padding: 0;
   display: -webkit-box;
@@ -74,7 +74,7 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li
   height: 100%;
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem input#sizeSlider {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList li#sizeSliderItem input#sizeSlider {
   -webkit-appearance: none;
   background: transparent;
   opacity: 0.7;
@@ -82,18 +82,18 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li
   transition: opacity 200ms ease-in-out;
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem input#sizeSlider:hover {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList li#sizeSliderItem input#sizeSlider:hover {
   opacity: 1;
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem input#sizeSlider::-webkit-slider-runnable-track {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList li#sizeSliderItem input#sizeSlider::-webkit-slider-runnable-track {
   background: #6b6b6b;
   width: 100%;
   height: 4px;
   border-radius: 10px;
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem input#sizeSlider::-webkit-slider-thumb {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList li#sizeSliderItem input#sizeSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 16px;
   width: 8px;
@@ -102,14 +102,14 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li
   margin-top: calc((4px / 2) - (16px / 2));
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem input#sizeSlider::-moz-range-track {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList li#sizeSliderItem input#sizeSlider::-moz-range-track {
   background-color: #6b6b6b;
   width: 100%;
   height: 4px;
   border-radius: 10px;
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sizeSliderItem input#sizeSlider::-moz-range-thumb {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList li#sizeSliderItem input#sizeSlider::-moz-range-thumb {
   border: 0;
   width: 8px;
   height: 16px;
@@ -117,7 +117,7 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li
   background-color: #c5c5c5;
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sliderBigEndItem {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList li#sliderBigEndItem {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -126,13 +126,15 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li
           align-items: center;
 }
 
-div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#slider ul#sliderList li#sliderBigEndItem img#biggerIcon {
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList li#sliderBigEndItem img#biggerIcon {
   width: 16px;
   height: 16px;
 }
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem {
+  height: 100%;
   padding: 0 25px 0 25px;
+  border-right: 1px solid #1b1b1b;
 }
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#displayTypeList {
@@ -186,6 +188,65 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#disp
 }
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#displayTypeList li button#detailsButton {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem {
+  padding: 0 25px 0 25px;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem ul#coverConfigList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  list-style: none;
+  padding: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem ul#coverConfigList li button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 30px;
+  height: 25px;
+  background-color: #6b6b6b;
+  border-width: 1px;
+  border-color: #444444;
+  -webkit-transition: opacity 100ms ease-in-out;
+  transition: opacity 100ms ease-in-out;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem ul#coverConfigList li button:hover {
+  opacity: 0.7;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem ul#coverConfigList li button:active {
+  opacity: 0.5;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem ul#coverConfigList li button img {
+  width: 16px;
+  height: 16px;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem ul#coverConfigList li button#openConfigButton {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: 1px;
+}
+
+div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem ul#coverConfigList li button#saveConfigButton {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }

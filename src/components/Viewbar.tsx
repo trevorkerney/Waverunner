@@ -17,7 +17,7 @@ const Viewbar = (props: {onWidthChange: (width: string) => void, onInputSearch: 
       <ul id="viewbarList">
         <li id="viewbarLeft">
           <ul id="leftList">
-            <li id="slider">
+            <li id="sliderItem">
               <ul id="sliderList">
                 <li id="sliderSmallEndItem">
                   <img
@@ -52,7 +52,7 @@ const Viewbar = (props: {onWidthChange: (width: string) => void, onInputSearch: 
                   <button id="coversButton">
                     <img 
                       id="searchIcon" 
-                      alt="search icon"
+                      alt="search"
                       src={ICONS.coverViewIcon} 
                     />
                   </button>
@@ -61,8 +61,30 @@ const Viewbar = (props: {onWidthChange: (width: string) => void, onInputSearch: 
                   <button id="detailsButton">
                     <img 
                       id="detailsIcon" 
-                      alt="details icon"
+                      alt="details"
                       src={ICONS.detailsViewIcon} 
+                    />
+                  </button>
+                </li>
+              </ul>
+            </li>
+            <li id="coverConfigItem">
+              <ul id="coverConfigList">
+                <li id="openConfigButtonItem">
+                  <button id="openConfigButton">
+                  <img 
+                      id="openConfigIcon" 
+                      alt="open"
+                      src={ICONS.openIcon} 
+                    />
+                  </button>
+                </li>
+                <li id="saveConfigButtonItem">
+                  <button id="saveConfigButton">
+                  <img 
+                      id="saveConfigIcon" 
+                      alt="save"
+                      src={ICONS.saveIcon} 
                     />
                   </button>
                 </li>

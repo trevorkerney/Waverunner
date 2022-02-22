@@ -1,6 +1,6 @@
 import {tag, filter, media, group, library} from './Types'
 
-import '../scss/css/LibraryGrid.css'
+import '../scss/css/Media.css'
 
 const Media = (props: {library: library, filters: filter[], search: string, sort: string, coverWidth: string}) => {
 

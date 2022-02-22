@@ -7,5 +7,8 @@ main {
 
 main div#media {
   height: calc(100% - 70px);
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 /*# sourceMappingURL=Library.css.map */

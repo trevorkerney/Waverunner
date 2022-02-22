@@ -6,6 +6,8 @@ nav#sidebar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   -webkit-box-pack: right;
       -ms-flex-pack: right;
           justify-content: right;

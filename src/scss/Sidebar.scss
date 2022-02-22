@@ -5,6 +5,7 @@ nav#sidebar {
   background-color: #080808;
 
   display: flex;
+  flex-shrink: 0;
   justify-content: right;
   align-items: center;
 
