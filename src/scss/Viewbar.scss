@@ -28,8 +28,8 @@ div#viewbar {
 
         li#sliderItem {
           height: 100%;
-          padding: 0 25px 0 25px;
-          border-right: 1px solid #1b1b1b;
+          padding: 0 10px 0 10px;
+          border-right: 1px solid #2e2e2e;
 
           
           ul#sliderList {
@@ -114,8 +114,8 @@ div#viewbar {
 
         li#displayTypeItem {
           height: 100%;
-          padding: 0 25px 0 25px;
-          border-right: 1px solid #1b1b1b;
+          padding: 0 10px 0 10px;
+          border-right: 1px solid #2e2e2e;
 
 
           ul#displayTypeList {
@@ -133,8 +133,8 @@ div#viewbar {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: 30px;
-                height: 25px;
+                width: 22px;
+                height: 22px;
                 background-color: #6b6b6b;
                 border-width: 1px;
                 border-color: #444444;
@@ -151,8 +151,8 @@ div#viewbar {
 
 
                 img {
-                  width: 16px;
-                  height: 16px;
+                  width: 12px;
+                  height: 12px;
                 }
               }
 
@@ -171,7 +171,8 @@ div#viewbar {
         }
 
         li#coverConfigItem {
-          padding: 0 25px 0 25px;
+          padding: 0 10px 0 10px;
+          height: 100%;
 
 
           ul#coverConfigList {
@@ -189,8 +190,8 @@ div#viewbar {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: 30px;
-                height: 25px;
+                width: 22px;
+                height: 22px;
                 background-color: #6b6b6b;
                 border-width: 1px;
                 border-color: #444444;
@@ -207,8 +208,8 @@ div#viewbar {
 
 
                 img {
-                  width: 16px;
-                  height: 16px;
+                  width: 12px;
+                  height: 12px;
                 }
               }
 
@@ -241,7 +242,7 @@ div#viewbar {
 
         li#searchbarItem {
           height: 100%;
-          padding: 0 25px 0 25px;
+          padding: 0 10px 0 10px;
 
 
           div#searchContainer {
@@ -255,7 +256,7 @@ div#viewbar {
             }
 
             input#searchbar {
-              width: 125px;
+              width: 100px;
               height: 20px;
               padding: 2px;
               border-radius: 5px;
@@ -266,7 +267,7 @@ div#viewbar {
               transition: width 0.2s ease-in-out;
 
               &:focus {
-                width: 200px;
+                width: 150px;
                 opacity: 1;
               }
             }

@@ -39,8 +39,8 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList {
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem {
   height: 100%;
-  padding: 0 25px 0 25px;
-  border-right: 1px solid #1b1b1b;
+  padding: 0 10px 0 10px;
+  border-right: 1px solid #2e2e2e;
 }
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderList {
@@ -133,8 +133,8 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#sliderItem ul#sliderLis
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem {
   height: 100%;
-  padding: 0 25px 0 25px;
-  border-right: 1px solid #1b1b1b;
+  padding: 0 10px 0 10px;
+  border-right: 1px solid #2e2e2e;
 }
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#displayTypeList {
@@ -159,8 +159,8 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#disp
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 30px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
   background-color: #6b6b6b;
   border-width: 1px;
   border-color: #444444;
@@ -177,8 +177,8 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#disp
 }
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#displayTypeList li button img {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
 }
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#displayTypeList li button#coversButton {
@@ -193,7 +193,8 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#displayTypeItem ul#disp
 }
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem {
-  padding: 0 25px 0 25px;
+  padding: 0 10px 0 10px;
+  height: 100%;
 }
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem ul#coverConfigList {
@@ -218,8 +219,8 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem ul#cove
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 30px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
   background-color: #6b6b6b;
   border-width: 1px;
   border-color: #444444;
@@ -236,8 +237,8 @@ div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem ul#cove
 }
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem ul#coverConfigList li button img {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
 }
 
 div#viewbar ul#viewbarList li#viewbarLeft ul#leftList li#coverConfigItem ul#coverConfigList li button#openConfigButton {
@@ -264,7 +265,7 @@ div#viewbar ul#viewbarList li#viewbarRight ul#rightList {
 
 div#viewbar ul#viewbarList li#viewbarRight ul#rightList li#searchbarItem {
   height: 100%;
-  padding: 0 25px 0 25px;
+  padding: 0 10px 0 10px;
 }
 
 div#viewbar ul#viewbarList li#viewbarRight ul#rightList li#searchbarItem div#searchContainer {
@@ -283,7 +284,7 @@ div#viewbar ul#viewbarList li#viewbarRight ul#rightList li#searchbarItem div#sea
 }
 
 div#viewbar ul#viewbarList li#viewbarRight ul#rightList li#searchbarItem div#searchContainer input#searchbar {
-  width: 125px;
+  width: 100px;
   height: 20px;
   padding: 2px;
   border-radius: 5px;
@@ -296,7 +297,7 @@ div#viewbar ul#viewbarList li#viewbarRight ul#rightList li#searchbarItem div#sea
 }
 
 div#viewbar ul#viewbarList li#viewbarRight ul#rightList li#searchbarItem div#searchContainer input#searchbar:focus {
-  width: 200px;
+  width: 150px;
   opacity: 1;
 }
 /*# sourceMappingURL=Viewbar.css.map */

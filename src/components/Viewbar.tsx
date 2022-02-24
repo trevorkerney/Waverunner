@@ -33,7 +33,7 @@ const Viewbar = (props: {onWidthChange: (width: string) => void, onInputSearch: 
                     min='100' 
                     max='500' 
                     defaultValue='300'
-                    step='3' 
+                    step='4' 
                     onChange={handleWidthChange}
                   />
                 </li>

@@ -5,14 +5,6 @@ export type tag = {
 
 export type filter = {
   name: string,
-  /*
-  artist: string,
-  year: string,
-  album: string,
-  director: string,
-  composer: string,
-  genre: string,
-  */
   tags: tag[],
 }
 
@@ -29,6 +21,10 @@ export type group = {
   temp_img_path: string,
   tags: tag[],
   media: media[],
+}
+
+export type pseudo = {
+  type: string
 }
 
 export type library = {

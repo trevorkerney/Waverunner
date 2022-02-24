@@ -2,18 +2,16 @@
 
 Make default color template and incorporate them into all styles
 
+Currently if a media or group doesn't have a title tag, it is filtered out. it shouldnt be. it should be sorted with "~~~~~~~~"
+
 
 
 ----- MEDIUM -----
 
-Make items on bottom row align with above rows
-- possible solution: do math to determine num of items per row and fill the last row up with
-  empty pseudo items
-
 Add filters to sidebar and implement media filters/playlists
+- add playlist creation and deletion
 
-Open and save buttons for cover configurations in viewbar
-- Per media button and selection for changing cover
+Per media button and selection for changing cover
 
 look into accessibility rules
 - https://adrianroselli.com/2019/01/baseline-rules-for-scrollbar-usability.html
@@ -24,7 +22,7 @@ look for possible optimization
 
 ----- HARD -----
 
-Display groups as the root image. Expand by creating div below row to contain children
+Display groups as the root image. Expand by creating div below row to contain children. Allow unlimited (or a very high) amount of nesting
 
 
 

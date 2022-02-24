@@ -51,8 +51,6 @@ div#library ul#libraryList::-webkit-scrollbar-thumb {
 
 div#library ul#libraryList li.libraryListItem {
   margin: 10px;
-  -webkit-transition: width 50ms ease;
-  transition: width 50ms ease;
 }
 
 div#library ul#libraryList li.libraryListItem button#itemButton {
@@ -90,7 +88,7 @@ div#library ul#libraryList li.libraryListItem button#itemButton ul.itemContents 
 }
 
 div#library ul#libraryList li.libraryListItem button#itemButton ul.itemContents img.itemCover {
-  width: 100%;
+  width: calc(100% - 6px);
   border-width: 3px;
   border-radius: 3px;
   border-style: outset;
