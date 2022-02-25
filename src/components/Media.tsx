@@ -8,14 +8,14 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
 
   const libraryContainer = useRef<any>();
 
-  /*
-   * Removes "the ", "an ", or "at" from the beginning of a string
+  /**
+   * Removes "the ", "an ", or "at" from the beginning of a string.
    * 
-   * @param string
-   * @returns string
+   * @param {string} name: The name to check and potentially remove a prefix from
+   * @returns {string}
    * 
    */
-  const rmPrefix = (name: string) => {
+  const rmPrefix = (name: string): string => {
     if (name.startsWith("the ")) {
       return name.slice(4);
     }
@@ -28,11 +28,12 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
     return name;
   }
 
-  /*
-   * Searches an object's tags for a given key value
+  /**
+   * Searches an object's tags for a given key value.
    * 
-   * @param media | group
-   * @returns tag
+   * @param {media | group} item object to search
+   * @param {string} key tag key to search for
+   * @returns {tag} searched tag, or undefined if not found
    * 
    */
   const findTag = (item: media|group, key: string): tag|undefined => {
@@ -46,6 +47,14 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
     return undefined;
   }
 
+  /**
+   * Takes two objects and returns how the first object compares to the second.
+   *
+   * @param {media|group} a an object
+   * @param {media|group} b another object
+   * @returns {number} -1 if lesser, 0 if equal, or 1 if greater 
+   * 
+   */
   const lex = (a: media|group, b: media|group): number => {
     let aTag: tag|undefined = findTag(a, props.sort);
     let bTag: tag|undefined = findTag(b, props.sort)
@@ -70,6 +79,14 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
     )
   }
 
+  /**
+   * Returns whether or not an object is accepted by the current filter state.
+   * Designed for use with .filter()
+   *
+   * @param {media|group} item the object in question
+   * @returns {boolean} whether or not an object is accepted by the current filter state
+   * 
+   */
   const applyFilters = (item: media|group): boolean => {
     let filterNum: number = props.filters.length;
     if (filterNum === 0) return true;
@@ -94,6 +111,14 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
     return false;
   }
 
+  /**
+   * 
+   * Returns whether or not an object is accepted by the current search state.
+   * Designed for use with .filter()
+   * 
+   * @param {media|group} item the object in question
+   * @returns {boolean} whether or not an object is accepted by the current search state
+   */
   const applySearch = (item: media|group): boolean => {
     for (let _i = 0; _i < item.tags.length; _i++) {
       let tag: tag = item.tags[_i];
@@ -104,6 +129,11 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
     return false;
   }
 
+  /**
+   * 
+   * @param {number} totalCovers the total number of covers in the filtered library
+   * @returns s
+   */
   const getPseudoCovers = (totalCovers: number): Array<pseudo> => {
     const cWidth: number = parseFloat(props.coverWidth) + 20; // 10px margin on both sides make 20px
     const numRowCovers: number = Math.floor(libraryWidth / cWidth);
