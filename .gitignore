@@ -16,6 +16,10 @@
 # binaries
 *.wasm
 
+# generated css
+*.css
+*.css.map
+
 # production
 /build
 

@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import { ICONS } from '../img'
-import { tag, filter } from './Types'
-import '../scss/css/Sidebar.css'
+import { ICONS } from '../../img'
+import { filter } from '../../ts/types'
 
-const Sidebar = () => {
+import '../../css/Sidebar.css'
+
+const Sidebar = (props: {onFilterChange: (filters: filter[]) => void}) => {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-  const [filters, setFilters] = useState<filter[]>([        // completion requires rust backend
+  const [allFilters, setAllFilters] = useState<filter[]>([        // completion requires rust backend
     {
       name: "Action",
       tags: [
@@ -36,8 +37,12 @@ const Sidebar = () => {
     }
   ]);
 
-  const sidebarHandler = () => {
-    setIsSidebarOpen( (prevVal) => {return(!prevVal)});
+  const sidebarHandler = (): void => {
+    setIsSidebarOpen((prevVal) => {return(!prevVal)});
+  }
+
+  const filtersChangeHandler = (filters: filter[]): void => {
+    setAllFilters(filters);
   }
 
   return (
@@ -66,6 +71,7 @@ const Sidebar = () => {
         >
           <img 
            id="sidebarHandleIcon" 
+           alt="sidebar handle"
            src={ICONS.sidebarHandleIcon} 
           />
         </button>

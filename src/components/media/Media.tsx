@@ -1,19 +1,23 @@
-import { tag, filter, media, group, pseudo, library } from './Types'
-import { useState, useEffect, useRef } from 'react'
-import '../scss/css/Media.css'
+import { useState, useEffect, useRef, ReactElement } from 'react'
 
-const Media = (props: { library: library, filters: filter[], search: string, sort: string, coverWidth: string }) => {
+import Cover from "./Cover"
+
+import jsTQueue from '../../ts/queue'
+import { tag, findTag, filter, media, group, pseudo, library } from '../../ts/types'
+
+import '../../css/Media.css'
+
+const Media = (props: { library: library, filters: filter[], search: string, sort: string, coverWidth: number }) => {
 
   const [libraryWidth, setLibraryWidth] = useState<number>(1900);
 
   const libraryContainer = useRef<any>();
 
-  /**
-   * Removes "the ", "an ", or "at" from the beginning of a string.
+  /** Removes "the ", "an ", or "at" from the beginning of a string.
    * 
    * @param {string} name: The name to check and potentially remove a prefix from
-   * @returns {string}
    * 
+   * @returns {string}
    */
   const rmPrefix = (name: string): string => {
     if (name.startsWith("the ")) {
@@ -28,32 +32,12 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
     return name;
   }
 
-  /**
-   * Searches an object's tags for a given key value.
-   * 
-   * @param {media | group} item object to search
-   * @param {string} key tag key to search for
-   * @returns {tag} searched tag, or undefined if not found
-   * 
-   */
-  const findTag = (item: media|group, key: string): tag|undefined => {
-    let tags: tag[] = item.tags;
-    for (let _i = 0; _i < tags.length; _i++) {
-      let tag: tag = tags[_i];
-      if (tag.key.toLowerCase() === key.toLowerCase()) {
-        return tag;
-      }
-    }
-    return undefined;
-  }
-
-  /**
-   * Takes two objects and returns how the first object compares to the second.
+  /** Takes two objects and returns how the first object lexicographically compares to the second.
    *
    * @param {media|group} a an object
    * @param {media|group} b another object
-   * @returns {number} -1 if lesser, 0 if equal, or 1 if greater 
    * 
+   * @returns {number} -1 if lesser, 0 if equal, or 1 if greater
    */
   const lex = (a: media|group, b: media|group): number => {
     let aTag: tag|undefined = findTag(a, props.sort);
@@ -79,13 +63,14 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
     )
   }
 
-  /**
-   * Returns whether or not an object is accepted by the current filter state.
-   * Designed for use with .filter()
+  /** Returns whether or not an object is accepted by the current filter state.
+   * Designed for use with .filter().
+   * For a filter to pass, every tag in it must match a tag in the item in question.
+   * Only one filter in stateful filters must pass to return true.
    *
    * @param {media|group} item the object in question
-   * @returns {boolean} whether or not an object is accepted by the current filter state
    * 
+   * @returns {boolean} whether or not an object is accepted by the current filter state
    */
   const applyFilters = (item: media|group): boolean => {
     let filterNum: number = props.filters.length;
@@ -111,12 +96,12 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
     return false;
   }
 
-  /**
-   * 
-   * Returns whether or not an object is accepted by the current search state.
-   * Designed for use with .filter()
+  /** Returns whether or not an object is accepted by the current search state.
+   * Designed for use with .filter().
+   * The searched string should be compared with the value of every tag in the object in question
    * 
    * @param {media|group} item the object in question
+   * 
    * @returns {boolean} whether or not an object is accepted by the current search state
    */
   const applySearch = (item: media|group): boolean => {
@@ -129,14 +114,15 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
     return false;
   }
 
-  /**
+  /** Uses stateful measurements and the total number of covers to determine how many pseudo covers
+   * are neccessary to align the bottom row, and returns a list of them.
    * 
    * @param {number} totalCovers the total number of covers in the filtered library
-   * @returns s
+   * 
+   * @returns {Array<pseudo>} the array of pseudo covers neccessary to align the bottom row
    */
-  const getPseudoCovers = (totalCovers: number): Array<pseudo> => {
-    const cWidth: number = parseFloat(props.coverWidth) + 20; // 10px margin on both sides make 20px
-    const numRowCovers: number = Math.floor(libraryWidth / cWidth);
+  const getPseudo = (totalCovers: number): Array<pseudo> => {
+    const numRowCovers: number = Math.floor(libraryWidth / (props.coverWidth + 20)); // 10px margin on both sides = 20px
     let lastRowCovers: number = totalCovers % numRowCovers;
     if (lastRowCovers === 0) lastRowCovers = numRowCovers;
     const numPseudoCovers: number = numRowCovers - lastRowCovers;
@@ -145,25 +131,56 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
     });
   }
 
+  /** Obtains the filtered, sorted, and aligned library using lex, applyFilters, applySearch, and
+   * getPseudo on the stateful library.
+   * 
+   * @returns {Array<media|group|pseudo>} the filtered, sorted, and aligned list of covers
+   */
   const getFilteredLibrary = (): Array<media|group|pseudo> => {
     let noPseudo: Array<media|group|pseudo> = (
       props.library.library
-        .filter(applyFilters)     // filter out currentFilters state
-        .filter(applySearch)      // filter out currentSearch state
+        .filter(applyFilters)     // filter out filters state
+        .filter(applySearch)      // filter out search state
         .sort(lex)                // sort alphabetically
     )
-    return noPseudo.concat(getPseudoCovers(noPseudo.length));
+    return noPseudo.concat(getPseudo(noPseudo.length));
   }
 
-  const windowResizeHandler = () => {
+  /**
+   * 
+   * 
+   * 
+   */
+  const getLibraryJSX = () => {
+    let nests: number = 0;
+    let nestQueue: jsTQueue<ReactElement> = new jsTQueue;
+    for (let _i = 0; _i < props.library.library.length + nests; _i++) {
+      let index: media|group|pseudo = props.library.library[_i];
+      let cover: ReactElement<{index: media|group|pseudo, coverWidth: number}> = (
+        <Cover
+          index={index}
+          coverWidth={props.coverWidth}
+        />
+      );
+      nestQueue.enQ(cover);
+      const numRowCovers = Math.floor(libraryWidth / (props.coverWidth + 20));
+      if ((_i - nests + 1) % numRowCovers === 0) {
+        while (nestQueue.length() > 0) {
+          
+        }
+      }
+    }
+  }
+
+  const windowResizeHandler = (): void => {
     setLibraryWidth((libraryContainer.current as HTMLUListElement).clientWidth)
   }
 
-  useEffect(() => {
+  useEffect((): void => {
     windowResizeHandler();
   }, [libraryWidth]);
 
-  useEffect(() => {
+  useEffect((): void => {
     window.addEventListener("resize", windowResizeHandler);
   }, []);
 
@@ -174,38 +191,11 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
         ref={libraryContainer}
       >
         {
-          getFilteredLibrary().map((index: media|group|pseudo) => (
-            <li
-              className="libraryListItem"
-              style={{
-                width: `${props.coverWidth}px`
-              }}
-            >
-              <button id="itemButton">
-                {
-                  (index.type !== "pseudo")
-                    ? (
-                      <ul className="itemContents">
-                        <img
-                          className="itemCover"
-                          src={(index as media|group).temp_img_path}
-                          alt={
-                            (findTag((index as media|group), "Title") === undefined)
-                              ? "Title"
-                              : (findTag((index as media|group), "Title") as tag).value
-                          }
-                        />
-                        <p className="itemTitle">
-                          {((index as media|group).tags.find((pair: tag) => pair.key === "Title"))?.value}
-                        </p>
-                      </ul>
-                    )
-                    : (
-                      <ul className="itemContents"></ul>
-                    )
-                }
-              </button>
-            </li>
+          getFilteredLibrary().map((index: media|group|pseudo): ReactElement<null> => (
+            <Cover
+              index={index}
+              coverWidth={props.coverWidth}
+            />
           ))
         }
       </ul>

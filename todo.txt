@@ -1,15 +1,20 @@
 ----- EASY -----
 
 Make default color template and incorporate them into all styles
+- work with safari only css
 
-Currently if a media or group doesn't have a title tag, it is filtered out. it shouldnt be. it should be sorted with "~~~~~~~~"
+Currently if a media or group doesn't have a the sortedBy tag, it is filtered out. it shouldnt be. it should be sorted with "~~~~~~~~"
+
+Add filters to sidebar and implement media filters/playlists
+- add playlist creation and deletion
+
+Add font size buttons on viewbar
 
 
 
 ----- MEDIUM -----
 
-Add filters to sidebar and implement media filters/playlists
-- add playlist creation and deletion
+Make an app icon
 
 Per media button and selection for changing cover
 

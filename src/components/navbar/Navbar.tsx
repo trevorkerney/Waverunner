@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
-import {category} from './Types'
+import { library, category } from '../../ts/types'
 
-import '../scss/css/Navbar.css'
+import '../../css/Navbar.css'
 
-const Navbar = () => {
+const Navbar = (props: {onLibraryChange: (library: library) => void}) => {
 
   const [categories, setCategories] = useState<category[]>([        // completion requires rust backend
     {
@@ -24,6 +24,10 @@ const Navbar = () => {
       path: "#"
     }
   ]);
+
+  const categoryChangeHandler = (categories: category[]): void => {
+    setCategories(categories);
+  }
 
   return (
     <header>

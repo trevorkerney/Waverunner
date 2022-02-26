@@ -1,17 +1,18 @@
-import { ICONS } from '../img';
+import { ICONS } from '../../img';
 
-import '../scss/css/Viewbar.css';
+import '../../css/Viewbar.css';
 
-const Viewbar = (props: {onWidthChange: (width: string) => void, onInputSearch: (search: string) => void} ) => {
+const Viewbar = (props: {onWidthChange: (width: string) => void, onSortChange: (sort: string) => void, onInputSearch: (search: string) => void} ) => {
 
-  const handleWidthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleWidthChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     props.onWidthChange(event.target.value);
   }
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     props.onInputSearch(event.target.value);
   }
 
+  // This nesting nightmare makes a lot more sense when you look at it with f12 dev tools
   return (
     <div id="viewbar">
       <ul id="viewbarList">
