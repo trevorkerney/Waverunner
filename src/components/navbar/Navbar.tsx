@@ -30,21 +30,20 @@ const Navbar = (props: {onLibraryChange: (library: library) => void}) => {
   }
 
   return (
-    <header>
-      <nav id="navbar">
-        <ul id="navbarList">
-          {categories.map(index => 
-            <li className="navbarListItem">
-              <button className="navbarListButton">
-                <span className="linkText">
-                  {index.name}
-                </span>
-              </button>
-            </li>
-          )}
-        </ul>
-      </nav>
-    </header>
+    <ul id="navbar">
+      {categories.map(index => 
+        <li
+          className="navbarListItem"
+          key={index.name}
+        >
+          <button className="navbarListButton">
+            <span className="linkText">
+              {index.name}
+            </span>
+          </button>
+        </li>
+      )}
+    </ul>
   )
 }
 

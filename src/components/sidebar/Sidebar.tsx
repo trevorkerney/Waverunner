@@ -49,9 +49,9 @@ const Sidebar = (props: {onFilterChange: (filters: filter[]) => void}) => {
     <nav 
       id="sidebar" 
       style={isSidebarOpen ? {
-        width: "200px"
+        width: "12rem"
       } : {
-        width: "20px"
+        width: "1rem"
       }}
     >
       <div 

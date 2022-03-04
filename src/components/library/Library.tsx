@@ -42,13 +42,13 @@ const Library = (props: {library: library}) => {
           onSortChange={sortChangeHandler}
           onInputSearch={searchInputHandler} 
         />
-        <Media 
+        {/* <Media 
           library={props.library}
           filters={currentFilters} 
           search={currentSearch} 
           sort={sortBy} 
           coverWidth={coverWidth}
-        />
+        /> */}
       </div>
     </main>
   )
