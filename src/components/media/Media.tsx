@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, ReactElement } from 'react'
 
-import Cover from "./Cover"
+import Cover from "./cover/Cover"
 
 import jsTQueue from '../../ts/queue'
 import { tag, findTag, filter, media, group, pseudo, library } from '../../ts/types'
