@@ -7,9 +7,9 @@ import { library } from './ts/types'
 
 import { COVERS } from './img'
 
-import './css/App.css';
+import './css/Waverunner.css';
 
-const App = () => {
+const Waverunner = () => {
 
   const [currentLibrary, setCurrentLibrary] = useState<library>({     // completion requires rust backend
     name: "Movies",
@@ -249,15 +249,15 @@ const App = () => {
   }
 
   return (
-    <div id="app">
+    <>
       <Navbar
         onLibraryChange={libraryChangeHandler}
       />
       <Library
         library={currentLibrary}
       />
-    </div>
+    </>
   )
 }
 
-export default App;
+export default Waverunner;
