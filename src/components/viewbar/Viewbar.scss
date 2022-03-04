@@ -8,8 +8,6 @@ div#viewbar {
     flex: 1;
     width: 100%;
     height: 100%;
-    margin: 0;
-    padding: 0;
     list-style: none;
     align-items: center;
     
@@ -22,7 +20,6 @@ div#viewbar {
         display: flex;
         align-items: center;
         list-style: none;
-        padding: 0;
         height: 100%;
 
 
@@ -35,7 +32,6 @@ div#viewbar {
           ul#sliderList {
             display: flex;
             height: 100%;
-            padding: 0;
 
 
             li#sliderSmallEndItem {
@@ -51,7 +47,6 @@ div#viewbar {
             
             li#sizeSliderItem {
               margin: 0 4px 0 4px;
-              padding: 0;
               display: flex;
               height: 100%;
 
@@ -78,7 +73,7 @@ div#viewbar {
                   width: 8px;
                   border-radius: 2px;
                   background-color: #c5c5c5;
-                  margin-top: calc((4px / 2) - (16px / 2));
+                  margin-top: -6px; // weird hack to fix slider handle
                 }
 
                 &::-moz-range-track {
@@ -121,7 +116,6 @@ div#viewbar {
             display: flex;
             height: 100%;
             list-style: none;
-            padding: 0;
             align-items: center;
 
 
@@ -178,7 +172,6 @@ div#viewbar {
             display: flex;
             height: 100%;
             list-style: none;
-            padding: 0;
             align-items: center;
 
 
@@ -235,7 +228,6 @@ div#viewbar {
 
       ul#rightList {
         list-style: none;
-        padding: 0;
         height: 100%;
 
 
