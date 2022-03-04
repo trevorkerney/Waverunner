@@ -16,6 +16,8 @@ Add font size buttons on viewbar
 
 Make an app icon
 
+CHANGE LIBRARY FROM FLEXBOX TO GRID
+
 Per media button and selection for changing cover
 
 look into accessibility rules
@@ -34,3 +36,5 @@ Display groups as the root image. Expand by creating div below row to contain ch
 ----- NEEDS BACKEND -----
 
 Learn how images can be imported into React from Rust backend at runtime
+
+Learn and implement SQLite for library database
