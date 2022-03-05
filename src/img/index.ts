@@ -20,6 +20,7 @@ export const COVERS = {
 }
 
 export const ICONS = {
+  logo: require("./icons/logo.png"),
   coverViewIcon: require("./icons/coverViewIcon.png"),
   bigCoverViewIcon: require("./icons/bigCoverViewIcon.png"),
   detailsViewIcon: require("./icons/detailsViewIcon.png"),

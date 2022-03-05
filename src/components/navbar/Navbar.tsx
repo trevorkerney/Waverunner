@@ -3,25 +3,26 @@ import { useState } from 'react'
 import { library, category } from '../../ts/types'
 
 import '../../css/Navbar.css'
+import { ICONS } from '../../img';
 
 const Navbar = (props: {onLibraryChange: (library: library) => void}) => {
 
   const [categories, setCategories] = useState<category[]>([        // completion requires rust backend
     {
-      name: "Movies",
-      path: "#"
+      name: 'Movies',
+      path: '#'
     },
     {
-      name: "TV",
-      path: "#"
+      name: 'TV',
+      path: '#'
     },
     {
-      name: "Documentaries",
-      path: "#"
+      name: 'Documentaries',
+      path: '#'
     },
     {
-      name: "Music",
-      path: "#"
+      name: 'Music',
+      path: '#'
     }
   ]);
 
@@ -30,20 +31,28 @@ const Navbar = (props: {onLibraryChange: (library: library) => void}) => {
   }
 
   return (
-    <ul id="navbar">
-      {categories.map(index => 
-        <li
-          className="navbarListItem"
-          key={index.name}
-        >
-          <button className="navbarListButton">
-            <span className="linkText">
-              {index.name}
-            </span>
-          </button>
-        </li>
-      )}
-    </ul>
+    <header>
+      <img
+        src={ICONS.logo}
+        alt='Waverunner'
+        id='logo'
+      />
+      <ul id='navbar'>
+        {categories.map(index => 
+          <li
+            className='navbarListItem'
+            key={index.name}
+          >
+            <button className='navbarListButton'>
+              <span className='linkText'>
+                {index.name}
+              </span>
+            </button>
+          </li>
+        )}
+      </ul>
+      <div id='empty' />
+    </header>
   )
 }
 
