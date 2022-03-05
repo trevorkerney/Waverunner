@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { ICONS } from '../../img'
-import { filter } from '../../ts/types'
+import { ICONS } from '../../../img'
+import { filter } from '../../../ts/types'
 
-import '../../css/Sidebar.css'
+import '../../../css/Sidebar.css'
 
 const Sidebar = (props: {onFilterChange: (filters: filter[]) => void}) => {
 

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-import Sidebar from "../sidebar/Sidebar"
-import Viewbar from '../viewbar/Viewbar'
-import Media from '../media/Media';
+import Sidebar from "./sidebar/Sidebar"
+import Viewbar from './viewbar/Viewbar'
+import Media from './media/Media';
 
 import { filter, library } from '../../ts/types'
 
@@ -42,13 +42,13 @@ const Library = (props: {library: library}) => {
           onSortChange={sortChangeHandler}
           onInputSearch={searchInputHandler} 
         />
-        {/* <Media 
+        <Media 
           library={props.library}
           filters={currentFilters} 
           search={currentSearch} 
           sort={sortBy} 
           coverWidth={coverWidth}
-        /> */}
+        />
       </div>
     </main>
   )
