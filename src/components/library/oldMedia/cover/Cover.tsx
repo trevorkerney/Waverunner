@@ -1,4 +1,4 @@
-import { tag, findTag, media, group, pseudo } from '../../../ts/types'
+import { tag, findTag, media, group, pseudo } from '../../../../ts/types'
 
 import '../../../css/Cover.css'
 

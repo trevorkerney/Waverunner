@@ -2,10 +2,9 @@ import { useState, useEffect, useRef, ReactElement } from 'react'
 
 import Cover from "./cover/Cover"
 
-import jsTQueue from '../../ts/queue'
-import { tag, findTag, filter, media, group, pseudo, library } from '../../ts/types'
+import { tag, findTag, filter, media, group, pseudo, library } from '../../../ts/types'
 
-import '../../css/Media.css'
+import '../../css/OldMedia.css'
 
 const Media = (props: { library: library, filters: filter[], search: string, sort: string, coverWidth: number }) => {
 
@@ -146,32 +145,6 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
     return noPseudo.concat(getPseudo(noPseudo.length));
   }
 
-  /**
-   * 
-   * 
-   * 
-   */
-  const getLibraryJSX = () => {
-    let nests: number = 0;
-    let nestQueue: jsTQueue<ReactElement> = new jsTQueue;
-    for (let _i = 0; _i < props.library.library.length + nests; _i++) {
-      let index: media|group|pseudo = props.library.library[_i];
-      let cover: ReactElement<{index: media|group|pseudo, coverWidth: number}> = (
-        <Cover
-          index={index}
-          coverWidth={props.coverWidth}
-        />
-      );
-      nestQueue.enQ(cover);
-      const numRowCovers = Math.floor(libraryWidth / (props.coverWidth + 20));
-      if ((_i - nests + 1) % numRowCovers === 0) {
-        while (nestQueue.length() > 0) {
-          
-        }
-      }
-    }
-  }
-
   const windowResizeHandler = (): void => {
     setLibraryWidth((libraryContainer.current as HTMLUListElement).clientWidth)
   }
@@ -186,19 +159,7 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
 
   return (
     <div id="library">
-      <ul 
-        id="libraryList"
-        ref={libraryContainer}
-      >
-        {
-          getFilteredLibrary().map((index: media|group|pseudo): ReactElement<null> => (
-            <Cover
-              index={index}
-              coverWidth={props.coverWidth}
-            />
-          ))
-        }
-      </ul>
+      
     </div>
   )
 }

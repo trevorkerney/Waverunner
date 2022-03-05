@@ -1,18 +1,18 @@
 div#viewbar {
-  width: 100%;
-  height: 2rem;
   background-color: #3a3a3a;
   display: flex;
+  height: 2rem;
+  width: 100%;
 
   div#viewbarLeft {
-    height: 100%;
     display: flex;
+    height: 100%;
 
     div#sliderBox {
-      display: flex;
       align-items: center;
-      padding: 0 .75rem 0 .75rem;
       border-right: 1px solid #2e2e2e;
+      display: flex;
+      padding: 0 .75rem 0 .75rem;
 
       img {
         width: 1rem;
@@ -20,11 +20,10 @@ div#viewbar {
       }
 
       input#slider {
-        -webkit-appearance: none;
         background: transparent;
-        width: 4rem;
         padding: 0 .25rem 0 .25rem;
-
+        -webkit-appearance: none;
+        width: 4rem;
 
         &:hover {
           opacity: 1;
@@ -32,54 +31,54 @@ div#viewbar {
 
         &::-webkit-slider-runnable-track {
           background: #6b6b6b;
-          width: 100%;
-          height: 4px;
           border-radius: 10px;
+          height: 4px;
+          width: 100%;
         }
 
         &::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          height: 1rem;
-          width: 8px;
-          border-radius: 2px;
           background-color: #c5c5c5;
+          border-radius: 2px;
+          height: 1rem;
           margin-top: -6px; // weird hack to fix slider handle
+          -webkit-appearance: none;
+          width: 8px;
         }
 
         &::-moz-range-track {
           background-color: #6b6b6b;
-          width: 100%;
-          height: 4px;
           border-radius: 10px;
+          height: 4px;
+          width: 100%;
         }
 
         &::-moz-range-thumb {
           border: 0;
-          width: 8px;
-          height: 16px;
-          border-radius: 2px;
           background-color: #c5c5c5;
+          border-radius: 2px;
+          height: 16px;
+          width: 8px;
         }
       }
     }
 
     div#displayBox {
-      height: 100%;
-      display: flex;
-      justify-items: center;
       align-items: center;
-      padding: 0 .75rem 0 .75rem;
       border-right: 1px solid #2e2e2e;
+      display: flex;
+      height: 100%;
+      justify-items: center;
+      padding: 0 .75rem 0 .75rem;
 
       button {
-        display: flex;
-        justify-content: center;
         align-items: center;
-        width: 1.4rem;
-        height: 1.4rem;
         background-color: #6b6b6b;
         border-width: 1px;
         border-color: #444444;
+        display: flex;
+        height: 1.4rem;
+        justify-content: center;
+        width: 1.4rem;
         
         &:hover {
           opacity: 0.8;
@@ -90,39 +89,39 @@ div#viewbar {
         }
 
         img {
-          width: .8rem;
           height: .8rem;
+          width: .8rem;
         }
       }
 
       button#coversButton {
-        border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
         border-right: 1px;
+        border-top-left-radius: 5px;
       }
 
       button#detailsButton {
-        border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
       }
     }
 
     div#configBox {
-      height: 100%;
-      display: flex;
-      justify-items: center;
       align-items: center;
+      display: flex;
+      height: 100%;
+      justify-items: center;
       padding: 0 .75rem 0 .75rem;
 
       button {
-        display: flex;
-        justify-content: center;
         align-items: center;
-        width: 1.4rem;
-        height: 1.4rem;
         background-color: #6b6b6b;
         border-width: 1px;
         border-color: #444444;
+        display: flex;
+        height: 1.4rem;
+        justify-content: center;
+        width: 1.4rem;
         
         &:hover {
           opacity: 0.8;
@@ -133,20 +132,20 @@ div#viewbar {
         }
 
         img {
-          width: .8rem;
           height: .8rem;
+          width: .8rem;
         }
       }
 
       button#openButton {
-        border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
         border-right: 1px;
       }
 
       button#saveButton {
-        border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
       }
     }
   }
@@ -156,30 +155,29 @@ div#viewbar {
     margin-left: auto;
 
     div#searchBox {
-      height: 100%;
-      display: flex;
-      justify-items: center;
       align-items: center;
+      display: flex;
+      height: 100%;
+      justify-items: center;
       padding: 0 .75rem 0 .75rem;
 
       img {
-        width: 1.25rem;
         margin-right: .25rem;
+        width: 1.25rem;
       }
 
       input {
-        width: 8rem;
-        height: 1.2rem;
-        padding: 4px;
         border-radius: 4px;
         border-width: 1px;
+        height: 1.2rem;
+        padding: 4px;
         opacity: 0.7;
-        
         transition: width 200ms ease-in-out;
+        width: 8rem;
 
         &:focus {
-          width: 12rem;
           opacity: 1;
+          width: 12rem;
         }
       }
     }
