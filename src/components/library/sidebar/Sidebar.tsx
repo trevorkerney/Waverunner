@@ -4,9 +4,8 @@ import { filter } from '../../../ts/types'
 
 import '../../../css/Sidebar.css'
 
-const Sidebar = (props: {onFilterChange: (filters: filter[]) => void}) => {
+const Sidebar = (props: {onSidebarChange: () => void, isSidebarOpen: boolean, onFilterChange: (filters: filter[]) => void}) => {
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const [allFilters, setAllFilters] = useState<filter[]>([        // completion requires rust backend
     {
       name: "Action",
@@ -37,10 +36,6 @@ const Sidebar = (props: {onFilterChange: (filters: filter[]) => void}) => {
     }
   ]);
 
-  const sidebarHandler = (): void => {
-    setIsSidebarOpen(prev => !prev);
-  }
-
   const filtersChangeHandler = (filters: filter[]): void => {
     setAllFilters(filters);
   }
@@ -48,7 +43,7 @@ const Sidebar = (props: {onFilterChange: (filters: filter[]) => void}) => {
   return (
     <nav 
       id="sidebar" 
-      style={isSidebarOpen ? {
+      style={props.isSidebarOpen ? {
         width: "12rem"
       } : {
         width: "1rem"
@@ -56,7 +51,7 @@ const Sidebar = (props: {onFilterChange: (filters: filter[]) => void}) => {
     >
       <div 
         id="sidebarViews" 
-        style={isSidebarOpen ? {
+        style={props.isSidebarOpen ? {
           display: "block"
         } : {
           display: "none"
@@ -67,7 +62,7 @@ const Sidebar = (props: {onFilterChange: (filters: filter[]) => void}) => {
       <div id="sidebarHandleBox">
         <button 
           id="sidebarHandleButton" 
-          onClick={sidebarHandler} 
+          onClick={props.onSidebarChange} 
         >
           <img 
            id="sidebarHandleIcon" 

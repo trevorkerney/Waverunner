@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { forwardRef } from 'react'
 
 import { tag, findTag, filter, media, group, pseudo, library } from '../../../ts/types'
 
@@ -6,11 +6,7 @@ import Cover from './cover/Cover'
 
 import '../../../css/Media.css'
 
-const Media = (props: { library: library, filters: filter[], search: string, sort: string, coverWidth: number }) => {
-
-  const libraryContainer = useRef<any>();
-
-  const [libraryWidth, setLibraryWidth] = useState<number>(1904);
+const Media = forwardRef((props: { library: library, filters: filter[], search: string, sort: string, libraryWidth: number, coverWidth: number }, ref: any) => {
 
   /** Coverts rem to pixels
    * 
@@ -131,8 +127,8 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
    * @returns {Array<pseudo>} the array of pseudo covers neccessary to align the bottom row
    */
   const getPseudo = (totalCovers: number): Array<pseudo> => {
-    console.log(`librarywidth: ${libraryWidth}`)
-    const numRowCovers: number = Math.floor(libraryWidth / (props.coverWidth + remToPx(1))); // .5rem margin on both sides = 1rem
+    console.log(`librarywidth: ${props.libraryWidth}`)
+    const numRowCovers: number = Math.floor(props.libraryWidth / (props.coverWidth + remToPx(1))); // .5rem margin on both sides = 1rem
     console.log(`numrowcovers: ${numRowCovers}`);
     let lastRowCovers: number = totalCovers % numRowCovers;
     if (lastRowCovers === 0) lastRowCovers = numRowCovers;
@@ -159,23 +155,10 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
     return noPseudo.concat(getPseudo(noPseudo.length));
   }
 
-  const windowResizeHandler = (): void => {
-    setLibraryWidth((libraryContainer.current as HTMLUListElement).clientWidth)
-  }
-
-  useEffect((): void => {
-    windowResizeHandler();
-    console.log("RESIZE");
-  }, [libraryWidth]);
-
-  useEffect((): void => {
-    window.addEventListener("resize", windowResizeHandler);
-  }, []);
-
   return (
     <ol
       id='mediaBox'
-      ref={libraryContainer}
+      ref={ref}
     >
       {
         getFilteredLibrary().map((index: media|group|pseudo) => {
@@ -189,6 +172,6 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
       }
     </ol>
   )
-}
+})
 
 export default Media;
