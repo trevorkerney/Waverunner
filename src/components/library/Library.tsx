@@ -25,10 +25,6 @@ const Library = (props: {library: library}) => {
   const [sortBy, setSortBy] = useState<string>("Title");
   const sortChangeHandler = (sort: string): void => { setSortBy(sort); }
 
-  const resizeHandler = () => { setCoverWidth(prev => prev) }
-
-  useEffect((): void => { window.addEventListener("resize", resizeHandler); }, []);
-
   return (
     <main>
       <Sidebar
