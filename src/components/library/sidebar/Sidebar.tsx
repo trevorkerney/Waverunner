@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ICONS } from '../../../img'
 import { filter } from '../../../ts/types'
 
@@ -38,7 +38,7 @@ const Sidebar = (props: {onFilterChange: (filters: filter[]) => void}) => {
   ]);
 
   const sidebarHandler = (): void => {
-    setIsSidebarOpen((prevVal) => {return(!prevVal)});
+    setIsSidebarOpen(prev => !prev);
   }
 
   const filtersChangeHandler = (filters: filter[]): void => {

@@ -10,6 +10,10 @@ Add filters to sidebar and implement media filters/playlists
 
 Add font size buttons on viewbar
 
+Add media queries for when viewport is too small
+
+Look into useCallback for optimization
+
 
 
 ----- MEDIUM -----

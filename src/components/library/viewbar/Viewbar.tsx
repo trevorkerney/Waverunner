@@ -27,10 +27,10 @@ const Viewbar = (props: {onWidthChange: (width: string) => void, onSortChange: (
           <input
             id='slider' 
             type='range' 
-            min='100' 
-            max='500' 
-            defaultValue='300'
-            step='4' 
+            min='150' 
+            max='650' 
+            defaultValue='200'
+            step='5' 
             onChange={handleWidthChange}
           />
           <img

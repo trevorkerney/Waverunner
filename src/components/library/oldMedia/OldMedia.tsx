@@ -4,7 +4,7 @@ import Cover from "./cover/Cover"
 
 import { tag, findTag, filter, media, group, pseudo, library } from '../../../ts/types'
 
-import '../../css/OldMedia.css'
+import '../../../css/OldMedia.css'
 
 const Media = (props: { library: library, filters: filter[], search: string, sort: string, coverWidth: number }) => {
 

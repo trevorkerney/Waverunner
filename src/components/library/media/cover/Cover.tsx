@@ -1,36 +1,46 @@
-import { tag, findTag, media, group, pseudo } from '../../../../ts/types'
+import { findTag, media, group, pseudo } from '../../../../ts/types'
 
 import '../../../../css/Cover.css'
 
 const Cover = (props: {index: media|group|pseudo, coverWidth: number}) => {
+
+  let pseudoKeys: number = 0;
+
   return (
     <li
-      className="libraryListItem"
+      key={
+        (props.index.type !== 'pseudo')
+        ? (
+          (props.index as media|group).path
+        ) : (
+          `${pseudoKeys += 1}`
+        )
+      }
+      className="mediaItem"
       style={{
         width: `${props.coverWidth}px`
       }}
     >
-      <button id="itemButton">
+      <button className="itemButton">
       {
-        (props.index.type !== "pseudo")
+        (props.index.type !== 'pseudo')
         ? (
-          <ul className="itemContents">
+          <div id='item'>
             <img
-              className="itemCover"
+              className="cover"
               src={(props.index as media|group).temp_img_path}
               alt={
                 (findTag((props.index as media|group), "Title") === undefined)
                 ? "Title"
-                : (findTag((props.index as media|group), "Title") as tag).value
+                : findTag((props.index as media|group), "Title")!.value
               }
             />
-            <p className="itemTitle">
-              {((props.index as media|group).tags.find((pair: tag) => pair.key === "Title") as tag).value}
+            <p className="title">
+              {findTag((props.index as media|group), "Title")!.value}
             </p>
-          </ul>
-        )
-        : (
-          <ul className="itemContents"></ul>
+          </div>
+        ) : (
+          <p></p>
         )
       }
       </button>

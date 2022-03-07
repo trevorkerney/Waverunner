@@ -2,30 +2,40 @@ import { useState, useEffect, useRef } from 'react'
 
 import { tag, findTag, filter, media, group, pseudo, library } from '../../../ts/types'
 
-import Cover from "./cover/Cover"
+import Cover from './cover/Cover'
 
 import '../../../css/Media.css'
 
 const Media = (props: { library: library, filters: filter[], search: string, sort: string, coverWidth: number }) => {
 
-  const [libraryWidth, setLibraryWidth] = useState<number>(1900);
-
   const libraryContainer = useRef<any>();
 
-  /** Removes "the ", "an ", or "at" from the beginning of a string.
+  const [libraryWidth, setLibraryWidth] = useState<number>(1904);
+
+  /** Coverts rem to pixels
    * 
-   * @param {string} name: The name to check and potentially remove a prefix from
+   * @param {number} rem Number of rem units to convert to pixels
    * 
-   * @returns {string}
+   * @returns {number}
+   */
+  const remToPx = (rem: number): number => {
+    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+  }
+
+  /** Removes 'the ', 'an ', or 'a' from the beginning of a string.
+   * 
+   * @param {string} name: The string to check and potentially remove a prefix from
+   * 
+   * @returns {string} The same string, but with 'the ', 'an ', 'a ' removed from the beginning.
    */
   const rmPrefix = (name: string): string => {
-    if (name.startsWith("the ")) {
+    if (name.startsWith('the ')) {
       return name.slice(4);
     }
-    if (name.startsWith("an ")) {
+    if (name.startsWith('an ')) {
       return name.slice(3);
     }
-    if (name.startsWith("a ")) {
+    if (name.startsWith('a ')) {
       return name.slice(2);
     }
     return name;
@@ -44,13 +54,13 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
 
     let aSorter: string = (
       (aTag === undefined)
-        ? "~~~~~~~~"
-        : rmPrefix((aTag as tag).value.toLowerCase()))
+        ? '~~~~~~~~'
+        : rmPrefix(aTag!.value.toLowerCase()))
 
     let bSorter: string = (
       (bTag === undefined)
-        ? "~~~~~~~~"
-        : rmPrefix((bTag as tag).value.toLowerCase())
+        ? '~~~~~~~~'
+        : rmPrefix(bTag!.value.toLowerCase())
     );
 
     return (
@@ -83,7 +93,7 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
         if (itemTag === undefined) {
           return false;
         } else {
-          if (!(itemTag as tag).value.toLowerCase().includes(filterTag.value.toLowerCase())) {
+          if (!itemTag!.value.toLowerCase().includes(filterTag.value.toLowerCase())) {
             trueFilter = false;
           }
         }
@@ -121,10 +131,14 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
    * @returns {Array<pseudo>} the array of pseudo covers neccessary to align the bottom row
    */
   const getPseudo = (totalCovers: number): Array<pseudo> => {
-    const numRowCovers: number = Math.floor(libraryWidth / (props.coverWidth + 20)); // 10px margin on both sides = 20px
+    console.log(`librarywidth: ${libraryWidth}`)
+    const numRowCovers: number = Math.floor(libraryWidth / (props.coverWidth + remToPx(1))); // .5rem margin on both sides = 1rem
+    console.log(`numrowcovers: ${numRowCovers}`);
     let lastRowCovers: number = totalCovers % numRowCovers;
     if (lastRowCovers === 0) lastRowCovers = numRowCovers;
+    console.log(`lastrowcovers: ${lastRowCovers}`);
     const numPseudoCovers: number = numRowCovers - lastRowCovers;
+    console.log(`numpseudocovers: ${numPseudoCovers}`);
     return new Array<pseudo>(numPseudoCovers).fill({
       type: "pseudo"
     });
@@ -151,6 +165,7 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
 
   useEffect((): void => {
     windowResizeHandler();
+    console.log("RESIZE");
   }, [libraryWidth]);
 
   useEffect((): void => {
@@ -159,10 +174,18 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
 
   return (
     <ol
+      id='mediaBox'
       ref={libraryContainer}
     >
       {
-        
+        getFilteredLibrary().map((index: media|group|pseudo) => {
+          return (
+            <Cover
+              index={index}
+              coverWidth={props.coverWidth}
+            />
+          )
+        })
       }
     </ol>
   )

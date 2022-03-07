@@ -1,0 +1,24 @@
+ol#mediaBox {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: calc(100% - 3rem);
+  justify-content: space-evenly;
+  list-style: none;
+  overflow-y: auto;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 1px;
+    outline: 1px solid slategrey;
+
+    &:hover {
+      border-radius: 3px;
+    }
+  }
+}

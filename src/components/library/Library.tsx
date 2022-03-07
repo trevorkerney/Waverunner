@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import Sidebar from "./sidebar/Sidebar"
 import Viewbar from './viewbar/Viewbar'
-import Media from './media/Media';
+import Media from './media/Media'
 
 import { filter, library } from '../../ts/types'
 
@@ -12,7 +12,7 @@ const Library = (props: {library: library}) => {
 
   const [currentFilters, setCurrentFilter] = useState<filter[]>([]);
   const [currentSearch, setCurrentSearch] = useState<string>("");
-  const [coverWidth, setCoverWidth] = useState<number>(300);
+  const [coverWidth, setCoverWidth] = useState<number>(200);
   const [sortBy, setSortBy] = useState<string>("Title");
   
   const filterChangeHandler = (filters: filter[]): void => {
