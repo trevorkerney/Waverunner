@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { ICONS } from '../../../img'
 import { filter } from '../../../ts/types'
 
