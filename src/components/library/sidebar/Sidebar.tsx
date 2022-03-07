@@ -35,7 +35,6 @@ const Sidebar = (props: {onSidebarChange: () => void, isSidebarOpen: boolean, on
       ]
     }
   ]);
-
   const filtersChangeHandler = (filters: filter[]): void => {
     setAllFilters(filters);
   }
@@ -44,7 +43,7 @@ const Sidebar = (props: {onSidebarChange: () => void, isSidebarOpen: boolean, on
     <nav 
       id="sidebar" 
       style={props.isSidebarOpen ? {
-        width: "12rem"
+        width: "10rem"
       } : {
         width: "1rem"
       }}

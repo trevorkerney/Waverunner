@@ -1,22 +1,10 @@
-import { forwardRef } from 'react'
-
-import { tag, findTag, filter, media, group, pseudo, library } from '../../../ts/types'
+import { tag, findTag, filter, media, group, library } from '../../../ts/types'
 
 import Cover from './cover/Cover'
 
 import '../../../css/Media.css'
 
-const Media = forwardRef((props: { library: library, filters: filter[], search: string, sort: string, libraryWidth: number, coverWidth: number }, ref: any) => {
-
-  /** Coverts rem to pixels
-   * 
-   * @param {number} rem Number of rem units to convert to pixels
-   * 
-   * @returns {number}
-   */
-  const remToPx = (rem: number): number => {
-    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-  }
+const Media = (props: { library: library, filters: filter[], search: string, sort: string, coverWidth: number }) => {
 
   /** Removes 'the ', 'an ', or 'a' from the beginning of a string.
    * 
@@ -119,49 +107,26 @@ const Media = forwardRef((props: { library: library, filters: filter[], search: 
     return false;
   }
 
-  /** Uses stateful measurements and the total number of covers to determine how many pseudo covers
-   * are neccessary to align the bottom row, and returns a list of them.
+  /** Obtains the filtered, sorted, and aligned library using lex, applyFilters, and applySearch
+   * on the stateful library.
    * 
-   * @param {number} totalCovers the total number of covers in the filtered library
-   * 
-   * @returns {Array<pseudo>} the array of pseudo covers neccessary to align the bottom row
+   * @returns {Array<media|group>} the filtered, sorted, and aligned list of covers
    */
-  const getPseudo = (totalCovers: number): Array<pseudo> => {
-    console.log(`librarywidth: ${props.libraryWidth}`)
-    const numRowCovers: number = Math.floor(props.libraryWidth / (props.coverWidth + remToPx(1))); // .5rem margin on both sides = 1rem
-    console.log(`numrowcovers: ${numRowCovers}`);
-    let lastRowCovers: number = totalCovers % numRowCovers;
-    if (lastRowCovers === 0) lastRowCovers = numRowCovers;
-    console.log(`lastrowcovers: ${lastRowCovers}`);
-    const numPseudoCovers: number = numRowCovers - lastRowCovers;
-    console.log(`numpseudocovers: ${numPseudoCovers}`);
-    return new Array<pseudo>(numPseudoCovers).fill({
-      type: "pseudo"
-    });
-  }
-
-  /** Obtains the filtered, sorted, and aligned library using lex, applyFilters, applySearch, and
-   * getPseudo on the stateful library.
-   * 
-   * @returns {Array<media|group|pseudo>} the filtered, sorted, and aligned list of covers
-   */
-  const getFilteredLibrary = (): Array<media|group|pseudo> => {
-    let noPseudo: Array<media|group|pseudo> = (
+  const getFilteredLibrary = (): Array<media|group> => {
+    return (
       props.library.library
         .filter(applyFilters)     // filter out filters state
         .filter(applySearch)      // filter out search state
         .sort(lex)                // sort alphabetically
     )
-    return noPseudo.concat(getPseudo(noPseudo.length));
   }
 
   return (
     <ol
       id='mediaBox'
-      ref={ref}
     >
       {
-        getFilteredLibrary().map((index: media|group|pseudo) => {
+        getFilteredLibrary().map((index: media|group) => {
           return (
             <Cover
               index={index}
@@ -172,6 +137,6 @@ const Media = forwardRef((props: { library: library, filters: filter[], search: 
       }
     </ol>
   )
-})
+}
 
 export default Media;

@@ -4,13 +4,11 @@ import '../../../css/Viewbar.css';
 
 const Viewbar = (props: {onWidthChange: (width: string) => void, onSortChange: (sort: string) => void, onInputSearch: (search: string) => void} ) => {
 
-  const handleWidthChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    props.onWidthChange(event.target.value);
-  }
+  const handleWidthChange = (event: React.ChangeEvent<HTMLInputElement>): void =>
+  { props.onWidthChange(event.target.value); }
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    props.onInputSearch(event.target.value);
-  }
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>): void =>
+  { props.onInputSearch(event.target.value); }
 
   return (
     <div id='viewbar'>
@@ -27,11 +25,16 @@ const Viewbar = (props: {onWidthChange: (width: string) => void, onSortChange: (
           <input
             id='slider' 
             type='range' 
-            min='150' 
-            max='650' 
-            defaultValue='200'
-            step='5' 
+            min={
+              (window.innerWidth < 1280)
+              ? 12.5
+              : 7.5
+            }
+            max='50'
+            defaultValue='20'
+            step='.5' 
             onChange={handleWidthChange}
+            
           />
           <img
             src={ICONS.bigCoverViewIcon}

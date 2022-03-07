@@ -19,25 +19,15 @@ const Library = (props: {library: library}) => {
   const [currentSearch, setCurrentSearch] = useState<string>("");
   const searchInputHandler = (search: string): void => { setCurrentSearch(search); }
 
-  const libraryContainer = useRef<any>();
-  const [libraryWidth, setLibraryWidth] = useState<number>(1904);
-  const libraryWidthHandler = (): void => {
-    if (libraryContainer.current) { setLibraryWidth(libraryContainer.current!.clientWidth) }
-  }
-
-  const [coverWidth, setCoverWidth] = useState<number>(200);
+  const [coverWidth, setCoverWidth] = useState<number>(20);
   const coverWidthHandler = (width: string): void => { setCoverWidth(parseInt(width)); }
 
   const [sortBy, setSortBy] = useState<string>("Title");
   const sortChangeHandler = (sort: string): void => { setSortBy(sort); }
 
-  useEffect((): void => {
-    libraryWidthHandler();
-  }, [libraryWidth, isSidebarOpen]);
+  const resizeHandler = () => { setCoverWidth(prev => prev) }
 
-  useEffect((): void => {
-    window.addEventListener("resize", libraryWidthHandler);
-  }, []);
+  useEffect((): void => { window.addEventListener("resize", resizeHandler); }, []);
 
   return (
     <main>
@@ -47,18 +37,16 @@ const Library = (props: {library: library}) => {
         onFilterChange={filterChangeHandler}
       />
       <div id="media">
-        <Viewbar 
+        <Viewbar
           onWidthChange={coverWidthHandler} 
           onSortChange={sortChangeHandler}
           onInputSearch={searchInputHandler} 
         />
         <Media
-          ref={libraryContainer}
           library={props.library}
           filters={currentFilters} 
           search={currentSearch} 
           sort={sortBy} 
-          libraryWidth={libraryWidth}
           coverWidth={coverWidth}
         />
       </div>

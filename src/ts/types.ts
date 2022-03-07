@@ -42,10 +42,6 @@ export const findTag = (item: media|group, key: string): tag|undefined => {
   return undefined;
 }
 
-export type pseudo = {
-  type: string
-}
-
 export type library = {
   name: string,
   full_path: string,
