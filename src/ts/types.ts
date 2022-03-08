@@ -5,18 +5,25 @@ export type tag = {
 
 export type filter = {
   name: string,
+  logic: '|'|'&'
   tags: tag[],
 }
 
+export const defaultFilter: filter = {
+  name: 'DEFAULT',
+  logic: '|',
+  tags: [],
+}
+
 export type media = {
-  type: string,
+  type: 'media',
   path: string,
   temp_img_path: string,
   tags: tag[],
 }
 
 export type group = {
-  type: string,
+  type: 'group',
   path: string,
   temp_img_path: string,
   tags: tag[],
@@ -47,6 +54,7 @@ export type library = {
   full_path: string,
   media_filename: string,
   media_filename_exts: string[],
+  keys: string[],
   cover_path: string,
   cover_tags: tag[],
   cover_path_exts: string[],

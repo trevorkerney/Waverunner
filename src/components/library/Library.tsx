@@ -4,7 +4,7 @@ import Sidebar from "./sidebar/Sidebar"
 import Viewbar from './viewbar/Viewbar'
 import Media from './media/Media'
 
-import { filter, library } from '../../ts/types'
+import { filter, defaultFilter, library } from '../../ts/types'
 
 import '../../css/Library.css'
 
@@ -13,8 +13,9 @@ const Library = (props: {library: library}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const sidebarChangeHandler = (): void => { setIsSidebarOpen(prev => !prev); }
 
-  const [currentFilters, setCurrentFilter] = useState<filter[]>([]);
-  const filterChangeHandler = (filters: filter[]): void => { setCurrentFilter(filters); }
+  
+  const [currentFilters, setCurrentFilter] = useState<filter>(defaultFilter);
+  const filterChangeHandler = (filter: filter): void => { setCurrentFilter(filter); }
 
   const [currentSearch, setCurrentSearch] = useState<string>("");
   const searchInputHandler = (search: string): void => { setCurrentSearch(search); }
@@ -40,7 +41,7 @@ const Library = (props: {library: library}) => {
         />
         <Media
           library={props.library}
-          filters={currentFilters} 
+          filter={currentFilters} 
           search={currentSearch} 
           sort={sortBy} 
           coverWidth={coverWidth}

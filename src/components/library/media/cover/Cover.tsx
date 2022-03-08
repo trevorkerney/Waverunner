@@ -20,11 +20,11 @@ const Cover = (props: {index: media|group, coverWidth: number}) => {
             alt={
               (findTag((props.index as media|group), "Title") === undefined)
               ? "Title"
-              : findTag((props.index as media|group), "Title")!.value
+              : findTag((props.index as media|group), "Title")?.value
             }
           />
           <p className="title">
-            {findTag((props.index as media|group), "Title")!.value}
+            {findTag((props.index as media|group), "Title")?.value}
           </p>
         </div>
       </button>

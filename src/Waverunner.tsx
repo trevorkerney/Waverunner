@@ -19,6 +19,12 @@ const Waverunner = () => {
       "mkv",
       "mp4",
     ],
+    keys: [
+      "Title",
+      "Year",
+      "Director",
+      "Genre"
+    ],
     cover_path: "/~covers",
     cover_tags: [
       {
@@ -60,6 +66,10 @@ const Waverunner = () => {
           {
             key: "Title",
             value: "The Wolf of Wall Street",
+          },
+          {
+            key: 'Director',
+            value: 'Martin Scorsese'
           }
         ],
       },
@@ -71,6 +81,10 @@ const Waverunner = () => {
           {
             key: "Title",
             value: "The Dark Knight",
+          },
+          {
+            key: "Genre",
+            value: "Action",
           }
         ],
       },
@@ -82,6 +96,10 @@ const Waverunner = () => {
           {
             key: "Title",
             value: "Goodfellas",
+          },
+          {
+            key: 'Director',
+            value: 'Martin Scorsese'
           }
         ],
       },
@@ -137,6 +155,10 @@ const Waverunner = () => {
           {
             key: "Title",
             value: "First Blood",
+          },
+          {
+            key: "Genre",
+            value: "Action",
           }
         ],
       },

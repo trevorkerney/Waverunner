@@ -4,26 +4,7 @@ import Cover from './cover/Cover'
 
 import '../../../css/Media.css'
 
-const Media = (props: { library: library, filters: filter[], search: string, sort: string, coverWidth: number }) => {
-
-  /** Removes 'the ', 'an ', or 'a' from the beginning of a string.
-   * 
-   * @param {string} name: The string to check and potentially remove a prefix from
-   * 
-   * @returns {string} The same string, but with 'the ', 'an ', 'a ' removed from the beginning.
-   */
-  const rmPrefix = (name: string): string => {
-    if (name.startsWith('the ')) {
-      return name.slice(4);
-    }
-    if (name.startsWith('an ')) {
-      return name.slice(3);
-    }
-    if (name.startsWith('a ')) {
-      return name.slice(2);
-    }
-    return name;
-  }
+const Media = (props: { library: library, filter: filter, search: string, sort: string, coverWidth: number }) => {
 
   /** Takes two objects and returns how the first object lexicographically compares to the second.
    *
@@ -33,18 +14,40 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
    * @returns {number} -1 if lesser, 0 if equal, or 1 if greater
    */
   const lex = (a: media|group, b: media|group): number => {
-    let aTag: tag|undefined = findTag(a, props.sort);
-    let bTag: tag|undefined = findTag(b, props.sort)
 
-    let aSorter: string = (
+    /** Removes 'the ', 'an ', or 'a' from the beginning of a string.
+     * 
+     * @param {string} name: The string to check and potentially remove a prefix from
+     * 
+     * @returns {string} The same string, but with 'the ', 'an ', 'a ' removed from the beginning.
+     */
+    const rmPrefix = (name: string): string => {
+      const lower = name.toLowerCase();
+      if (lower.startsWith('the ')) {
+        return name.slice(4);
+      }
+      if (lower.startsWith('an ')) {
+        return name.slice(3);
+      }
+      if (lower.startsWith('a ')) {
+        return name.slice(2);
+      }
+      return name;
+    }
+
+    const aTag: tag|undefined = findTag(a, props.sort);
+    const bTag: tag|undefined = findTag(b, props.sort);
+
+    const aSorter: string = (
       (aTag === undefined)
         ? '~~~~~~~~'
-        : rmPrefix(aTag!.value.toLowerCase()))
+        : rmPrefix(aTag!.value).toLowerCase()
+    );
 
-    let bSorter: string = (
+    const bSorter: string = (
       (bTag === undefined)
         ? '~~~~~~~~'
-        : rmPrefix(bTag!.value.toLowerCase())
+        : rmPrefix(bTag!.value).toLowerCase()
     );
 
     return (
@@ -66,27 +69,31 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
    * @returns {boolean} whether or not an object is accepted by the current filter state
    */
   const applyFilters = (item: media|group): boolean => {
-    let filterNum: number = props.filters.length;
-    if (filterNum === 0) return true;
-    for (let _i = 0; _i < props.filters.length; _i++) {
-      let filter: filter = props.filters[_i];
-      let trueFilter = true;
-      for (let _j = 0; _j < filter.tags.length; _j++) {
-        let filterTag: tag = filter.tags[_j];
-        let itemTag: tag | undefined = findTag(item, filterTag.key);
-        if (itemTag === undefined) {
+    const tags: tag[] = props.filter.tags;
+    if (tags.length === 0) return true;
+    
+    if (props.filter.logic === '&') {
+      for (let _i = 0; _i < tags.length; _i++) {
+        const filterTag: tag = tags[_i];
+        const itemTag: tag|undefined = findTag(item, tags[_i].key);
+        if (!itemTag) return false;
+        if (!(itemTag!.value.toLowerCase().includes(filterTag.value.toLowerCase()))) {
           return false;
-        } else {
-          if (!itemTag!.value.toLowerCase().includes(filterTag.value.toLowerCase())) {
-            trueFilter = false;
+        }
+      }
+      return true;
+    } else {
+      for (let _i = 0; _i < tags.length; _i++) {
+        const filterTag: tag = tags[_i];
+        const itemTag: tag|undefined = findTag(item, tags[_i].key);
+        if (itemTag) {
+          if (itemTag!.value.toLowerCase().includes(filterTag.value.toLowerCase())) {
+            return true;
           }
         }
       }
-      if (trueFilter) {
-        return true;
-      }
+      return false;
     }
-    return false;
   }
 
   /** Returns whether or not an object is accepted by the current search state.
@@ -98,13 +105,16 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
    * @returns {boolean} whether or not an object is accepted by the current search state
    */
   const applySearch = (item: media|group): boolean => {
-    for (let _i = 0; _i < item.tags.length; _i++) {
-      let tag: tag = item.tags[_i];
-      if (tag.value.toLowerCase().includes(props.search.toLowerCase())) {
-        return true;
+    if (props.search.length > 0) {
+      for (let _i = 0; _i < item.tags.length; _i++) {
+        const tag: tag = item.tags[_i];
+        if (tag.value.toLowerCase().includes(props.search.toLowerCase())) {
+          return true;
+        }
       }
+      return false;
     }
-    return false;
+    return true;
   }
 
   /** Obtains the filtered, sorted, and aligned library using lex, applyFilters, and applySearch
@@ -122,9 +132,7 @@ const Media = (props: { library: library, filters: filter[], search: string, sor
   }
 
   return (
-    <ol
-      id='mediaBox'
-    >
+    <ol id='mediaBox'>
       {
         getFilteredLibrary().map((index: media|group) => {
           return (
