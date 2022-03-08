@@ -4,7 +4,7 @@ import { filter } from '../../../ts/types'
 
 import '../../../css/Sidebar.css'
 
-const Sidebar = (props: {onSidebarChange: () => void, isSidebarOpen: boolean, onFilterChange: (filters: filter[]) => void}) => {
+const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, onFilterChange: (filters: filter[]) => void }) => {
 
   const [allFilters, setAllFilters] = useState<filter[]>([        // completion requires rust backend
     {
@@ -43,7 +43,7 @@ const Sidebar = (props: {onSidebarChange: () => void, isSidebarOpen: boolean, on
     <nav 
       id="sidebar" 
       style={props.isSidebarOpen ? {
-        width: "10rem"
+        width: "12rem"
       } : {
         width: "1rem"
       }}
@@ -56,7 +56,25 @@ const Sidebar = (props: {onSidebarChange: () => void, isSidebarOpen: boolean, on
           display: "none"
         }}
       >
-
+        <ol id='filterList'>
+          {
+            allFilters.map((filter) => {
+              return (
+                <li
+                  id='filter'
+                  key={filter.name}
+                >
+                  <button
+                    id='filterButton'
+                  >
+                    <p id='filterText'>{filter.name}</p>
+                  </button>
+                </li>
+                
+              )
+            })
+          }
+        </ol>
       </div>
       <div id="sidebarHandleBox">
         <button 

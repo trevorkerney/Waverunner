@@ -1,14 +1,14 @@
------ EASY -----
+----- CONTINUOUS -----
 
-Make default color template and incorporate them into all styles
-- work with safari only css
+look for possible optimization
+
+
+
+----- EASY -----
 
 Currently if a media or group doesn't have a the sortedBy tag, it is filtered out. it shouldnt be. it should be sorted with "~~~~~~~~"
 
-Add filters to sidebar and implement media filters/playlists
-- add playlist creation and deletion
-
-Add font size buttons on viewbar
+add playlist/filter creation and deletion
 
 Add media queries for when viewport is too small
 
@@ -18,22 +18,16 @@ Look into useCallback for optimization
 
 ----- MEDIUM -----
 
-Make an app icon
-
-CHANGE LIBRARY FROM FLEXBOX TO GRID
-
 Per media button and selection for changing cover
 
 look into accessibility rules
 - https://adrianroselli.com/2019/01/baseline-rules-for-scrollbar-usability.html
 
-look for possible optimization
-
 
 
 ----- HARD -----
 
-Display groups as the root image. Expand by creating div below row to contain children. Allow unlimited (or a very high) amount of nesting
+
 
 
 
