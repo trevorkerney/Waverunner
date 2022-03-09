@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import Sidebar from "./sidebar/Sidebar"
 import Viewbar from './viewbar/Viewbar'
+import Breadcrumbs from './breadcrumbs/Breadcrumbs'
 import Media from './media/Media'
 
 import { filter, defaultFilter, library } from '../../ts/types'
@@ -13,6 +14,11 @@ const Library = (props: {library: library}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const sidebarChangeHandler = (): void => { setIsSidebarOpen(prev => !prev); }
 
+  const [currentCrumbs, setCurrentCrumbs] = useState<string[]>([
+    'Movies',
+    'Harry Potter',
+    "Harry Potter and the Sorcerer's Stone"
+  ]);
   
   const [currentFilters, setCurrentFilter] = useState<filter>(defaultFilter);
   const filterChangeHandler = (filter: filter): void => { setCurrentFilter(filter); }
@@ -38,6 +44,10 @@ const Library = (props: {library: library}) => {
           onWidthChange={coverWidthHandler} 
           onSortChange={sortChangeHandler}
           onInputSearch={searchInputHandler} 
+        />
+        <Breadcrumbs 
+          root={props.library.name}
+          breadcrumbs={currentCrumbs}
         />
         <Media
           library={props.library}

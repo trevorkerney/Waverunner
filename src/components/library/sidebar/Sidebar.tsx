@@ -60,23 +60,23 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
         }}
       >
         <ol id='filterList'>
-          <li id='filter' key='default'>
+          <li className='filter' key='default'>
             <button
-              id='filterButton'
+              className='filterButton'
               onClick={() => {props.onFilterChange(defaultFilter)}}
             >
-              <p id='filterText'>All</p>
+              <p className='filterText'>All</p>
             </button>
           </li>
           {
             allFilters.map((filter) => {
               return (
-                <li id='filter' key={filter.name}>
+                <li className='filter' key={filter.name}>
                   <button
-                    id='filterButton'
+                    className='filterButton'
                     onClick={() => {props.onFilterChange(filter)}}
                   >
-                    <p id='filterText'>{filter.name}</p>
+                    <p className='filterText'>{filter.name}</p>
                   </button>
                 </li>
               )

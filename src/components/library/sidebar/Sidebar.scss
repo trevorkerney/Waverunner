@@ -17,9 +17,9 @@ nav#sidebar {
       list-style: none;
       padding: .5rem;
 
-      li#filter {
+      li.filter {
 
-        button#filterButton {
+        button.filterButton {
           background-color: transparent;
           border: none;
           padding: .5rem 0 .5rem 0;
@@ -28,7 +28,7 @@ nav#sidebar {
 
           &:active { opacity: 0.6; }
 
-          p#filterText { color: #f0f0f0; }
+          p.filterText { color: #f0f0f0; }
         }
       }
     }
