@@ -1,6 +1,6 @@
-import { ICONS } from '../../../img';
+import { ICONS } from '../../../../img';
 
-import '../../../css/Viewbar.css';
+import '../../../../css/Viewbar.css';
 
 const Viewbar = (props: {onWidthChange: (width: string) => void, onSortChange: (sort: string) => void, onInputSearch: (search: string) => void} ) => {
 

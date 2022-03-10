@@ -3,6 +3,7 @@ div#breadcrumbs {
   background-color: #2c2c2c;
   display: flex;
   height: 2rem;
+  overflow-x: hidden;
 
   img.arrow {
     width: .6rem;

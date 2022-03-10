@@ -1,10 +1,22 @@
-import { tag, findTag, filter, media, group, library } from '../../../ts/types'
+import { useState } from 'react'
 
+import { tag, bundle, valAsTag, findTag, filter, media, group } from '../../../ts/types'
+
+import Viewbar from './viewbar/Viewbar'
 import Cover from './cover/Cover'
 
 import '../../../css/Media.css'
 
-const Media = (props: { library: library, filter: filter, search: string, sort: string, coverWidth: number }) => {
+const Media = (props: { library: (media|group)[], filter: filter, onAddCrumb: (crumb: media|group) => void }) => {
+
+  const [currentSearch, setCurrentSearch] = useState<string>('');
+  const searchInputHandler = (search: string): void => { setCurrentSearch(search); }
+
+  const [coverWidth, setCoverWidth] = useState<number>(20);
+  const coverWidthHandler = (width: string): void => { setCoverWidth(parseInt(width)); }
+
+  const [sortBy, setSortBy] = useState<string>('Title');
+  const sortChangeHandler = (sort: string): void => { setSortBy(sort); }
 
   /** Takes two objects and returns how the first object lexicographically compares to the second.
    *
@@ -35,19 +47,19 @@ const Media = (props: { library: library, filter: filter, search: string, sort: 
       return name;
     }
 
-    const aTag: tag|undefined = findTag(a, props.sort);
-    const bTag: tag|undefined = findTag(b, props.sort);
+    const aTag: tag|bundle|undefined = findTag(a, sortBy);
+    const bTag: tag|bundle|undefined = findTag(b, sortBy);
 
     const aSorter: string = (
       (aTag === undefined)
         ? '~~~~~~~~'
-        : rmPrefix(aTag!.value).toLowerCase()
+        : rmPrefix(valAsTag(aTag)).toLowerCase()
     );
 
     const bSorter: string = (
       (bTag === undefined)
         ? '~~~~~~~~'
-        : rmPrefix(bTag!.value).toLowerCase()
+        : rmPrefix(valAsTag(bTag)).toLowerCase()
     );
 
     return (
@@ -75,9 +87,9 @@ const Media = (props: { library: library, filter: filter, search: string, sort: 
     if (props.filter.logic === '&') {
       for (let _i = 0; _i < tags.length; _i++) {
         const filterTag: tag = tags[_i];
-        const itemTag: tag|undefined = findTag(item, tags[_i].key);
+        const itemTag: tag|bundle|undefined = findTag(item, tags[_i].key);
         if (!itemTag) return false;
-        if (!(itemTag!.value.toLowerCase().includes(filterTag.value.toLowerCase()))) {
+        if (!(valAsTag(itemTag).toLowerCase().includes(filterTag.value.toLowerCase()))) {
           return false;
         }
       }
@@ -85,9 +97,9 @@ const Media = (props: { library: library, filter: filter, search: string, sort: 
     } else {
       for (let _i = 0; _i < tags.length; _i++) {
         const filterTag: tag = tags[_i];
-        const itemTag: tag|undefined = findTag(item, tags[_i].key);
+        const itemTag: tag|bundle|undefined = findTag(item, tags[_i].key);
         if (itemTag) {
-          if (itemTag!.value.toLowerCase().includes(filterTag.value.toLowerCase())) {
+          if (valAsTag(itemTag).toLowerCase().includes(filterTag.value.toLowerCase())) {
             return true;
           }
         }
@@ -105,10 +117,10 @@ const Media = (props: { library: library, filter: filter, search: string, sort: 
    * @returns {boolean} whether or not an object is accepted by the current search state
    */
   const applySearch = (item: media|group): boolean => {
-    if (props.search.length > 0) {
+    if (currentSearch.length > 0) {
       for (let _i = 0; _i < item.tags.length; _i++) {
-        const tag: tag = item.tags[_i];
-        if (tag.value.toLowerCase().includes(props.search.toLowerCase())) {
+        const tag: tag|bundle = item.tags[_i];
+        if (valAsTag(tag).toLowerCase().includes(currentSearch.toLowerCase())) {
           return true;
         }
       }
@@ -124,7 +136,7 @@ const Media = (props: { library: library, filter: filter, search: string, sort: 
    */
   const getFilteredLibrary = (): Array<media|group> => {
     return (
-      props.library.library
+      props.library
         .filter(applyFilters)     // filter out filters state
         .filter(applySearch)      // filter out search state
         .sort(lex)                // sort alphabetically
@@ -132,18 +144,26 @@ const Media = (props: { library: library, filter: filter, search: string, sort: 
   }
 
   return (
-    <ol id='mediaBox'>
-      {
-        getFilteredLibrary().map((index: media|group) => {
-          return (
-            <Cover
-              index={index}
-              coverWidth={props.coverWidth}
-            />
-          )
-        })
-      }
-    </ol>
+    <>
+      <Viewbar
+        onWidthChange={coverWidthHandler} 
+        onSortChange={sortChangeHandler}
+        onInputSearch={searchInputHandler} 
+      />
+      <ol id='mediaBox'>
+        {
+          getFilteredLibrary().map((index: media|group) => {
+            return (
+              <Cover
+                index={index}
+                coverWidth={coverWidth}
+                onAddCrumb={props.onAddCrumb}
+              />
+            )
+          })
+        }
+      </ol>
+    </>
   )
 }
 

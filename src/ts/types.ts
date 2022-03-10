@@ -3,6 +3,21 @@ export type tag = {
   value: string,
 }
 
+export type bundle = {
+  key: string,
+  value: string[],
+}
+
+export const valAsTag = (bundle: tag|bundle) => {
+  return (
+    (typeof bundle.value === 'string')
+    ? bundle.value
+    : (bundle.value[0])
+      ? bundle.value[0]
+      : ''
+  )
+}
+
 export type filter = {
   name: string,
   logic: '|'|'&'
@@ -19,29 +34,29 @@ export type media = {
   type: 'media',
   path: string,
   temp_img_path: string,
-  tags: tag[],
+  tags: (tag|bundle)[],
 }
 
 export type group = {
   type: 'group',
   path: string,
   temp_img_path: string,
-  tags: tag[],
-  media: media[],
+  tags: (tag|bundle)[],
+  media: (media|group)[],
 }
 
-/** Searches a media or group's tags for a given key value and returns it.
+/** Searches a media or group's tags for a given key value and returns the tag with said key.
  * Returns undefined if key not found.
  * 
  * @param {media | group} item item to search
  * @param {string} key tag key to search for
  * 
- * @returns {tag} searched tag, or undefined if not found
+ * @returns {tag | undefined} searched tag, or undefined if not found
  */
-export const findTag = (item: media|group, key: string): tag|undefined => {
-  let tags: tag[] = item.tags;
+export const findTag = (item: media|group, key: string): tag|bundle|undefined => {
+  let tags: (tag|bundle)[] = item.tags;
   for (let _i = 0; _i < tags.length; _i++) {
-    let tag: tag = tags[_i];
+    let tag: tag|bundle = tags[_i];
     if (tag.key.toLowerCase() === key.toLowerCase()) {
       return tag;
     }
@@ -59,7 +74,7 @@ export type library = {
   cover_tags: tag[],
   cover_path_exts: string[],
   default_view: string,
-  library: Array<media|group>,
+  media: (media|group)[],
 }
 
 export type category = {

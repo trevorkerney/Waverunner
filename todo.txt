@@ -6,17 +6,19 @@ look for possible optimization
 
 ----- EASY -----
 
-Currently if a media or group doesn't have a the sortedBy tag, it is filtered out. it shouldnt be. it should be sorted with "~~~~~~~~"
-
 add playlist/filter creation and deletion
 
 Add media queries for when viewport is too small
 
-Look into useCallback for optimization
+Look into useCallback for optimization (lex)
 
 
 
 ----- MEDIUM -----
+
+Fix groups routing
+
+Fix breadcrumbs refreshing issues
 
 Per media button and selection for changing cover
 

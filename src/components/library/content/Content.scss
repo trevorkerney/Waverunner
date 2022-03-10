@@ -1,0 +1,38 @@
+div#content {
+  max-height: calc(100% - 2rem);
+
+  div#header {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+
+    img#cover {
+      border-radius: 3px;
+      border: outset 3px #272727;
+      margin-right: 1rem;
+      width: 12%;
+      min-width: 150px;
+    }
+
+    div#info {
+      color: #f0f0f0;
+
+      h1#title {
+        font-size: 3rem;
+      }
+
+      h6#year {
+        font-size: .75rem;
+        margin-bottom: 2rem;
+      }
+
+      p {
+        margin: .2rem 0 .2rem 0;
+
+        span {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
