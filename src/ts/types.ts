@@ -8,7 +8,7 @@ export type bundle = {
   value: string[],
 }
 
-export const valAsTag = (bundle: tag|bundle) => {
+export const valAsTag = (bundle: tag|bundle) => { // problematic if bundle has no values
   return (
     (typeof bundle.value === 'string')
     ? bundle.value
@@ -75,6 +75,27 @@ export type library = {
   cover_path_exts: string[],
   default_view: string,
   media: (media|group)[],
+}
+
+/** Takes a library or group and finds a specific media|group list by following given indexes.
+ * 
+ * @param {library|group} media the library or group to start the search with
+ * @param {number[]} indexes the path of indexes; if empty, media|group list of media parameter is returned
+ * 
+ * @returns {(media|group)[]} the searched media|group list
+ */
+export const direct = (media: (media|group)[], indexes: number[]): (media|group)[] => {
+  console.log('media');
+  console.log(media);
+  console.log('index');
+  console.log(indexes);
+  let dir: (media|group)[] = media;
+  indexes.forEach((index) => {
+    dir = (dir[index] as group).media
+  })
+  console.log('dir');
+  console.log(dir);
+  return dir;
 }
 
 export type category = {

@@ -313,6 +313,22 @@ export const moviesLibTest: library = {
             {
               key: 'Title',
               value: "Harry Potter and the Sorcerer's Stone",
+            },
+            {
+              key: 'Year',
+              value: '2001'
+            },
+            {
+              key: 'Director',
+              value: [
+                'Chris Columbus'
+              ]
+            },
+            {
+              key: 'Genre',
+              value: [
+                'Fantasy'
+              ]
             }
           ],
         },
@@ -324,6 +340,22 @@ export const moviesLibTest: library = {
             {
               key: 'Title',
               value: 'Harry Potter and the Chamber of Secrets',
+            },
+            {
+              key: 'Year',
+              value: '2001'
+            },
+            {
+              key: 'Director',
+              value: [
+                'Chris Columbus'
+              ]
+            },
+            {
+              key: 'Genre',
+              value: [
+                'Fantasy'
+              ]
             }
           ],
         },
@@ -335,6 +367,22 @@ export const moviesLibTest: library = {
             {
               key: 'Title',
               value: 'Harry Potter and the Prisoner of Azkaban',
+            },
+            {
+              key: 'Year',
+              value: '2001'
+            },
+            {
+              key: 'Director',
+              value: [
+                'Chris Columbus'
+              ]
+            },
+            {
+              key: 'Genre',
+              value: [
+                'Fantasy'
+              ]
             }
           ],
         },
@@ -346,6 +394,22 @@ export const moviesLibTest: library = {
             {
               key: 'Title',
               value: 'Harry Potter and the Goblet of Fire',
+            },
+            {
+              key: 'Year',
+              value: '2001'
+            },
+            {
+              key: 'Director',
+              value: [
+                'Chris Columbus'
+              ]
+            },
+            {
+              key: 'Genre',
+              value: [
+                'Fantasy'
+              ]
             }
           ],
         },
@@ -357,6 +421,22 @@ export const moviesLibTest: library = {
             {
               key: 'Title',
               value: 'Harry Potter and the Order of the Phoenix',
+            },
+            {
+              key: 'Year',
+              value: '2001'
+            },
+            {
+              key: 'Director',
+              value: [
+                'Chris Columbus'
+              ]
+            },
+            {
+              key: 'Genre',
+              value: [
+                'Fantasy'
+              ]
             }
           ],
         },
@@ -368,6 +448,22 @@ export const moviesLibTest: library = {
             {
               key: 'Title',
               value: 'Harry Potter and the Half-Blood Prince',
+            },
+            {
+              key: 'Year',
+              value: '2001'
+            },
+            {
+              key: 'Director',
+              value: [
+                'Chris Columbus'
+              ]
+            },
+            {
+              key: 'Genre',
+              value: [
+                'Fantasy'
+              ]
             }
           ],
         },
@@ -379,6 +475,22 @@ export const moviesLibTest: library = {
             {
               key: 'Title',
               value: 'Harry Potter and the Deathly Hallows Part 1',
+            },
+            {
+              key: 'Year',
+              value: '2001'
+            },
+            {
+              key: 'Director',
+              value: [
+                'Chris Columbus'
+              ]
+            },
+            {
+              key: 'Genre',
+              value: [
+                'Fantasy'
+              ]
             }
           ],
         },
@@ -390,8 +502,96 @@ export const moviesLibTest: library = {
             {
               key: 'Title',
               value: 'Harry Potter and the Deathly Hallows Part 2',
+            },
+            {
+              key: 'Year',
+              value: '2001'
+            },
+            {
+              key: 'Director',
+              value: [
+                'Chris Columbus'
+              ]
+            },
+            {
+              key: 'Genre',
+              value: [
+                'Fantasy'
+              ]
             }
           ],
+        },
+        {
+          type: 'group',
+          path: '0009',
+          temp_img_path: COVERS.potter,
+          tags: [
+            {
+              key: 'Title',
+              value: 'Harry Potter',
+            },
+            {
+              key: 'Year',
+              value: '2001-2011'
+            }
+          ],
+          media: [
+            {
+              type: 'media',
+              path: '0001',
+              temp_img_path: COVERS.lampoon,
+              tags: [
+                {
+                  key: 'Title',
+                  value: "National Lampoon's Christmas Vacation",
+                },
+                {
+                  key: 'Year',
+                  value: '1989'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'Jeremiah S. Chechik'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    
+                  ]
+                }
+              ],
+            },
+            {
+              type: 'media',
+              path: '0002',
+              temp_img_path: COVERS.sponge,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'The Spongebob Squarepants Movie',
+                },
+                {
+                  key: 'Year',
+                  value: '2004'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'Stephen Hillenburg',
+                    'Mark Osborne'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    
+                  ]
+                }
+              ],
+            }
+          ]
         }
       ]
     }

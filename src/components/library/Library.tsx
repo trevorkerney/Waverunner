@@ -6,20 +6,14 @@ import Breadcrumbs from './breadcrumbs/Breadcrumbs'
 import Media from './media/Media'
 import Content from './content/Content'
 
-import { media, group, filter, defaultFilter, library } from '../../ts/types'
+import { filter, defaultFilter, library } from '../../ts/types'
 
 import '../../css/Library.css'
 
 const Library = (props: {library: library}) => {
 
-
-
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const sidebarChangeHandler = (): void => { setIsSidebarOpen(prev => !prev); }
-
-  const [currentCrumbs, setCurrentCrumbs] = useState<(media|group)[]>([]);
-  const addCrumb = (crumb: media|group) => { setCurrentCrumbs(prev => prev.concat(crumb)); }
-  const rmCrumbs = (keep: number) => { setCurrentCrumbs(prev => prev.slice(0, keep)); }
   
   const [currentFilters, setCurrentFilter] = useState<filter>(defaultFilter);
   const filterChangeHandler = (filter: filter): void => { setCurrentFilter(filter); }
@@ -36,8 +30,6 @@ const Library = (props: {library: library}) => {
           <Breadcrumbs 
             root={props.library.name}
             library={props.library.media}
-            breadcrumbs={currentCrumbs}
-            onRmCrumbs={rmCrumbs}
           />
           <Routes>
             <Route
@@ -46,27 +38,26 @@ const Library = (props: {library: library}) => {
                 <Media
                   library={props.library.media}
                   filter={currentFilters}
-                  onAddCrumb={addCrumb}
                 /> 
               }
             />
             <Route
-              path='/content/:path'
+              path='/group/*'
+              element={
+                <Media
+                  library={props.library.media}
+                  filter={defaultFilter}
+                />
+              }
+            />
+            <Route
+              path="/content/*"
               element={
                 <Content 
                   library={props.library.media}
                   keys={props.library.keys}
                 />
-              }
-            />
-            <Route
-              path='/group/:path'
-              element={
-                <Media
-                  library={props.library.media}
-                  filter={defaultFilter}
-                  onAddCrumb={addCrumb}
-                /> 
+                //<Test />
               }
             />
           </Routes>

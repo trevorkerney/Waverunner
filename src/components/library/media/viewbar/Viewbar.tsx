@@ -27,11 +27,11 @@ const Viewbar = (props: {onWidthChange: (width: string) => void, onSortChange: (
             type='range' 
             min={
               (window.innerWidth < 1280)
-              ? 12.5
-              : 7.5
+              ? '12.5'
+              : '7.5'
             }
             max='50'
-            defaultValue='20'
+            defaultValue='10'
             step='.5' 
             onChange={handleWidthChange}
             

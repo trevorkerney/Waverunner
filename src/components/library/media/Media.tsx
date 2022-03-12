@@ -1,18 +1,27 @@
 import { useState } from 'react'
+import { useLocation, useParams } from 'react-router-dom'
 
-import { tag, bundle, valAsTag, findTag, filter, media, group } from '../../../ts/types'
+import { tag, bundle, valAsTag, findTag, filter, media, group, direct } from '../../../ts/types'
 
 import Viewbar from './viewbar/Viewbar'
 import Cover from './cover/Cover'
 
 import '../../../css/Media.css'
 
-const Media = (props: { library: (media|group)[], filter: filter, onAddCrumb: (crumb: media|group) => void }) => {
+const Media = (props: { library: (media|group)[], filter: filter }) => {
+
+  const location = useLocation();
+  const dir: number[] = (
+    (location.pathname === '/')
+    ? []
+    : location.pathname.replace('/', ' ').trim().split('/').slice(1)[0].split('-').map(index => parseInt(index) - 1)
+  )
+  const library: (media|group)[] = direct(props.library, dir);
 
   const [currentSearch, setCurrentSearch] = useState<string>('');
   const searchInputHandler = (search: string): void => { setCurrentSearch(search); }
 
-  const [coverWidth, setCoverWidth] = useState<number>(20);
+  const [coverWidth, setCoverWidth] = useState<number>(10);
   const coverWidthHandler = (width: string): void => { setCoverWidth(parseInt(width)); }
 
   const [sortBy, setSortBy] = useState<string>('Title');
@@ -136,11 +145,14 @@ const Media = (props: { library: (media|group)[], filter: filter, onAddCrumb: (c
    */
   const getFilteredLibrary = (): Array<media|group> => {
     return (
-      props.library
-        .filter(applyFilters)     // filter out filters state
+      (dir.length === 0)
+      ? library
+          .filter(applyFilters)     // filter out filters state
+          .filter(applySearch)      // filter out search state
+          .sort(lex)                // sort alphabetically
+      : library
         .filter(applySearch)      // filter out search state
-        .sort(lex)                // sort alphabetically
-    )
+    );
   }
 
   return (
@@ -157,7 +169,6 @@ const Media = (props: { library: (media|group)[], filter: filter, onAddCrumb: (c
               <Cover
                 index={index}
                 coverWidth={coverWidth}
-                onAddCrumb={props.onAddCrumb}
               />
             )
           })

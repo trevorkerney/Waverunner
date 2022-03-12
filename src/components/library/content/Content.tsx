@@ -1,23 +1,31 @@
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-import { tag, bundle, findTag, media, group } from '../../../ts/types'
+import { tag, bundle, findTag, media, group, direct } from '../../../ts/types'
 
 import '../../../css/Content.css'
 
 const Content = (props: {library: (media|group)[], keys: string[]}) => {
 
-  const { path } = useParams();
+  const location = useLocation();
+  const dir: number[] = location.pathname.replace('/', ' ').trim().split('/').slice(1)[0].split('-').map(index => parseInt(index) - 1);
+  
+  console.log('PROPS LIBRARY')
+  console.log(props.library);
 
-  const index = (path) ? parseInt(path) - 1 : 0
+  console.log('FIRST DIR')
+  console.log(dir);
 
-  const titleTag: tag|bundle|undefined = findTag(props.library[index], 'Title');
+  const library: (media|group)[] = direct(props.library, dir.slice(0, -1));
+  const media: media = (library[dir[dir.length - 1]] as media)
+
+  const titleTag: tag|bundle|undefined = findTag(media, 'Title');
   const title: string = ((titleTag) ? titleTag.value : 'Title') as string;
 
-  const yearTag: tag|bundle|undefined = findTag(props.library[index], 'Year');
+  const yearTag: tag|bundle|undefined = findTag(media, 'Year');
   const year: string = ((yearTag) ? yearTag.value : 'Year') as string;
 
   const tags: (tag|bundle)[] = props.keys.map((key: string) => {
-    const tag : tag|bundle|undefined = findTag(props.library[index], key);
+    const tag : tag|bundle|undefined = findTag(media, key);
     return (
       {
         key: key,
@@ -34,7 +42,7 @@ const Content = (props: {library: (media|group)[], keys: string[]}) => {
       <div id='header'>
 
         <img
-          src={props.library[index].temp_img_path}
+          src={media.temp_img_path}
           alt={title}
           id='cover'
         />

@@ -1,12 +1,14 @@
 import { tag, bundle, findTag, media, group } from '../../../../ts/types'
 
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import '../../../../css/Cover.css'
 
-const Cover = (props: {index: media|group, coverWidth: number, onAddCrumb: (crumb: media|group) => void }) => {
+const Cover = (props: {index: media|group, coverWidth: number }) => {
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const dir = location.pathname.replace('/', ' ').trim().split('/').slice(1);
 
   const titleTag: tag|bundle|undefined = findTag(props.index, "Title");
   const title: string = ((titleTag) ? titleTag.value : 'Title') as string;
@@ -22,8 +24,18 @@ const Cover = (props: {index: media|group, coverWidth: number, onAddCrumb: (crum
       <button
         className="itemButton"
         onClick={() => {
-          props.onAddCrumb(props.index);
-          navigate(`/content/${props.index.path}`);
+          navigate(
+            (
+              (props.index.type === 'media')
+              ? '/content/'
+              : '/group/'
+            )
+            + (
+              (dir.length === 0)
+              ? props.index.path
+              : dir.join('-').concat(`-${props.index.path}`)
+            )
+          )
         }}
       >
         <div id='item'>
