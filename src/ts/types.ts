@@ -85,16 +85,10 @@ export type library = {
  * @returns {(media|group)[]} the searched media|group list
  */
 export const direct = (media: (media|group)[], indexes: number[]): (media|group)[] => {
-  console.log('media');
-  console.log(media);
-  console.log('index');
-  console.log(indexes);
   let dir: (media|group)[] = media;
   indexes.forEach((index) => {
     dir = (dir[index] as group).media
-  })
-  console.log('dir');
-  console.log(dir);
+  });
   return dir;
 }
 

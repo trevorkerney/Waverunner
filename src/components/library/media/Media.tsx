@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import { tag, bundle, valAsTag, findTag, filter, media, group, direct } from '../../../ts/types'
 
@@ -10,12 +10,13 @@ import '../../../css/Media.css'
 
 const Media = (props: { library: (media|group)[], filter: filter }) => {
 
-  const location = useLocation();
+  const { path } = useParams();
   const dir: number[] = (
-    (location.pathname === '/')
-    ? []
-    : location.pathname.replace('/', ' ').trim().split('/').slice(1)[0].split('-').map(index => parseInt(index) - 1)
+    (path)
+    ? path.split('-').map(index => parseInt(index) - 1)
+    : []
   )
+
   const library: (media|group)[] = direct(props.library, dir);
 
   const [currentSearch, setCurrentSearch] = useState<string>('');

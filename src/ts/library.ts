@@ -520,79 +520,488 @@ export const moviesLibTest: library = {
               ]
             }
           ],
+        }
+      ]
+    },
+    {
+      type: 'group',
+      path: '0011',
+      temp_img_path: COVERS.star,
+      tags: [
+        {
+          key: 'Title',
+          value: 'Star Wars',
         },
         {
+          key: 'Year',
+          value: '1977-2019'
+        }
+      ],
+      media: [
+        {
           type: 'group',
-          path: '0009',
-          temp_img_path: COVERS.potter,
+          path: '0001',
+          temp_img_path: COVERS.harmy,
           tags: [
             {
               key: 'Title',
-              value: 'Harry Potter',
+              value: "Original Trilogy (Harmy's Despecialized Edition)"
             },
             {
               key: 'Year',
-              value: '2001-2011'
+              value: '1977-1983'
             }
           ],
           media: [
             {
               type: 'media',
               path: '0001',
-              temp_img_path: COVERS.lampoon,
+              temp_img_path: COVERS.new,
               tags: [
                 {
                   key: 'Title',
-                  value: "National Lampoon's Christmas Vacation",
+                  value: 'Star Wars: Episode IV - A New Hope',
                 },
                 {
                   key: 'Year',
-                  value: '1989'
+                  value: '1977'
                 },
                 {
                   key: 'Director',
                   value: [
-                    'Jeremiah S. Chechik'
+                    'George Lucas'
                   ]
                 },
                 {
                   key: 'Genre',
                   value: [
-                    
+                    'Fantasy'
                   ]
                 }
-              ],
+              ]
             },
             {
               type: 'media',
               path: '0002',
-              temp_img_path: COVERS.sponge,
+              temp_img_path: COVERS.empire,
               tags: [
                 {
                   key: 'Title',
-                  value: 'The Spongebob Squarepants Movie',
+                  value: 'Star Wars: Episode V - The Empire Strikes Back',
                 },
                 {
                   key: 'Year',
-                  value: '2004'
+                  value: '1980'
                 },
                 {
                   key: 'Director',
                   value: [
-                    'Stephen Hillenburg',
-                    'Mark Osborne'
+                    'George Lucas'
                   ]
                 },
                 {
                   key: 'Genre',
                   value: [
-                    
+                    'Fantasy'
                   ]
                 }
-              ],
+              ]
+            },
+            {
+              type: 'media',
+              path: '0003',
+              temp_img_path: COVERS.return,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'Star Wars: Episode IV - Return of the Jedi',
+                },
+                {
+                  key: 'Year',
+                  value: '1983'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'George Lucas'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    'Fantasy'
+                  ]
+                }
+              ]
             }
           ]
-        }
+        },
+        {
+          type: 'group',
+          path: '0002',
+          temp_img_path: COVERS.original,
+          tags: [
+            {
+              key: 'Title',
+              value: "Original Trilogy"
+            },
+            {
+              key: 'Year',
+              value: '1977-1983'
+            }
+          ],
+          media: [
+            {
+              type: 'media',
+              path: '0001',
+              temp_img_path: COVERS.hope,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'Star Wars: Episode IV - A New Hope',
+                },
+                {
+                  key: 'Year',
+                  value: '1977'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'George Lucas'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    'Fantasy'
+                  ]
+                }
+              ]
+            },
+            {
+              type: 'media',
+              path: '0002',
+              temp_img_path: COVERS.strike,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'Star Wars: Episode V - The Empire Strikes Back',
+                },
+                {
+                  key: 'Year',
+                  value: '1980'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'George Lucas'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    'Fantasy'
+                  ]
+                }
+              ]
+            },
+            {
+              type: 'media',
+              path: '0003',
+              temp_img_path: COVERS.jedi,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'Star Wars: Episode IV - Return of the Jedi',
+                },
+                {
+                  key: 'Year',
+                  value: '1983'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'George Lucas'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    'Fantasy'
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          type: 'group',
+          path: '0003',
+          temp_img_path: COVERS.prequel,
+          tags: [
+            {
+              key: 'Title',
+              value: "Prequel Trilogy"
+            },
+            {
+              key: 'Year',
+              value: '1999-2005'
+            }
+          ],
+          media: [
+            {
+              type: 'media',
+              path: '0001',
+              temp_img_path: COVERS.phantom,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'Star Wars: Episode I - The Phantom Menace',
+                },
+                {
+                  key: 'Year',
+                  value: '1999'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'George Lucas'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    'Fantasy'
+                  ]
+                }
+              ]
+            },
+            {
+              type: 'media',
+              path: '0002',
+              temp_img_path: COVERS.clones,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'Star Wars: Episode II - Attack of the Clones',
+                },
+                {
+                  key: 'Year',
+                  value: '2002'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'George Lucas'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    'Fantasy'
+                  ]
+                }
+              ]
+            },
+            {
+              type: 'media',
+              path: '0003',
+              temp_img_path: COVERS.sith,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'Star Wars: Episode III - Revenge of the Sith',
+                },
+                {
+                  key: 'Year',
+                  value: '2005'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'George Lucas'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    'Fantasy'
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          type: 'group',
+          path: '0004',
+          temp_img_path: COVERS.sequel,
+          tags: [
+            {
+              key: 'Title',
+              value: "Sequel Trilogy"
+            },
+            {
+              key: 'Year',
+              value: '2015-2019'
+            }
+          ],
+          media: [
+            {
+              type: 'media',
+              path: '0001',
+              temp_img_path: COVERS.awakens,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'Star Wars: Episode VII - The Force Awakens',
+                },
+                {
+                  key: 'Year',
+                  value: '2015'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'George Lucas'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    'Fantasy'
+                  ]
+                }
+              ]
+            },
+            {
+              type: 'media',
+              path: '0002',
+              temp_img_path: COVERS.last,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'Star Wars: Episode VIII - The Last Jedi',
+                },
+                {
+                  key: 'Year',
+                  value: '2017'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'George Lucas'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    'Fantasy'
+                  ]
+                }
+              ]
+            },
+            {
+              type: 'media',
+              path: '0003',
+              temp_img_path: COVERS.rise,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'Star Wars: Episode IX - The Rise of Skywalker',
+                },
+                {
+                  key: 'Year',
+                  value: '2019'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'George Lucas'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    'Fantasy'
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          type: 'group',
+          path: '0005',
+          temp_img_path: COVERS.antho,
+          tags: [
+            {
+              key: 'Title',
+              value: "Anthology"
+            },
+            {
+              key: 'Year',
+              value: '2016-2018'
+            }
+          ],
+          media: [
+            {
+              type: 'media',
+              path: '0001',
+              temp_img_path: COVERS.rogue,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'Rogue One: A Star Wars Story',
+                },
+                {
+                  key: 'Year',
+                  value: '2016'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'George Lucas'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    'Fantasy'
+                  ]
+                }
+              ]
+            },
+            {
+              type: 'media',
+              path: '0002',
+              temp_img_path: COVERS.solo,
+              tags: [
+                {
+                  key: 'Title',
+                  value: 'Solo: A Star Wars Story',
+                },
+                {
+                  key: 'Year',
+                  value: '2018'
+                },
+                {
+                  key: 'Director',
+                  value: [
+                    'George Lucas'
+                  ]
+                },
+                {
+                  key: 'Genre',
+                  value: [
+                    'Fantasy'
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        
       ]
     }
   ]

@@ -32,6 +32,8 @@ Look into useCallback for optimization (lex)
 
 ----- MEDIUM -----
 
+Navbar and breadcrumbs should overflow off screen with horizontal scroll
+
 Per media button and selection for changing cover
 
 look into accessibility rules

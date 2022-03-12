@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { tag, bundle, findTag, media, group, direct } from '../../../ts/types'
 
@@ -6,14 +6,12 @@ import '../../../css/Content.css'
 
 const Content = (props: {library: (media|group)[], keys: string[]}) => {
 
-  const location = useLocation();
-  const dir: number[] = location.pathname.replace('/', ' ').trim().split('/').slice(1)[0].split('-').map(index => parseInt(index) - 1);
-  
-  console.log('PROPS LIBRARY')
-  console.log(props.library);
-
-  console.log('FIRST DIR')
-  console.log(dir);
+  const { path } = useParams();
+  const dir: number[] = (
+    (path)
+    ? path.split('-').map(index => parseInt(index) - 1)
+    : []
+  )
 
   const library: (media|group)[] = direct(props.library, dir.slice(0, -1));
   const media: media = (library[dir[dir.length - 1]] as media)
@@ -38,15 +36,12 @@ const Content = (props: {library: (media|group)[], keys: string[]}) => {
 
   return (
     <div id='content'>
-
       <div id='header'>
-
         <img
           src={media.temp_img_path}
           alt={title}
           id='cover'
         />
-
         <div id='info'>
           <h1 id='title'>{title}</h1>
           <h6 id='year'>{year}</h6>
@@ -62,11 +57,8 @@ const Content = (props: {library: (media|group)[], keys: string[]}) => {
               )
             })
           }
-
         </div>
-
       </div>
-
     </div>
   )
 }

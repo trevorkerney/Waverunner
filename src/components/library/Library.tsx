@@ -19,14 +19,14 @@ const Library = (props: {library: library}) => {
   const filterChangeHandler = (filter: filter): void => { setCurrentFilter(filter); }
 
   return (
-    <Router>
-      <main>
-        <Sidebar
-          onSidebarChange={sidebarChangeHandler}
-          isSidebarOpen={isSidebarOpen}
-          onFilterChange={filterChangeHandler}
-        />
-        <div id='media'>
+    <main>
+      <Sidebar
+        onSidebarChange={sidebarChangeHandler}
+        isSidebarOpen={isSidebarOpen}
+        onFilterChange={filterChangeHandler}
+      />
+      <div id='media'>
+        <Router>
           <Breadcrumbs 
             root={props.library.name}
             library={props.library.media}
@@ -42,7 +42,7 @@ const Library = (props: {library: library}) => {
               }
             />
             <Route
-              path='/group/*'
+              path='/group/:path'
               element={
                 <Media
                   library={props.library.media}
@@ -51,19 +51,18 @@ const Library = (props: {library: library}) => {
               }
             />
             <Route
-              path="/content/*"
+              path="/content/:path"
               element={
                 <Content 
                   library={props.library.media}
                   keys={props.library.keys}
                 />
-                //<Test />
               }
             />
           </Routes>
-        </div>
-      </main>
-    </Router>
+        </Router>
+      </div>
+    </main>
   )
 }
 
