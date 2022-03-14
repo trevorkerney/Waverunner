@@ -2,7 +2,7 @@ import { ICONS } from '../../../../img';
 
 import '../../../../css/Viewbar.css';
 
-const Viewbar = (props: {onWidthChange: (width: string) => void, onSortChange: (sort: string) => void, onInputSearch: (search: string) => void} ) => {
+const Viewbar = (props: {coverWidth: number, onWidthChange: (width: string) => void, onSortChange: (sort: string) => void, onInputSearch: (search: string) => void} ) => {
 
   const handleWidthChange = (event: React.ChangeEvent<HTMLInputElement>): void =>
   { props.onWidthChange(event.target.value); }
@@ -31,7 +31,7 @@ const Viewbar = (props: {onWidthChange: (width: string) => void, onSortChange: (
               : '7.5'
             }
             max='50'
-            defaultValue='10'
+            value={props.coverWidth.toString()}
             step='.5' 
             onChange={handleWidthChange}
             

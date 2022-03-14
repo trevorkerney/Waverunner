@@ -19,13 +19,14 @@ const Cover = (props: {index: media|group, coverWidth: number }) => {
 
   return (
     <li
-      key={props.index.path}
+      key={dir.concat(props.index.path).join('-')}
       className="mediaItem"
       style={{
         width: `calc(${props.coverWidth}%)`
       }}
     >
       <button
+        key={dir.concat(props.index.path).join('-')}
         className="itemButton"
         onClick={() => {
           navigate(
@@ -37,13 +38,14 @@ const Cover = (props: {index: media|group, coverWidth: number }) => {
             + (
               (dir.length === 0)
               ? props.index.path
-              : dir.join('-').concat(`-${props.index.path}`)
+              : dir.concat(props.index.path).join('-')
             )
           )
         }}
       >
-        <div id='item'>
+        <div id='item' key={dir.concat(props.index.path).join('-')}>
           <img
+            key={dir.concat(props.index.path).join('-')}
             className="cover"
             src={props.index.temp_img_path}
             alt={title}

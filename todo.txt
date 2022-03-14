@@ -1,17 +1,13 @@
 ----- NOW -----
 
-Fix groups routing
 
-Fix breadcrumbs refreshing issues
-- Make breadcrumbs stateless. Dependent only on routing
-
-Create function in types for finding media or groups within library with dynamic indexes.
 
 
 
 ----- LATER -----
 
 Test with a large number (1000+) of covers
+
 
 
 ----- CONTINUOUS -----

@@ -16,13 +16,12 @@ const Media = (props: { library: (media|group)[], filter: filter }) => {
     ? path.split('-').map(index => parseInt(index) - 1)
     : []
   )
-
   const library: (media|group)[] = direct(props.library, dir);
 
   const [currentSearch, setCurrentSearch] = useState<string>('');
   const searchInputHandler = (search: string): void => { setCurrentSearch(search); }
 
-  const [coverWidth, setCoverWidth] = useState<number>(10);
+  const [coverWidth, setCoverWidth] = useState<number>(12.5);
   const coverWidthHandler = (width: string): void => { setCoverWidth(parseInt(width)); }
 
   const [sortBy, setSortBy] = useState<string>('Title');
@@ -159,6 +158,7 @@ const Media = (props: { library: (media|group)[], filter: filter }) => {
   return (
     <>
       <Viewbar
+        coverWidth={coverWidth}
         onWidthChange={coverWidthHandler} 
         onSortChange={sortChangeHandler}
         onInputSearch={searchInputHandler} 
