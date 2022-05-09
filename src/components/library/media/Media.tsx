@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { tag, bundle, valAsTag, findTag, filter, media, group, direct } from '../../../ts/types'
-
 import Viewbar from './viewbar/Viewbar'
 import Cover from './cover/Cover'
+
+import { tag, bundle, valAsTag, findTag, filter, media, group, direct } from '../../../ts/types'
 
 import '../../../css/Media.css'
 

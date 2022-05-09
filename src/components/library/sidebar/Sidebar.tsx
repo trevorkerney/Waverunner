@@ -1,10 +1,9 @@
+import { dialog, invoke } from '@tauri-apps/api'
 import { useState } from 'react'
 
 import { filter, defaultFilter, category } from '../../../ts/types'
 
 import { ICONS } from '../../../img'
-
-import { dialog, invoke } from '@tauri-apps/api'
 
 import '../../../css/Sidebar.css'
 
