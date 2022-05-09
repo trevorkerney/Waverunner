@@ -1,6 +1,10 @@
 import { useState } from 'react'
-import { ICONS } from '../../../img'
+
 import { filter, defaultFilter, category } from '../../../ts/types'
+
+import { ICONS } from '../../../img'
+
+import { dialog, invoke } from '@tauri-apps/api'
 
 import '../../../css/Sidebar.css'
 
@@ -8,7 +12,7 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
 
   const [categories, setCategories] = useState<category[]>([
     {
-      name: 'Movies',
+      name: 'Films',
       path: '#'
     },
     {
@@ -60,9 +64,14 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
   ]);
   const filtersChangeHandler = (filters: filter[]): void => { setFilters(filters); }
 
+  const getPath = async () => {
+    const path = await dialog.open({directory: true});
+    invoke('import_from_path', {path: path});
+  }
+
   return (
     <nav 
-      id="sidebar" 
+      id="sidebar"
       style={props.isSidebarOpen ? {
         width: "12rem"
       } : {
@@ -91,7 +100,7 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
               return (
                 <li className='filter' key={category.name}>
                   <button
-                    className='filterButton'
+                    className='sidebarButton'
                     onClick={() => {props.onCategoryChange(category)}}
                   >
                     <p className='filterText'>{category.name}</p>
@@ -100,15 +109,28 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
               )
             })
           }
+            <li key="new">
+              <button
+                className='sidebarButton'
+                onClick={() => {}}
+              >
+                <img
+                  src={ICONS.plus}
+                  alt="plus"
+                  id="newCategoryLogo"
+                />
+                <p id="newCategoryText">create category</p>
+              </button>
+            </li>
           </ol>
           <hr id="divider" />
           <ol id='filters'>
             <li className='filter' key='default'>
               <button
-                className='filterButton'
+                className='sidebarButton'
                 onClick={() => {props.onFilterChange(defaultFilter)}}
               >
-                <p className='filterText'>All</p>
+                <p className='filterText'><span id="bold">All</span></p>
               </button>
             </li>
             {
@@ -116,7 +138,7 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
                 return (
                   <li className='filter' key={filter.name}>
                     <button
-                      className='filterButton'
+                      className='sidebarButton'
                       onClick={() => {props.onFilterChange(filter)}}
                     >
                       <p className='filterText'>{filter.name}</p>
@@ -125,6 +147,19 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
                 )
               })
             }
+            <li key="new">
+              <button
+                className='sidebarButton'
+                onClick={() => {}}
+              >
+                <img
+                  src={ICONS.plus}
+                  alt="plus"
+                  id="newCategoryLogo"
+                />
+                <p id="newCategoryText">create filter</p>
+              </button>
+            </li>
           </ol>
         </div>
         <div id="sidebarHandleBox">
@@ -133,68 +168,13 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
             onClick={props.onSidebarChange} 
           >
             <img 
-            id="sidebarHandleIcon" 
-            alt="sidebar handle"
-            src={ICONS.sidebarHandleIcon} 
+              id="sidebarHandleIcon" 
+              alt="sidebar handle"
+              src={ICONS.sidebarHandleIcon}
             />
           </button>
         </div>
       </div>
-      {/* <div id="sidebar-box">
-        <div id="logo-box">
-          <img
-            src={ICONS.logo}
-            alt='Waverunner'
-            id='logo'
-          />
-        </div>
-        <div 
-          id="sidebarViews" 
-          style={props.isSidebarOpen ? {
-            display: "block"
-          } : {
-            display: "none"
-          }}
-        >
-          <ol id='filterList'>
-            <li className='filter' key='default'>
-              <button
-                className='filterButton'
-                onClick={() => {props.onFilterChange(defaultFilter)}}
-              >
-                <p className='filterText'>All</p>
-              </button>
-            </li>
-            {
-              filters.map((filter) => {
-                return (
-                  <li className='filter' key={filter.name}>
-                    <button
-                      className='filterButton'
-                      onClick={() => {props.onFilterChange(filter)}}
-                    >
-                      <p className='filterText'>{filter.name}</p>
-                    </button>
-                  </li>
-                )
-              })
-            }
-          </ol>
-        </div>
-        <div id="sidebarHandleBox">
-          <button 
-            id="sidebarHandleButton" 
-            onClick={props.onSidebarChange} 
-          >
-            <img 
-            id="sidebarHandleIcon" 
-            alt="sidebar handle"
-            src={ICONS.sidebarHandleIcon} 
-            />
-          </button>
-        </div>
-        <div id="logo-align" />
-      </div> */}
     </nav>
   )
 }

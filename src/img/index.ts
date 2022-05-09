@@ -50,6 +50,7 @@ export const ICONS = {
   saveIcon: require('./icons/saveIcon.png'),
   plusIcon: require('./icons/plusIcon.png'),
   minusIcon: require('./icons/minusIcon.png'),
-  arrow: require('./icons/arrow.png')
+  arrow: require('./icons/arrow.png'),
+  plus: require('./icons/circlePlus.png')
 }
 
