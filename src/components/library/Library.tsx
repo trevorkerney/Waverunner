@@ -6,7 +6,7 @@ import Breadcrumbs from './breadcrumbs/Breadcrumbs'
 import Media from './media/Media'
 import Content from './content/Content'
 
-import { filter, defaultFilter, library } from '../../ts/types'
+import { filter, defaultFilter, library, category } from '../../ts/types'
 
 import '../../css/Library.css'
 
@@ -18,11 +18,15 @@ const Library = (props: {library: library}) => {
   const [currentFilters, setCurrentFilter] = useState<filter>(defaultFilter);
   const filterChangeHandler = (filter: filter): void => { setCurrentFilter(filter); }
 
+  const [currentCategory, setCurrentCategory] = useState<category|null>(null);
+  const categoryChangeHandler = (category: category): void => { setCurrentCategory(category); }
+
   return (
     <main>
       <Sidebar
         onSidebarChange={sidebarChangeHandler}
         isSidebarOpen={isSidebarOpen}
+        onCategoryChange={categoryChangeHandler}
         onFilterChange={filterChangeHandler}
       />
       <div id='media'>

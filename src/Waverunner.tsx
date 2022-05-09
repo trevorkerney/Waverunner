@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-import Navbar from "./components/navbar/Navbar"
 import Library from "./components/library/Library"
 
 import { library } from './ts/types'
@@ -18,9 +17,6 @@ const Waverunner = () => {
 
   return (
     <>
-      <Navbar
-        onLibraryChange={libraryChangeHandler}
-      />
       <Library
         library={currentLibrary}
       />

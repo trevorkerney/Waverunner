@@ -1,3 +1,4 @@
+import { dialog, invoke } from '@tauri-apps/api'
 import { useState } from 'react'
 
 import { library, category } from '../../ts/types'
@@ -30,6 +31,11 @@ const Navbar = (props: {onLibraryChange: (library: library) => void}) => {
     setCategories(categories);
   }
 
+  const getPath = async () => {
+    const path = await dialog.open({directory: true});
+    invoke('import_from_path', {path: path});
+  }
+
   return (
     <header>
       <img
@@ -50,6 +56,19 @@ const Navbar = (props: {onLibraryChange: (library: library) => void}) => {
             </button>
           </li>
         )}
+        <li
+          className='navbarListItem'
+          key='add'
+        >
+          <button 
+            className='navbarListButton'
+            onClick={getPath}
+          >
+            <span className='linkText'>
+              +
+            </span>
+          </button>
+        </li>
       </ul>
       <div id='empty' />
     </header>

@@ -27,12 +27,12 @@ const Viewbar = (props: {coverWidth: number, onWidthChange: (width: string) => v
             type='range' 
             min={
               (window.innerWidth < 1280)
-              ? '12.5'
-              : '7.5'
+              ? '12'
+              : '8'
             }
-            max='50'
+            max='25'
             value={props.coverWidth.toString()}
-            step='.5' 
+            step='1' 
             onChange={handleWidthChange}
             
           />
