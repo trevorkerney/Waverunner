@@ -6,27 +6,27 @@ import Breadcrumbs from './breadcrumbs/Breadcrumbs'
 import Media from './media/Media'
 import Content from './content/Content'
 
-import { filter, defaultFilter, library, category } from '../../ts/types'
+import { filter, defaultFilter, library } from '../../ts/types'
 
 import '../../css/Library.css'
 
 const Library = (props: {library: library}) => {
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
-  const sidebarChangeHandler = (): void => { setIsSidebarOpen(prev => !prev); }
+  const [currentLibrary, setCurrentLibrary] = useState<string|null>(null);
+  const libraryChangeHandler = (library: string): void => { setCurrentLibrary(library); }
   
   const [currentFilters, setCurrentFilter] = useState<filter>(defaultFilter);
   const filterChangeHandler = (filter: filter): void => { setCurrentFilter(filter); }
 
-  const [currentCategory, setCurrentCategory] = useState<category|null>(null);
-  const categoryChangeHandler = (category: category): void => { setCurrentCategory(category); }
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const sidebarChangeHandler = (): void => { setIsSidebarOpen(prev => !prev); }
 
   return (
     <main>
       <Sidebar
         onSidebarChange={sidebarChangeHandler}
         isSidebarOpen={isSidebarOpen}
-        onCategoryChange={categoryChangeHandler}
+        onLibraryChange={libraryChangeHandler}
         onFilterChange={filterChangeHandler}
       />
       <div id='media'>

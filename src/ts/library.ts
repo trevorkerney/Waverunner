@@ -4,36 +4,10 @@ import { COVERS } from '../img'
 export const moviesLibTest: library = {
   name: 'Movies',
   full_path: 'E:/~ the sanctum ~/Media/Movies',
-  media_filename: 'movie',
-  media_filename_exts: [
-    'mkv',
-    'mp4',
-  ],
   keys: [
     'Director',
     'Genre'
   ],
-  cover_path: '/~covers',
-  cover_tags: [
-    {
-      key: 'Fullres',
-      value: 'fullres'
-    },
-    {
-      key: 'Textless',
-      value: 'textless'
-    },
-    {
-      key: 'Alternate',
-      value: 'alt[1-9]'
-    }
-  ],
-  cover_path_exts: [
-    'jpg',
-    'jpeg',
-    'png'
-  ],
-  default_view: 'covers',
   media: [
     {
       type: 'media',

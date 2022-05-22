@@ -67,13 +67,7 @@ export const findTag = (item: media|group, key: string): tag|bundle|undefined =>
 export type library = {
   name: string,
   full_path: string,
-  media_filename: string,
-  media_filename_exts: string[],
   keys: string[],
-  cover_path: string,
-  cover_tags: tag[],
-  cover_path_exts: string[],
-  default_view: string,
   media: (media|group)[],
 }
 
@@ -90,9 +84,4 @@ export const direct = (media: (media|group)[], indexes: number[]): (media|group)
     dir = (dir[index] as group).media
   });
   return dir;
-}
-
-export type category = {
-  name: string,
-  path: string,
 }

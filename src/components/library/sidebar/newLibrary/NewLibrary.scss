@@ -1,0 +1,131 @@
+div#newCategoryBox {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #141414;
+  top: 6rem;
+  left: 12rem;
+  width: 12rem;
+  padding: .5rem;
+  border-style: outset;
+  border-width: .25rem .25rem .25rem 0;
+  border-color: #414141;
+  z-index: 1;
+
+  button#new-lib-close {
+    border: none;
+    background-color: transparent;
+    padding: 0 .25rem 0 0;
+    margin-left: auto;
+
+    img {
+      cursor: pointer;
+      width: .5rem;
+      height: .5rem;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  label {
+    color: #f0f0f0;
+    font-size: .8rem;
+    margin-bottom: .5rem;
+  }
+
+  input.new-lib-text {
+    margin-bottom: .5rem;
+  }
+
+  button#new-lib-file-browse {
+    border: 2px outset #3b3b3b;
+    color: #f0f0f0;
+    font-size: .75rem;
+    width: 4rem;
+    background-color: #575757;
+    margin-bottom: .5rem;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+  }
+
+  button#new-lib-submit {
+    border: 2px outset #3b3b3b;
+    color: #f0f0f0;
+    font-size: .75rem;
+    width: 4rem;
+    background-color: #575757;
+    margin: .5rem 0;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+  }
+
+  // div.tag {
+  //   display: flex;
+
+  //   button.tag-rm {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     border: 2px outset #3b3b3b;
+  //     border-radius: 4rem;
+  //     color: #f0f0f0;
+  //     font-size: .75rem;
+  //     width: 1.25rem;
+  //     height: 1.25rem;
+  //     background-color: #575757;
+  //     margin-left: .5rem;
+
+  //     &:hover {
+  //       opacity: 0.8;
+  //     }
+  
+  //     &:active {
+  //       opacity: 0.6;
+  //     }
+
+  //     img {
+  //       width: .8rem;
+  //     }
+  //   }
+  // }
+
+  // button#tag-add-btn {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   border: 2px outset #3b3b3b;
+  //   border-radius: 4rem;
+  //   color: #f0f0f0;
+  //   font-size: .75rem;
+  //   width: 1.25rem;
+  //   height: 1.25rem;
+  //   background-color: #575757;
+  //   margin-top: .5rem;
+
+  //   &:hover {
+  //     opacity: 0.8;
+  //   }
+
+  //   &:active {
+  //     opacity: 0.6;
+  //   }
+
+  //   img#tag-add {
+  //     width: .8rem;
+  //   }
+  // }
+}

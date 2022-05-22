@@ -24,11 +24,15 @@ Add media queries for when viewport is too small
 
 Look into useCallback for optimization (lex)
 
+Remove category and filter functionality
+
 
 
 ----- MEDIUM -----
 
-Navbar and breadcrumbs should overflow off screen with horizontal scroll
+Breadcrumbs should overflow off screen with horizontal scroll
+
+Create category menu should implement multiple text inputs for tags instead of separating by comma
 
 Per media button and selection for changing cover
 

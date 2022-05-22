@@ -49,8 +49,10 @@ export const ICONS = {
   openIcon: require('./icons/openIcon.png'),
   saveIcon: require('./icons/saveIcon.png'),
   plusIcon: require('./icons/plusIcon.png'),
-  minusIcon: require('./icons/minusIcon.png'),
   arrow: require('./icons/arrow.png'),
-  plus: require('./icons/circlePlus.png')
+  plus: require('./icons/circlePlus.png'),
+  x: require('./icons/x.png'),
+  minus: require('./icons/minus.png'),
+  maximize: require('./icons/maximize.png'),
 }
 

@@ -1,6 +1,6 @@
 div#breadcrumbs {
   align-items: center;
-  background-color: #2c2c2c;
+  background-color: #3a3a3a;
   display: flex;
   height: 2rem;
   overflow-x: hidden;
@@ -25,6 +25,36 @@ div#breadcrumbs {
 
     p.crumbText {
       font-size: .9rem;
+    }
+  }
+
+  div#window-box {
+    margin-left: auto;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: row;
+
+    button.window-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-color: transparent;
+      margin: 0 .5rem 0 .5rem;
+      width: 1rem;
+      height: 1rem;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:active {
+        opacity: 0.6;
+      }
+
+      img.window-img {
+        width: .75rem;
+      }
     }
   }
 }

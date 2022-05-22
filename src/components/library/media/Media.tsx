@@ -83,7 +83,7 @@ const Media = (props: { library: (media|group)[], filter: filter }) => {
   /** Returns whether or not an object is accepted by the current filter state.
    * Designed for use with .filter().
    * For a filter to pass, every tag in it must match a tag in the item in question.
-   * Only one filter in stateful filters must pass to return true.
+   * Only one filter must pass to return true.
    *
    * @param {media|group} item the object in question
    * 
@@ -147,9 +147,9 @@ const Media = (props: { library: (media|group)[], filter: filter }) => {
     return (
       (dir.length === 0)
       ? library
-          .filter(applyFilters)     // filter out filters state
-          .filter(applySearch)      // filter out search state
-          .sort(lex)                // sort alphabetically
+        .filter(applyFilters)     // filter out filters state
+        .filter(applySearch)      // filter out search state
+        .sort(lex)                // sort alphabetically
       : library
         .filter(applySearch)      // filter out search state
     );

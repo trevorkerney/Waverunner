@@ -1,33 +1,23 @@
 import { dialog, invoke } from '@tauri-apps/api'
 import { useState } from 'react'
 
-import { filter, defaultFilter, category } from '../../../ts/types'
+import NewLibrary from './newLibrary/NewLibrary'
+
+import { filter, defaultFilter } from '../../../ts/types'
 
 import { ICONS } from '../../../img'
 
 import '../../../css/Sidebar.css'
 
-const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, onCategoryChange: (category: category) => void , onFilterChange: (filter: filter) => void }) => {
+const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, onLibraryChange: (library: string) => void, onFilterChange: (filter: filter) => void }) => {
 
-  const [categories, setCategories] = useState<category[]>([
-    {
-      name: 'Films',
-      path: '#'
-    },
-    {
-      name: 'TV',
-      path: '#'
-    },
-    {
-      name: 'Documentaries',
-      path: '#'
-    },
-    {
-      name: 'Music',
-      path: '#'
-    }
+  const [libraries, setLibraries] = useState<string[]>([
+    "Films",
+    "TV",
+    "Documentaries",
+    "Music"
   ]);
-  const categoryChangeHandler = (categories: category[]): void => { setCategories(categories); }
+  const librariesChangeHandler = (libraries: string[]): void => { setLibraries(libraries); }
 
   const [filters, setFilters] = useState<filter[]>([
     {
@@ -63,10 +53,8 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
   ]);
   const filtersChangeHandler = (filters: filter[]): void => { setFilters(filters); }
 
-  const getPath = async () => {
-    const path = await dialog.open({directory: true});
-    invoke('import_from_path', {path: path});
-  }
+  const [isNewLibOpen, setIsNewLibOpen] = useState<boolean>(false);
+  const [isNewFilterOpen, setIsNewFilterOpen] = useState<boolean>(false);
 
   return (
     <nav 
@@ -79,6 +67,7 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
     >
       <div id="logo-box">
         <img
+          data-tauri-drag-region
           src={ICONS.logo}
           alt='Waverunner'
           id='logo'
@@ -95,14 +84,16 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
         >
           <ol id="categories">
           {
-            categories.map((category) => {
+            libraries.map((library) => {
               return (
-                <li className='filter' key={category.name}>
+                <li className='filter' key={library}>
                   <button
                     className='sidebarButton'
-                    onClick={() => {props.onCategoryChange(category)}}
+                    onClick={() => {
+                      
+                    }}
                   >
-                    <p className='filterText'>{category.name}</p>
+                    <p className='filterText'>{library}</p>
                   </button>
                 </li>
               )
@@ -111,17 +102,21 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
             <li key="new">
               <button
                 className='sidebarButton'
-                onClick={() => {}}
+                onClick={() => {
+                  setIsNewFilterOpen(false);
+                  setIsNewLibOpen(true);
+                }}
               >
                 <img
                   src={ICONS.plus}
                   alt="plus"
                   id="newCategoryLogo"
                 />
-                <p id="newCategoryText">create category</p>
+                <p id="newCategoryText">new library</p>
               </button>
             </li>
           </ol>
+          <NewLibrary isNewLibOpen={isNewLibOpen} setIsNewLibOpen={setIsNewLibOpen} />
           <hr id="divider" />
           <ol id='filters'>
             <li className='filter' key='default'>
@@ -156,10 +151,13 @@ const Sidebar = (props: { onSidebarChange: () => void, isSidebarOpen: boolean, o
                   alt="plus"
                   id="newCategoryLogo"
                 />
-                <p id="newCategoryText">create filter</p>
+                <p id="newCategoryText">new filter</p>
               </button>
             </li>
           </ol>
+          <div id="newFilterBox">
+
+          </div>
         </div>
         <div id="sidebarHandleBox">
           <button 

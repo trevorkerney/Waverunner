@@ -1,3 +1,5 @@
+import { appWindow } from '@tauri-apps/api/window';
+
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { tag, bundle, findTag, media, group, direct } from '../../../ts/types'
@@ -16,12 +18,8 @@ const Breadcrumbs = (props: {root: string, library: (media|group)[]}) => {
     : location.pathname.replace('/', ' ').trim().split('/').slice(1)[0].split('-').map(index => parseInt(index) - 1) // does what useparams does in context and media
   )
 
-  const ugh = () => {
-
-  }
-
   return (
-    <div id='breadcrumbs'>
+    <div data-tauri-drag-region id='breadcrumbs'>
       <button
         className='crumbButton'
         onClick={() => {
@@ -65,6 +63,23 @@ const Breadcrumbs = (props: {root: string, library: (media|group)[]}) => {
           )
         })
       }
+      <div id="window-box">
+        <button className="window-btn" onClick={() => {
+          appWindow.minimize();
+        }}>
+          <img className="window-img" src={ICONS.minus} alt="minimize" />
+        </button>
+        <button className="window-btn" onClick={() => {
+          appWindow.toggleMaximize()
+        }}>
+          <img className="window-img" src={ICONS.maximize} alt="maximize" />
+        </button>
+        <button className="window-btn" onClick={() => {
+          appWindow.close()
+        }}>
+          <img className="window-img" src={ICONS.x} alt="close" />
+        </button>
+      </div>
     </div>
   )
 }

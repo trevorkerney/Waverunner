@@ -17,8 +17,7 @@
 *.wasm
 
 # generated css
-*.css
-*.css.map
+src/css
 
 # production
 /build
