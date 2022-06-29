@@ -21,7 +21,7 @@ const Media = (props: { library: (media|group)[], filter: filter }) => {
   const [currentSearch, setCurrentSearch] = useState<string>('');
   const searchInputHandler = (search: string): void => { setCurrentSearch(search); }
 
-  const [coverWidth, setCoverWidth] = useState<number>(12.5);
+  const [coverWidth, setCoverWidth] = useState<number>(12);
   const coverWidthHandler = (width: string): void => { setCoverWidth(parseInt(width)); }
 
   const [sortBy, setSortBy] = useState<string>('Title');

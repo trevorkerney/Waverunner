@@ -1,8 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # environment
-/.vscode/*
 *.code-workspace
+/.vscode/*
 !.vscode/settings.json
 
 # dependencies
