@@ -1,0 +1,17 @@
+nav#sidebar {
+  background-color: #0c0c0c;
+  height: 100%;
+
+  div#logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width: 3rem;
+    
+    img#logo {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}

@@ -1,25 +1,26 @@
 import { useState } from 'react'
 
-import Library from "./components/library/Library"
+import Sidebar from './components/sidebar/Sidebar'
+import Content from './components/content/Content'
+import Breadcrumbs from './components/breadcrumbs/Breadcrumbs';
 
-import { library } from './ts/types'
-import { moviesLibTest } from './ts/library'
-
-import './css/Waverunner.css';
+import './Waverunner.css';
 
 const Waverunner = () => {
-
-  const [currentLibrary, setCurrentLibrary] = useState<library>(moviesLibTest);      // completion requires rust backend
-
-  const libraryChangeHandler = (library: library) => {
-    setCurrentLibrary(library);
-  }
+  
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const handleSidebarChange = (): void => { setIsSidebarOpen(prev => !prev); }
 
   return (
     <>
-      <Library
-        library={currentLibrary}
-      />
+      <div data-tauri-drag-region id="titlebar" />
+      <div id="app-wrapper">
+        <Sidebar isSidebarOpen={isSidebarOpen} handleSidebarChange={handleSidebarChange} />
+        <div id="content-wrapper">
+          <Breadcrumbs />
+          <Content />
+        </div>
+      </div>
     </>
   )
 }

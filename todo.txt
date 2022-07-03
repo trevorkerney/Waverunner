@@ -1,10 +1,9 @@
-
- ______ _____   ____  _   _ _______     ______ _   _ _____  
-|  ____|  __ \ / __ \| \ | |__   __|   |  ____| \ | |  __ \ 
-| |__  | |__) | |  | |  \| |  | |      | |__  |  \| | |  | |
-|  __| |  _  /| |  | | . ` |  | |      |  __| | . ` | |  | |
-| |    | | \ \| |__| | |\  |  | |      | |____| |\  | |__| |
-|_|    |_|  \_\\____/|_| \_|  |_|      |______|_| \_|_____/ 
+*______ _____   ____  _   _ _______  ______ _   _ _____  
+|  ____|  __ \ / __ \| \ | |__   __||  ____| \ | |  __ \ 
+| |__  | |__) | |  | |  \| |  | |   | |__  |  \| | |  | |
+|  __| |  _  /| |  | | . ` |  | |   |  __| | . ` | |  | |
+| |    | | \ \| |__| | |\  |  | |   | |____| |\  | |__| |
+|_|    |_|  \_\\____/|_| \_|  |_|   |______|_| \_|_____/ 
 
 
 Test with a large number (1000+) of covers
@@ -24,27 +23,30 @@ Per media button and selection for changing cover
 look into accessibility rules
 - https://adrianroselli.com/2019/01/baseline-rules-for-scrollbar-usability.html
 
-Learn how images can be imported into React from Rust backend at runtime
-
 Adjustable global border radius customization
 
-Make new library and new filter menus into fullscreen modals
+Turn new library and new filter menus into fullscreen modals
 
- ____          _____ _  __    ______ _   _ _____  
-|  _ \   /\   / ____| |/ /   |  ____| \ | |  __ \ 
-| |_) | /  \ | |    | ' /    | |__  |  \| | |  | |
-|  _ < / /\ \| |    |  <     |  __| | . ` | |  | |
-| |_) / ____ \ |____| . \    | |____| |\  | |__| |
-|____/_/    \_\_____|_|\_\   |______|_| \_|_____/ 
 
+*____          _____ _  __ ______ _   _ _____  
+|  _ \   /\   / ____| |/ /|  ____| \ | |  __ \ 
+| |_) | /  \ | |    | ' / | |__  |  \| | |  | |
+|  _ < / /\ \| |    |  <  |  __| | . ` | |  | |
+| |_) / ____ \ |____| . \ | |____| |\  | |__| |
+|____/_/    \_\_____|_|\_\|______|_| \_|_____/ 
+
+
+Store hash of every file used by Waverunner to verify files' identity
 
 When creating a new lib and an index file already exists in the given path, give the user the choice to overwrite it, import it instead, or cancel.
 
 When creating new lib give user option to group by file structure.
 
+Look into security and isolation
+https://tauri.app/v1/guides/architecture/security
 
+Learn how images can be imported into React from Rust backend at runtime
 --------------------
-
 Evosity — 05/23/2022
 Can someone give me the basic information and options I have for importing assets (images, video, audio) from the file system into the front end during runtime?
 
@@ -65,5 +67,4 @@ https://deploy-preview-569--tauri.netlify.app/guides/development/security#asset-
 
 Evosity — 05/23/2022
 Okay this is really helpful, thanks again
-
 --------------------

@@ -261,9 +261,9 @@ fn delve(lib: &mut Library, root: PathBuf, keys: &Vec<String>) {
  * Receives the basic parameters from the frontend for a new library and passes them to new_lib()
  */
 #[tauri::command]
-fn ipc_new_lib(name: String, format: String, path: String, tags: Vec<String>) -> Result<(), String> {
-  match new_lib(name, format, PathBuf::from(path), tags) {
-    Ok(()) => return Ok(()),
+fn ipc_new_lib(name: String, format: String, path: String/*, tags: Vec<String>*/) -> Result<Library, String> {
+  match new_lib(name, format, PathBuf::from(path), vec!()) {
+    Ok(l) => return Ok(l),
     Err(e) => return Err(String::from(e))
   };
 }
@@ -271,8 +271,9 @@ fn ipc_new_lib(name: String, format: String, path: String, tags: Vec<String>) ->
 /*
  * 
  */
-fn new_lib(name: String, format: String, path: PathBuf, tags: Vec<String>) -> Result<(), &'static str> {
+fn new_lib(name: String, format: String, path: PathBuf, tags: Vec<String>) -> Result<Library, &'static str> {
   dbg!("begin new lib");
+
   let cats: Categories = match read_cats_file() {
     Ok(c) => c,
     Err(e) => {
@@ -302,15 +303,18 @@ fn new_lib(name: String, format: String, path: PathBuf, tags: Vec<String>) -> Re
     tags: tags.clone(),
     content: vec!()
   };
+
+  dbg!("delving");
+
   let md = match metadata(&path) {
     Ok(m) => m,
     Err(_) => return Err("Metadata retrieval failed.")
   };
-  dbg!("delving");
   if md.is_dir() { delve(&mut lib, path.clone(), &tags); }
   else { return Err("Given path is not a directory"); }
 
   dbg!("writing index file");
+
   let mut index_path = path.clone();
   index_path.push(Path::new("index.json"));
   let mut index_file: File = match File::options()
@@ -331,8 +335,9 @@ fn new_lib(name: String, format: String, path: PathBuf, tags: Vec<String>) -> Re
   };
 
   dbg!("writing categories config file");
+
   add_category(Category { name, path })?;
-  return Ok(());
+  return Ok(lib);
 }
 
 #[tauri::command]
@@ -340,11 +345,15 @@ fn ipc_read_libs() {
 
 }
 
+fn read_libs() {
+  
+}
+
 fn main() {
-  match new_lib(String::from("Testing"), String::from("features"), PathBuf::from("F:\\~ the sanctum ~\\Media\\Movies"), vec![String::from("Director"), String::from("Genre")]) {
-    Ok(()) => (),
-    Err(e) => println!("{}", e)
-  };
+  // match new_lib(String::from("Testing"), String::from("features"), PathBuf::from("F:\\~ the sanctum ~\\Media\\Movies"), vec![String::from("Director"), String::from("Genre")]) {
+  //   Ok(()) => (),
+  //   Err(e) => println!("{}", e)
+  // };
 
   tauri::Builder::default()
     .setup(|app| {
