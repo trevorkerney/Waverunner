@@ -7,7 +7,7 @@ const Sidebar = (props: { isSidebarOpen: boolean, handleSidebarChange: () => voi
       id="sidebar"
       style={
         props.isSidebarOpen ? {
-          width: "12rem"
+          width: "15rem"
         } : {
           width: "3rem"
         }

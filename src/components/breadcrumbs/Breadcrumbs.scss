@@ -1,5 +1,5 @@
 div#breadcrumbs {
   background-color: #3a3a3a;
-  height: 2rem;
+  height: var(--bc-height);
   width: 100%;
 }

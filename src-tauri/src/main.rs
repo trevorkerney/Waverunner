@@ -10,11 +10,16 @@ use tauri::Manager;
 use tauri::{Wry, Window};
 use std::fs::{File, read_dir, metadata};
 use std::io::{Read, Seek, Write};
+use serde::{Deserialize, Serialize};
 use dirs::home_dir;
 use std::path::{Path, PathBuf};
 use matroska::Matroska;
 use tmdb::model::*;
 use tmdb::themoviedb::*;
+
+enum MediaFormat {
+  Mkv
+}
 
 fn set_shadow_on_window(window: &Window<Wry>) {
   use window_shadows::set_shadow;
@@ -24,23 +29,28 @@ fn set_shadow_on_window(window: &Window<Wry>) {
   }
 }
 
-enum MediaFormat {
-  Mkv
+/*
+ * Obtains the relative filepath to Waverunner's config directory from the home directory
+ */
+#[cfg(target_os = "windows")]
+fn get_cfg_home_chain() -> Vec<&'static str> {
+  return vec!["AppData", "Local", "Waverunner"];
+}
+#[cfg(target_os = "macos")]
+fn get_cfg_home_chain() -> Vec<&'static str> {
+  return vec!["Library", "Application Support", "Waverunner"];
 }
 
 /*
  * Obtains the filepath of Waverunner's config directory
  */
-#[cfg(target_os = "windows")]
 fn get_cfg_path() -> Result<PathBuf, &'static str> {
   let mut path: PathBuf = match home_dir() {
     Some(d) => d,
     None => return Err("Failed to locate home directory.")
   };
-  let chain: [&str; 3] = ["AppData", "Local", "Waverunner"];
-  for link in chain {
-    path.push(Path::new(link));
-  }
+  let chain: Vec<&str> = get_cfg_home_chain();
+  for link in chain { path.push(Path::new(link)); }
   return Ok(path);
 }
 
@@ -72,7 +82,7 @@ fn open_cats_file() -> Result<File, &'static str> {
 }
 
 /*
- * Opens and reads the categories file into a categories object and returns it
+ * Opens and reads the categories file into a Categories object and returns it
  */
 fn read_cats_file() -> Result<Categories, &'static str> {
   let mut file = open_cats_file()?;
@@ -91,7 +101,7 @@ fn read_cats_file() -> Result<Categories, &'static str> {
 }
 
 /*
- * 
+ * Receives a Categories object and writes it's contents to the categories file
  */
 fn write_cats_file(categories: Categories) -> Result<(), &'static str> {
   let cats_json = match serde_json::to_vec_pretty(&categories) {
@@ -107,7 +117,7 @@ fn write_cats_file(categories: Categories) -> Result<(), &'static str> {
 }
 
 /*
- * 
+ * Receives a Category and adds it to the categories file
  */
 fn add_category(category: Category) -> Result<(), &'static str> {
   let mut current: Categories = read_cats_file()?;
@@ -117,7 +127,7 @@ fn add_category(category: Category) -> Result<(), &'static str> {
 }
 
 /*
- * 
+ * Receives an open file to determine whether or not it is a compatible media file and returns its format
  */
 fn verify_media(file: &File) -> Option<MediaFormat> {
   match Matroska::open(file) {
@@ -128,26 +138,26 @@ fn verify_media(file: &File) -> Option<MediaFormat> {
 }
 
 /*
- * 
+ * Receieves a file and its format and obtains the title from the file's metadata
  */
 fn get_media_title(file: &File, format: MediaFormat) -> Option<String> {
   match format {
     MediaFormat::Mkv => {
-      match Matroska::open(file) {
+      return match Matroska::open(file) {
         Ok(f) => {
           match f.info.title {
-            Some(t) => return Some(t),
-            None => return None
+            Some(t) => Some(t),
+            None => None
           }
         },
-        Err(_) => return None
+        Err(_) => None
       };
     }
   };
 }
 
 /*
- * 
+ * Receieves a Media object and attemps to fill its properties with data from TMDb
  */
 fn tmdb_find(media: Media, keys: &Vec<String>) -> Result<Media, Media> {
   let key: &str = "24ebe2b33780e4b97a50193f592b771d";
@@ -191,9 +201,9 @@ fn tmdb_find(media: Media, keys: &Vec<String>) -> Result<Media, Media> {
 }
 
 /*
- * Recursively 
+ * Receives a Library object and fills it by recursively searching a directory for media content
  */
-fn delve(lib: &mut Library, root: PathBuf, keys: &Vec<String>) {
+fn delve(lib: &mut Library, root: PathBuf) {
   let paths_iter = match read_dir(&root) {
     Ok(r) => r,
     Err(_) => return
@@ -211,7 +221,7 @@ fn delve(lib: &mut Library, root: PathBuf, keys: &Vec<String>) {
       Ok(m) => m,
       Err(_) => continue
     };
-    if md.is_dir() { delve(lib, path.clone(), &keys); }
+    if md.is_dir() { delve(lib, path.clone()); }
     else if md.is_file() {
       let mut file: File = match File::options()
         .read(true)
@@ -246,7 +256,7 @@ fn delve(lib: &mut Library, root: PathBuf, keys: &Vec<String>) {
         media: vec!()
       };
       if found {
-        media = match tmdb_find(media, keys) {
+        media = match tmdb_find(media, &(lib.tags.clone())) {
           Ok(m) => m,
           Err(m) => m
         };
@@ -261,15 +271,15 @@ fn delve(lib: &mut Library, root: PathBuf, keys: &Vec<String>) {
  * Receives the basic parameters from the frontend for a new library and passes them to new_lib()
  */
 #[tauri::command]
-fn ipc_new_lib(name: String, format: String, path: String/*, tags: Vec<String>*/) -> Result<Library, String> {
-  match new_lib(name, format, PathBuf::from(path), vec!()) {
-    Ok(l) => return Ok(l),
-    Err(e) => return Err(String::from(e))
+fn ipc_new_lib(name: String, format: String, path: String, tags: Vec<String>) -> Result<Library, String> {
+  return match new_lib(name, format, PathBuf::from(path), vec!()) {
+    Ok(l) => Ok(l),
+    Err(e) => Err(String::from(e))
   };
 }
 
 /*
- * 
+ * Creates a new library
  */
 fn new_lib(name: String, format: String, path: PathBuf, tags: Vec<String>) -> Result<Library, &'static str> {
   dbg!("begin new lib");
@@ -310,7 +320,7 @@ fn new_lib(name: String, format: String, path: PathBuf, tags: Vec<String>) -> Re
     Ok(m) => m,
     Err(_) => return Err("Metadata retrieval failed.")
   };
-  if md.is_dir() { delve(&mut lib, path.clone(), &tags); }
+  if md.is_dir() { delve(&mut lib, path.clone()); }
   else { return Err("Given path is not a directory"); }
 
   dbg!("writing index file");
@@ -340,12 +350,28 @@ fn new_lib(name: String, format: String, path: PathBuf, tags: Vec<String>) -> Re
   return Ok(lib);
 }
 
-#[tauri::command]
-fn ipc_read_libs() {
-
+#[derive(Serialize, Deserialize, Debug)]
+pub struct ExtLibrary {
+  pub path: PathBuf,
+  pub library: Library
 }
 
-fn read_libs() {
+/*
+ * IPC
+ * Calls read_libs() and returns its result to the front end
+ */
+#[tauri::command]
+fn ipc_read_libs() -> Result<Vec<ExtLibrary>, String> {
+  return match read_libs() {
+    Ok(l) => Ok(l),
+    Err(e) => Err(String::from(e))
+  };
+}
+
+/*
+ * Obtains a vector of all the Libraries listed in the categories file
+ */
+fn read_libs() -> Result<Vec<ExtLibrary>, &'static str> {
   
 }
 
