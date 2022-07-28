@@ -13,19 +13,19 @@ const Content = (props: {}) => {
           <Route
             path='/'
             element={
-              <Nest />
+              <Nest media={null} />
             }
           />
           <Route
             path='/nest/:path'
             element={
-              <Item nest={null}/>
+              <Item nest={null} />
             }
           />
           <Route
-            path="/content/:path"
+            path="/item/:path"
             element={
-              <Item nest={null}/>
+              <Item nest={null} />
             }
           />
         </Routes>

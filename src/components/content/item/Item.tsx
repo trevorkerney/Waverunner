@@ -9,7 +9,7 @@ const Item = (props: {nest: Media[]|null}) => {
     <div id='item'>
       {
         (props.nest != null)
-        ? <Nest />
+        ? <Nest media={null} />
         : <></>
       }
     </div>
