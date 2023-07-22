@@ -1,0 +1,25 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto';
+  font-weight: 300;
+}
+
+body {
+  margin: 0;
+  background-color: #4b14b3;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+div#waverunner {
+  width: 100vw;
+  height: 100vh;
+
+  --tb-height: 1.5rem;
+
+  main {
+    width: 100%;
+    height: calc(100% - var(--tb-height))
+  }
+}
