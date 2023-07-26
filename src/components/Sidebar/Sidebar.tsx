@@ -1,4 +1,4 @@
-import { LibraryLocation } from '../../ts/types';
+import { Modal, LibraryLocation } from '../../ts/types';
 
 import './Sidebar.css'
 
@@ -6,12 +6,10 @@ const lls: LibraryLocation[] = [
   {
     name: 'Films',
     path: 'pathtofilms',
-    type: 'movie'
   },
   {
     name: 'Television',
     path: 'pathtotv',
-    type: 'tv'
   }
 ]
 
@@ -19,18 +17,17 @@ const ffs: LibraryLocation[] = [
   {
     name: 'Comedy',
     path: 'pathtofilms',
-    type: 'movie'
   },
   {
     name: 'Scorsese',
     path: 'pathtotv',
-    type: 'tv'
   }
 ]
 
 const Sidebar = (props: {
   isSidebarOpen: boolean,
-  setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>,
+  toggleSidebar: () => void,
+  setModal: (modal: Modal) => void,
   libLocations: LibraryLocation[]
 }) => {
   return (
@@ -69,7 +66,7 @@ const Sidebar = (props: {
               })
             }
             <li id='new-lib-flt'>
-              <button>
+              <button onClick={() => {props.setModal(Modal.Library)}}>
                 <img src='/icons/circlePlus.png' alt='new library' />
                 <p>new library</p>
               </button>
@@ -101,7 +98,7 @@ const Sidebar = (props: {
         </div>
 
         <div id='sb-btn-box'>
-          <button onClick={() => {props.setIsSidebarOpen(prev => !prev)}}>
+          <button onClick={() => {props.toggleSidebar()}}>
             <img src='/icons/handle.png' alt='open/close sidebar' />
           </button>
         </div>

@@ -1,27 +1,57 @@
+// import { invoke } from '@tauri-apps/api/tauri'
+
 import { useState } from "react";
 
 import Sidebar from "./components/Sidebar/Sidebar";
 import Titlebar from "./components/Titlebar/Titlebar";
 
-import { LibraryLocation } from "./ts/types";
+import NewLibraryModal from "./modals/newLibraryModal/NewLibraryModal";
+
+import { Modal, LibraryLocation } from "./ts/types";
 
 import "./Waverunner.css";
 
-function Waverunner() {
+const Waverunner = () => {
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const [modal, _setModal] = useState<Modal>(Modal.None);
+  const setModal = (modal: Modal) => _setModal(modal);
+  const exitModal = () => _setModal(Modal.None);
 
-  const [libLocations, setLibLocations] = useState<LibraryLocation[]>([]);
-  
+  const [isSidebarOpen, _setIsSidebarOpen] = useState<boolean>(true);
+  const toggleSidebar = () => _setIsSidebarOpen(prev => !prev);
+
+  const [libLocations, _setLibLocations] = useState<LibraryLocation[]>([]);
+
   return (
-    <div id="waverunner">
+    <div id='waverunner'>
       <Titlebar />
       <main>
+
+        {
+          (!!modal) && (
+            <>
+              <div id='modal-bg' />
+              <div id='modal-box'>
+                {
+                  (() => {
+                    switch (modal) {
+                      case Modal.Library: return <NewLibraryModal exitModal={exitModal} />
+                      default: setModal(Modal.None)
+                    };
+                  })()
+                }
+              </div>
+            </>
+          )
+        }
+
         <Sidebar
+          setModal={setModal}
           isSidebarOpen={isSidebarOpen}
-          setIsSidebarOpen={setIsSidebarOpen}
+          toggleSidebar={toggleSidebar}
           libLocations={libLocations}
         />
+
       </main>
     </div>
   );
